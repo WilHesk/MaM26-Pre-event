@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move a Mile — Stockport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mam-purple: #332A7C;
+            --mam-pink-dark: #CC356A;
+            --mam-pink-light: #F27188;
+            --mam-yellow: #FCB714;
+            --mam-blue: #00A3C5;
+            --text-dark: #1a1330;
+            --bg-light: #f9f9f9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--mam-purple), var(--mam-pink-dark));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logos img {
+            height: 60px;
+            max-width: 100%;
+        }
+
+        h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--mam-yellow);
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--mam-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            color: var(--mam-pink-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.875rem;
+        }
+
+        h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--mam-purple);
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .text-content {
+            max-width: 800px;
+            font-size: 1.125rem;
+        }
+
+        .lanes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .lane-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-top: 6px solid var(--mam-purple);
+        }
+
+        .lane-card.skate { border-color: var(--mam-blue); }
+        .lane-card.music { border-color: var(--mam-pink-light); }
+        .lane-card.art { border-color: var(--mam-yellow); }
+        .lane-card.dance { border-color: var(--mam-pink-dark); }
+
+        .lane-card h4 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lane-card ul {
+            padding-left: 1.5rem;
+            color: #444;
+        }
+
+        .lane-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .video-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin: 4rem 0;
+            background: black;
+            aspect-ratio: 16/9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .placeholder-text {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #eee;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .credit {
+            text-align: right;
+            margin-top: 1rem;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: var(--mam-purple);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--mam-yellow);
+            color: var(--mam-purple);
+            font-family: 'Archivo Black', sans-serif;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logos">
+            <img src="MAM-logo lockup-GRIT x TC.svg" alt="Grit x The Coping Logo">
+            <img src="MAM-Logo full 1.0.svg" alt="Move a Mile Logo">
+            <img src="MAM-date-GFX 1.0.svg" alt="Date Graphic">
+        </div>
+        <h1>Move a Mile<br>Stockport</h1>
+        <p class="subtitle">A free, day-long event built around physical movement — activities staggered along a one-mile route, programmed so different crowds end up crossing paths and mixing throughout the day, festival-style.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>27 Sep</h3>
+                <p>Stockport</p>
+            </div>
+            <div class="stat-card">
+                <h3>£20k+</h3>
+                <p>Budget secured</p>
+            </div>
+            <div class="stat-card">
+                <h3>1000s</h3>
+                <p>Expected on the day</p>
+            </div>
+            <div class="stat-card">
+                <h3>Free</h3>
+                <p>Entry</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <h2>The Concept</h2>
+            <div class="text-content">
+                <p>Rather than one static site, the mile is programmed end to end — a kids' activity at one end while something like a mental-health film screening runs at the other, pulling families, skaters, older and younger crowds through each other's spaces as they move along. Whether to run an organised mass move (as in Salford) is still undecided — Salford's numbers were small and easy to manage; 1,000+ people is a different logistical question.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Three Tiers, Four Lanes</h2>
+            <div class="lanes-grid">
+                <div class="lane-card skate">
+                    <h4>Skate</h4>
+                    <ul>
+                        <li>Beginner lessons</li>
+                        <li>Kids' jams, prizes</li>
+                        <li>Mid-tier via Chambers Skate Shop (Ben — tbc)</li>
+                        <li>Spectacle: car-jump, sponsor-funded (Honda garage)</li>
+                    </ul>
+                </div>
+                <div class="lane-card music">
+                    <h4>Music</h4>
+                    <ul>
+                        <li>Silent disco</li>
+                        <li>Busking (Gideon Conn, James —)</li>
+                        <li>Main stage, potential headline act</li>
+                        <li>Sponsor-fundable</li>
+                    </ul>
+                </div>
+                <div class="lane-card art">
+                    <h4>Street Art</h4>
+                    <ul>
+                        <li>Live paint jam, multiple artists</li>
+                        <li>Runs along the route rather than scaling to a spectacle tier</li>
+                    </ul>
+                </div>
+                <div class="lane-card dance">
+                    <h4>Dance</h4>
+                    <ul>
+                        <li>Breakdance taster sessions</li>
+                        <li>Breakdance CIC showcase</li>
+                        <li>Spectacle: world-class breakdance show</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <img src="MAM-own style gfx 1.0.svg" alt="Tagline" style="max-width: 100%; margin: 2rem 0;">
+        </section>
+
+        <section class="section">
+            <h2>Event Video</h2>
+            <div class="text-content">
+                <p>Watch the highlights from our previous events.</p>
+            </div>
+            <div class="video-container">
+                <div class="placeholder-text">
+                    <h3>Update Cloudinary URL Here</h3>
+                    <p>Replace the video source in index.html with your Cloudinary URL.</p>
+                </div>
+                <!-- 
+                TODO: Replace the src below with your live Cloudinary video URL 
+                -->
+                <video src="https://res.cloudinary.com/demo/video/upload/v1689620593/samples/sea-turtle.mp4" controls muted loop></video>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Gallery</h2>
+            <p class="credit">Photography by: Eckers Photo</p>
+            <div class="gallery" id="photo-gallery">
+                <!-- Images will be injected here -->
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Coping CIC — Move a Mile — Stockport, 27 Sept 2026</p>
+        <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.7;">Built via C.A.R.E. — Connection, Action, Reflection, Education</p>
+    </footer>
+
+    <script>
+        const photos = ["P2124721.jpg", "4H5A1927.jpg", "4H5A1890.jpg", "P2124655.jpg", "4H5A1847.jpg", "P2125007.jpg", "P2125238.jpg", "P2124522.jpg", "4H5A2020.jpg", "P2125400.jpg", "4H5A1918.jpg", "4H5A1893.jpg", "P2125206.jpg", "4H5A1887.jpg", "4H5A1844.jpg", "4H5A1879.jpg", "P2125175.jpg", "P2124860.jpg", "4H5A1841.jpg", "P2125001.jpg", "P2125015.jpg", "P2124478.jpg", "P2125028.jpg", "4H5A1854.jpg", "4H5A1868.jpg", "4H5A1920.jpg", "P2124530.jpg", "P2125189.jpg", "P2124724.jpg", "P2124917.jpg", "4H5A1881.jpg", "4H5A1856.jpg", "4H5A1923.jpg", "4H5A1937.jpg", "P2124597.jpg", "4H5A1824.jpg", "4H5A1818.jpg", "P2124804.jpg", "4H5A1951.jpg", "P2124964.jpg", "P2124743.jpg", "P2124555.jpg", "4H5A2043.jpg", "P2125305.jpg", "P2125271.jpg", "P2124621.jpg", "4H5A1833.jpg", "4H5A2042.jpg", "P2125112.jpg", "4H5A2046.jpg", "P2124963.jpg", "4H5A1822.jpg", "P2125076.jpg", "P2125063.jpg", "4H5A1980.jpg", "4H5A2047.jpg", "P2125115.jpg", "4H5A1969.jpg", "4H5A1799.jpg", "4H5A1941.jpg", "4H5A1835.jpg", "P2124815.jpg", "P2124626.jpg", "4H5A1954.jpg", "4H5A1968.jpg", "P2125316.jpg", "P2125131.jpg", "4H5A2049.jpg", "P2124824.jpg", "P2125045.jpg", "P2125093.jpg", "4H5A1794.jpg", "P2124951.jpg", "4H5A1970.jpg", "P2124945.jpg", "4H5A2048.jpg", "P2124984.jpg", "4H5A1999.jpg", "P2124760.jpg", "4H5A1972.jpg", "4H5A1796.jpg", "P2125293.jpg", "4H5A1807.jpg", "4H5A1813.jpg", "P2124826.jpg", "4H5A1973.jpg", "P2124588.jpg", "P2125133.jpg", "P2125321.jpg", "4H5A1977.jpg", "P2125081.jpg", "4H5A1989.jpg", "4H5A1974.jpg", "4H5A1960.jpg", "4H5A1815.jpg", "P2124940.jpg", "P2124773.jpg", "P2124502.jpg", "4H5A1912.jpg", "4H5A1899.jpg", "4H5A1872.jpg", "P2124715.jpg", "4H5A2017.jpg", "4H5A2029.jpg", "4H5A1911.jpg", "P2125233.jpg", "P2124475.jpg", "4H5A1858.jpg", "P2124879.jpg", "4H5A1864.jpg", "4H5A1904.jpg", "P2125420.jpg", "P2125352.jpg", "P2125150.jpg", "P2124921.jpg", "P2124841.jpg", "4H5A1860.jpg", "4H5A1861.jpg", "4H5A1849.jpg", "P2124667.jpg", "P2125141.jpg", "4H5A2039.jpg", "P2125169.jpg", "P2124507.jpg", "P2124739.jpg", "4H5A1876.jpg", "P2124857.jpg", "P2124670.jpg", "4H5A1902.jpg", "P2124710.jpg"];
+        const gallery = document.getElementById('photo-gallery');
+        
+        photos.forEach(photo => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            
+            const img = document.createElement('img');
+            img.src = `photos Sam Eckersley/${photo}`;
+            img.loading = 'lazy';
+            img.alt = 'Move a Mile Event Photo';
+            
+            div.appendChild(img);
+            gallery.appendChild(div);
+        });
+    </script>
+</body>
+</html>
