@@ -32,27 +32,35 @@
         }
 
         .top-bar {
-            background: white;
-            padding: 1.5rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 1);
+            padding: 0.5rem 2rem;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: relative;
-            z-index: 10;
+            z-index: 100;
+            transition: background-color 0.3s, backdrop-filter 0.3s;
+        }
+
+        .top-bar.scrolled {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .top-bar img {
-            height: 45px;
+            height: 60px;
             max-width: 100%;
         }
 
         header {
             position: relative;
             color: white;
-            padding: 4rem 2rem;
+            padding: 8rem 2rem 4rem 2rem; /* Extra top padding for fixed nav */
             background-color: var(--mam-purple);
             overflow: hidden;
         }
@@ -81,6 +89,23 @@
 
         .header-text {
             text-align: left;
+        }
+
+        .presents-lockup {
+            margin-bottom: 1.5rem;
+        }
+        
+        .presents-lockup img {
+            height: 50px;
+            margin-bottom: 0.25rem;
+        }
+
+        .presents-text {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            font-weight: 500;
         }
 
         h1 {
@@ -117,10 +142,13 @@
                 grid-template-columns: 1fr;
             }
             .header-video {
-                grid-row: 1; /* Video on top */
+                grid-row: 1;
             }
             .header-text {
-                grid-row: 2; /* Text below video */
+                grid-row: 2;
+                text-align: center;
+            }
+            .presents-lockup {
                 text-align: center;
             }
         }
@@ -264,7 +292,6 @@
 <body>
 
     <div class="top-bar">
-        <img src="MAM-logo lockup-GRIT x TC.svg" alt="Grit x The Coping Logo">
         <img src="MAM-Logo full 1.0.svg" alt="Move a Mile Logo">
         <img src="MAM-date-GFX 1.0.svg" alt="Date Graphic">
     </div>
@@ -273,6 +300,10 @@
         <img class="header-bg" src="photos Sam Eckersley/4H5A1833.jpg" alt="Header Background">
         <div class="header-content">
             <div class="header-text">
+                <div class="presents-lockup">
+                    <img src="MAM-logo lockup-GRIT x TC.svg" alt="Grit x The Coping Logo">
+                    <p class="presents-text">presents</p>
+                </div>
                 <h1>Move a Mile<br>Stockport</h1>
                 <p class="subtitle">A free, day-long event built around physical movement — activities staggered along a one-mile route, programmed so different crowds end up crossing paths and mixing throughout the day, festival-style.</p>
             </div>
@@ -379,6 +410,16 @@
     </footer>
 
     <script>
+        // Scroll effect for top bar
+        window.addEventListener('scroll', () => {
+            const topBar = document.querySelector('.top-bar');
+            if (window.scrollY > 50) {
+                topBar.classList.add('scrolled');
+            } else {
+                topBar.classList.remove('scrolled');
+            }
+        });
+
         const photos = ["4H5A1833.jpg", "4H5A1844.jpg", "4H5A1872.jpg", "4H5A1881.jpg", "4H5A1887.jpg", "4H5A1893.jpg", "4H5A1899.jpg", "4H5A1927.jpg", "4H5A1941.jpg", "4H5A1969.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "4H5A1980.jpg", "4H5A1999.jpg", "4H5A2017.jpg", "4H5A2029.jpg", "4H5A2042.jpg", "4H5A2043.jpg", "4H5A2048.jpg", "P2124522.jpg", "P2124667.jpg", "P2124670.jpg", "P2124710.jpg", "P2124715.jpg", "P2124724.jpg", "P2124739.jpg", "P2124743.jpg", "P2124760.jpg", "P2124773.jpg", "P2124804.jpg", "P2124815.jpg", "P2124826.jpg", "P2124841.jpg", "P2124857.jpg", "P2124860.jpg", "P2124879.jpg", "P2124917.jpg", "P2124921.jpg", "P2124945.jpg", "P2124963.jpg", "P2124964.jpg", "P2125001.jpg", "P2125015.jpg", "P2125028.jpg", "P2125045.jpg", "P2125076.jpg", "P2125093.jpg", "P2125112.jpg", "P2125141.jpg", "P2125150.jpg", "P2125169.jpg", "P2125189.jpg", "P2125206.jpg", "P2125238.jpg", "P2125271.jpg", "P2125293.jpg", "P2125305.jpg", "P2125321.jpg", "P2125352.jpg", "P2125420.jpg"];
         const gallery = document.getElementById('photo-gallery');
         
