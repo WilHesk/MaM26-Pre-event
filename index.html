@@ -32,10 +32,30 @@
         }
 
         header {
-            background: linear-gradient(135deg, var(--mam-purple), var(--mam-pink-dark));
+            position: relative;
             color: white;
             padding: 4rem 2rem;
             text-align: center;
+            background-color: var(--mam-purple);
+            overflow: hidden;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .logos {
@@ -64,8 +84,19 @@
         .subtitle {
             font-size: 1.25rem;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 3rem auto;
             opacity: 0.9;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header-video {
+            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: #000;
         }
 
         .container {
@@ -161,32 +192,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .video-container {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            margin: 4rem 0;
-            background: black;
-            aspect-ratio: 16/9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .placeholder-text {
-            position: absolute;
-            z-index: 10;
-        }
-
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -228,36 +233,33 @@
             margin-top: 4rem;
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--mam-yellow);
-            color: var(--mam-purple);
-            font-family: 'Archivo Black', sans-serif;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 2rem;
-            transition: background 0.3s;
-        }
-        
-        .btn:hover {
-            background: white;
-        }
-
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logos">
-            <img src="MAM-logo lockup-GRIT x TC.svg" alt="Grit x The Coping Logo">
-            <img src="MAM-Logo full 1.0.svg" alt="Move a Mile Logo">
-            <img src="MAM-date-GFX 1.0.svg" alt="Date Graphic">
+        <img class="header-bg" src="photos Sam Eckersley/4H5A1833.jpg" alt="Header Background">
+        <div class="header-content">
+            <div class="logos">
+                <img src="MAM-logo lockup-GRIT x TC.svg" alt="Grit x The Coping Logo">
+                <img src="MAM-Logo full 1.0.svg" alt="Move a Mile Logo">
+                <img src="MAM-date-GFX 1.0.svg" alt="Date Graphic">
+            </div>
+            <h1>Move a Mile<br>Stockport</h1>
+            <p class="subtitle">A free, day-long event built around physical movement — activities staggered along a one-mile route, programmed so different crowds end up crossing paths and mixing throughout the day, festival-style.</p>
+            
+            <div class="header-video">
+                <iframe
+                    src="https://player.cloudinary.com/embed/?cloud_name=dd7inzbhy&public_id=TCxGRIT26-web-sq-1.2_phibcl"
+                    width="640"
+                    height="360" 
+                    style="height: auto; width: 100%; aspect-ratio: 640 / 360;"
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                    frameborder="0"
+                ></iframe>
+            </div>
         </div>
-        <h1>Move a Mile<br>Stockport</h1>
-        <p class="subtitle">A free, day-long event built around physical movement — activities staggered along a one-mile route, programmed so different crowds end up crossing paths and mixing throughout the day, festival-style.</p>
     </header>
 
     <div class="container">
@@ -329,23 +331,7 @@
         
         <section class="section">
             <img src="MAM-own style gfx 1.0.svg" alt="Tagline" style="max-width: 100%; margin: 2rem 0;">
-        </section>
-
-        <section class="section">
-            <h2>Event Video</h2>
-            <div class="text-content">
-                <p>Watch the highlights from our previous events.</p>
-            </div>
-            <div class="video-container">
-                <div class="placeholder-text">
-                    <h3>Update Cloudinary URL Here</h3>
-                    <p>Replace the video source in index.html with your Cloudinary URL.</p>
-                </div>
-                <!-- 
-                TODO: Replace the src below with your live Cloudinary video URL 
-                -->
-                <video src="https://res.cloudinary.com/demo/video/upload/v1689620593/samples/sea-turtle.mp4" controls muted loop></video>
-            </div>
+            <img src="MaM-styles-gfx-1.0.svg" alt="Styles Tagline" style="max-width: 100%; margin: 2rem 0;">
         </section>
 
         <section class="section">
@@ -364,7 +350,7 @@
     </footer>
 
     <script>
-        const photos = ["P2124721.jpg", "4H5A1927.jpg", "4H5A1890.jpg", "P2124655.jpg", "4H5A1847.jpg", "P2125007.jpg", "P2125238.jpg", "P2124522.jpg", "4H5A2020.jpg", "P2125400.jpg", "4H5A1918.jpg", "4H5A1893.jpg", "P2125206.jpg", "4H5A1887.jpg", "4H5A1844.jpg", "4H5A1879.jpg", "P2125175.jpg", "P2124860.jpg", "4H5A1841.jpg", "P2125001.jpg", "P2125015.jpg", "P2124478.jpg", "P2125028.jpg", "4H5A1854.jpg", "4H5A1868.jpg", "4H5A1920.jpg", "P2124530.jpg", "P2125189.jpg", "P2124724.jpg", "P2124917.jpg", "4H5A1881.jpg", "4H5A1856.jpg", "4H5A1923.jpg", "4H5A1937.jpg", "P2124597.jpg", "4H5A1824.jpg", "4H5A1818.jpg", "P2124804.jpg", "4H5A1951.jpg", "P2124964.jpg", "P2124743.jpg", "P2124555.jpg", "4H5A2043.jpg", "P2125305.jpg", "P2125271.jpg", "P2124621.jpg", "4H5A1833.jpg", "4H5A2042.jpg", "P2125112.jpg", "4H5A2046.jpg", "P2124963.jpg", "4H5A1822.jpg", "P2125076.jpg", "P2125063.jpg", "4H5A1980.jpg", "4H5A2047.jpg", "P2125115.jpg", "4H5A1969.jpg", "4H5A1799.jpg", "4H5A1941.jpg", "4H5A1835.jpg", "P2124815.jpg", "P2124626.jpg", "4H5A1954.jpg", "4H5A1968.jpg", "P2125316.jpg", "P2125131.jpg", "4H5A2049.jpg", "P2124824.jpg", "P2125045.jpg", "P2125093.jpg", "4H5A1794.jpg", "P2124951.jpg", "4H5A1970.jpg", "P2124945.jpg", "4H5A2048.jpg", "P2124984.jpg", "4H5A1999.jpg", "P2124760.jpg", "4H5A1972.jpg", "4H5A1796.jpg", "P2125293.jpg", "4H5A1807.jpg", "4H5A1813.jpg", "P2124826.jpg", "4H5A1973.jpg", "P2124588.jpg", "P2125133.jpg", "P2125321.jpg", "4H5A1977.jpg", "P2125081.jpg", "4H5A1989.jpg", "4H5A1974.jpg", "4H5A1960.jpg", "4H5A1815.jpg", "P2124940.jpg", "P2124773.jpg", "P2124502.jpg", "4H5A1912.jpg", "4H5A1899.jpg", "4H5A1872.jpg", "P2124715.jpg", "4H5A2017.jpg", "4H5A2029.jpg", "4H5A1911.jpg", "P2125233.jpg", "P2124475.jpg", "4H5A1858.jpg", "P2124879.jpg", "4H5A1864.jpg", "4H5A1904.jpg", "P2125420.jpg", "P2125352.jpg", "P2125150.jpg", "P2124921.jpg", "P2124841.jpg", "4H5A1860.jpg", "4H5A1861.jpg", "4H5A1849.jpg", "P2124667.jpg", "P2125141.jpg", "4H5A2039.jpg", "P2125169.jpg", "P2124507.jpg", "P2124739.jpg", "4H5A1876.jpg", "P2124857.jpg", "P2124670.jpg", "4H5A1902.jpg", "P2124710.jpg"];
+        const photos = ["4H5A1833.jpg", "4H5A1844.jpg", "4H5A1872.jpg", "4H5A1881.jpg", "4H5A1887.jpg", "4H5A1893.jpg", "4H5A1899.jpg", "4H5A1927.jpg", "4H5A1941.jpg", "4H5A1969.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "4H5A1980.jpg", "4H5A1999.jpg", "4H5A2017.jpg", "4H5A2029.jpg", "4H5A2042.jpg", "4H5A2043.jpg", "4H5A2048.jpg", "P2124522.jpg", "P2124667.jpg", "P2124670.jpg", "P2124710.jpg", "P2124715.jpg", "P2124724.jpg", "P2124739.jpg", "P2124743.jpg", "P2124760.jpg", "P2124773.jpg", "P2124804.jpg", "P2124815.jpg", "P2124826.jpg", "P2124841.jpg", "P2124857.jpg", "P2124860.jpg", "P2124879.jpg", "P2124917.jpg", "P2124921.jpg", "P2124945.jpg", "P2124963.jpg", "P2124964.jpg", "P2125001.jpg", "P2125015.jpg", "P2125028.jpg", "P2125045.jpg", "P2125076.jpg", "P2125093.jpg", "P2125112.jpg", "P2125141.jpg", "P2125150.jpg", "P2125169.jpg", "P2125189.jpg", "P2125206.jpg", "P2125238.jpg", "P2125271.jpg", "P2125293.jpg", "P2125305.jpg", "P2125321.jpg", "P2125352.jpg", "P2125420.jpg"];
         const gallery = document.getElementById('photo-gallery');
         
         photos.forEach(photo => {
