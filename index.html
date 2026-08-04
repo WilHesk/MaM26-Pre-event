@@ -223,6 +223,19 @@
             gap: 1.5rem;
             margin-top: 2rem;
         }
+        
+        .concept-grid {
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 3rem; 
+            align-items: center;
+        }
+        
+        @media (max-width: 800px) {
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .lane-card {
             background: white;
@@ -334,83 +347,83 @@
         
         <div class="stats-grid">
             <div class="stat-card">
-                <h3>27 Sep</h3>
+                <h3>27th Sep</h3>
                 <p>Stockport</p>
             </div>
             <div class="stat-card">
-                <h3>£20k+</h3>
+                <h3>£20k</h3>
                 <p>Budget secured</p>
             </div>
             <div class="stat-card">
-                <h3>1000s</h3>
-                <p>Expected on the day</p>
+                <h3>3000</h3>
+                <p>People expected</p>
             </div>
             <div class="stat-card">
                 <h3>Free</h3>
-                <p>Entry</p>
+                <p>Community event</p>
             </div>
         </div>
 
         <section class="section">
-            <h2>The Concept</h2>
-            <div class="text-content">
-                <p>Rather than one static site, the mile is programmed end to end. A kids' activity at one end while something like a mental-health film screening runs at the other, pulling families, skaters, older and younger crowds through each other's spaces as they move along. Whether to run an organised mass move (as in Salford) is still undecided — Salford's numbers were small and easy to manage; 1,000+ people is a different logistical question.</p>
+            <div class="concept-grid">
+                <div class="text-content">
+                    <h2 style="margin-bottom: 1.5rem;">The Concept</h2>
+                    <p>A one-mile celebration of creativity, community and wellbeing is taking over Stockport on Sunday 27 September. After the sucess of the Salford event, GRIT Studios and The Coping partner again to launch Move a Mile Stockport – a free, family-friendly festival inviting people of all ages to explore a vibrant one-mile trail packed with creativity, culture and fun.</p>
+                </div>
+                <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); aspect-ratio: 4/3;">
+                    <img src="photos Sam Eckersley/4H5A1844.jpg" alt="Move a mile concept" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
             </div>
         </section>
 
         <section class="section">
-            <h2>Three Tiers, Four Lanes</h2>
+            <h2>The Route</h2>
+            <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff;">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo" width="100%" height="480" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Four Categories, 12 Sponsorship Opportunities</h2>
             <div class="lanes-grid">
                 <div class="lane-card skate">
                     <h4>Skate</h4>
                     <ul>
-                        <li>Beginner lessons</li>
-                        <li>Kids' jams, prizes</li>
-                        <li>Mid-tier via Chambers Skate Shop (Ben — tbc)</li>
-                        <li>Spectacle: car painting and possible skate feature, sponsor-funded (Honda garage)</li>
+                        <li><b>Low Level:</b> Product Sponsorship for Beginner Lessons & Kids' Jams</li>
+                        <li><b>Mid Level:</b> Financial Investment for naming rights on smaller Skate Event</li>
+                        <li><b>Headline:</b> Financial Investment for naming rights for main feature Skate Event</li>
                     </ul>
                 </div>
                 <div class="lane-card music">
                     <h4>Music</h4>
                     <ul>
-                        <li>Silent disco</li>
-                        <li>Busking style (Gideon Conn, James Holt)</li>
-                        <li>Main stage, potential headline act</li>
-                        <li>Sponsor-fundable</li>
+                        <li><b>Low Level:</b> Product Sponsorship for Kids' Activities like Silent Disco</li>
+                        <li><b>Mid Level:</b> Financial Investment for naming rights on smaller stages</li>
+                        <li><b>Headline:</b> Financial Investment for naming rights for main stage</li>
                     </ul>
                 </div>
                 <div class="lane-card art">
                     <h4>Street Art</h4>
                     <ul>
-                        <li>Street art & craft workshops</li>
-                        <li>Community mural painting</li>
-                        <li>Live paint jam, multiple artists</li>
+                        <li><b>Low Level:</b> Product Sponsorship for Kids' Street Art & Craft Workshops</li>
+                        <li><b>Mid Level:</b> Financial Investment for naming rights on Community Murals</li>
+                        <li><b>Headline:</b> Financial Investment for naming rights for main paint jam</li>
                     </ul>
                 </div>
                 <div class="lane-card dance">
                     <h4>Dance</h4>
                     <ul>
-                        <li>Breakdance taster sessions</li>
-                        <li>Breakdance CIC showcase</li>
-                        <li>Spectacle: world-class breakdance show</li>
+                        <li><b>Low Level:</b> Product Sponsorship for Kids' Breakdance taster sessions</li>
+                        <li><b>Mid Level:</b> Financial Investment for naming rights to popup CIC showcases</li>
+                        <li><b>Headline:</b> Financial Investment for naming rights for main world-class breakdance show</li>
                     </ul>
                 </div>
             </div>
         </section>
         
-        <section class="section">
-            <h2>Proposed Route</h2>
-            <div class="text-content" style="margin-bottom: 2rem;">
-                <p>Check out the proposed one-mile route connecting our activities below.</p>
-            </div>
-            <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff;">
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo" width="100%" height="480" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            </div>
-        </section>
-        
-        <section class="section">
-            <img src="MAM-own style gfx 1.0.svg" alt="Tagline" style="max-width: 100%; margin: 2rem 0;">
-            <img src="MaM-styles-gfx-1.0.svg" alt="Styles Tagline" style="max-width: 100%; margin: 2rem 0;">
+        <section class="section" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <img src="MAM-own style gfx 1.0.svg" alt="Tagline" style="max-width: 100%; margin: 2rem 0 -0.5rem 0;">
+            <img src="MaM-styles-gfx-1.0.svg" alt="Styles Tagline" style="max-width: 100%; margin: 0;">
         </section>
 
         <section class="section">
