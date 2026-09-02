@@ -172,56 +172,6 @@
             height: 100%;
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 800px) {
-            body, .text-content, .stat-card, .lane-card {
-                text-align: center;
-            }
-            .header-content {
-                grid-template-columns: 1fr;
-            }
-            .header-video {
-                grid-row: 1;
-            }
-            .header-text {
-                grid-row: 2;
-                text-align: center;
-            }
-            .presents-lockup {
-                text-align: center;
-            }
-            .concept-grid {
-                display: flex;
-                flex-direction: column-reverse;
-                gap: 2rem;
-            }
-            /* Stats fixes */
-            .stat-card h3 {
-                font-size: 2.2rem;
-            }
-            /* Lane card bullet workaround */
-            .lane-card ul {
-                padding: 0;
-                margin: 0;
-                list-style: none;
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .lane-card li {
-                margin-bottom: 0.8rem;
-                padding-bottom: 0.8rem;
-                border-bottom: 1px solid rgba(0,0,0,0.05);
-                text-align: center;
-            }
-            .lane-card li:last-child {
-                border-bottom: none;
-                margin-bottom: 0;
-                padding-bottom: 0;
-            }
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -303,6 +253,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             border-top: 6px solid var(--text-dark);
+            text-align: center;
         }
 
         .lane-card.skate { border-color: var(--mam-blue); }
@@ -317,12 +268,25 @@
         }
 
         .lane-card ul {
-            padding-left: 1.5rem;
-            color: #444;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .lane-card li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            width: 100%;
+        }
+        
+        .lane-card li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .gallery {
@@ -358,10 +322,6 @@
             font-size: 0.9rem;
         }
         
-        @media (max-width: 800px) {
-            .credit { text-align: center; }
-        }
-
         /* Sponsor Marquee Footer */
         footer {
             background: #000;
@@ -401,6 +361,35 @@
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        /* Mobile Adjustments placed at the bottom to override properly */
+        @media (max-width: 800px) {
+            body, .text-content, .stat-card {
+                text-align: center;
+            }
+            .header-content {
+                grid-template-columns: 1fr;
+            }
+            .header-video {
+                grid-row: 1;
+            }
+            .header-text {
+                grid-row: 2;
+                text-align: center;
+            }
+            .presents-lockup {
+                text-align: center;
+            }
+            .concept-grid {
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 2rem;
+            }
+            .stat-card h3 {
+                font-size: 2.2rem;
+            }
+            .credit { text-align: center; }
         }
 
     </style>
@@ -492,9 +481,9 @@
                 <div class="lane-card skate">
                     <h4>Skate</h4>
                     <ul>
-                        <li>Free beginner skate lessons open to all.</li>
-                        <li>Fun skate jams with giveaways and prizes.</li>
-                        <li>Cash prizes for best tricks landed on various features.</li>
+                        <li>Free beginner skate lessons open to all</li>
+                        <li>Fun skate jams with giveaways and prizes</li>
+                        <li>Cash prizes for best tricks landed on various features</li>
                     </ul>
                 </div>
                 <div class="lane-card music">
