@@ -29,6 +29,7 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            padding-bottom: 70px; /* Space for fixed footer */
         }
 
         .top-bar {
@@ -118,9 +119,17 @@
             font-family: 'Archivo Black', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--mam-yellow);
             text-transform: uppercase;
+        }
+        
+        .hero-datetime {
+            font-family: 'Archivo Black', sans-serif; 
+            color: var(--mam-yellow); 
+            margin-bottom: 1.5rem; 
+            font-size: 1.25rem;
+            line-height: 1.3;
         }
 
         .subtitle {
@@ -163,7 +172,11 @@
             height: 100%;
         }
 
+        /* Mobile Adjustments */
         @media (max-width: 800px) {
+            body, .text-content, .stat-card, .lane-card {
+                text-align: center;
+            }
             .header-content {
                 grid-template-columns: 1fr;
             }
@@ -176,6 +189,28 @@
             }
             .presents-lockup {
                 text-align: center;
+            }
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+            /* Stats fixes */
+            .stat-card h3 {
+                font-size: 2.2rem;
+            }
+            /* Lane card bullet workaround */
+            .lane-card ul {
+                padding-left: 0;
+                list-style: none;
+            }
+            .lane-card li {
+                margin-bottom: 0.8rem;
+                padding-bottom: 0.8rem;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            .lane-card li:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
             }
         }
 
@@ -209,8 +244,9 @@
         .stat-card h3 {
             font-family: 'Archivo Black', sans-serif;
             font-size: 2.5rem;
-            color: var(--mam-pink-dark);
+            color: var(--text-dark);
             margin-bottom: 0.5rem;
+            line-height: 1;
         }
 
         .stat-card p {
@@ -219,6 +255,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.875rem;
+            margin-top: 0.5rem;
         }
 
         h2 {
@@ -235,6 +272,7 @@
         .text-content {
             max-width: 800px;
             font-size: 1.125rem;
+            margin: 0 auto;
         }
 
         .lanes-grid {
@@ -249,12 +287,6 @@
             grid-template-columns: 1fr 1fr; 
             gap: 3rem; 
             align-items: center;
-        }
-        
-        @media (max-width: 800px) {
-            .concept-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         .lane-card {
@@ -317,13 +349,50 @@
             color: #666;
             font-size: 0.9rem;
         }
+        
+        @media (max-width: 800px) {
+            .credit { text-align: center; }
+        }
 
+        /* Sponsor Marquee Footer */
         footer {
-            background: #222;
+            background: #000;
             color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 12px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-wrapper {
+            display: flex;
+            width: 200%;
+            animation: marquee 20s linear infinite;
+        }
+        
+        .marquee-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .marquee-content img {
+            height: 30px;
+            max-width: 160px;
+            object-fit: contain;
+            margin: 0 2rem;
+            filter: brightness(0) invert(1);
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
     </style>
@@ -346,8 +415,12 @@
                     <p class="presents-text">presents</p>
                 </div>
                 <h1>Move a Mile<br>Stockport</h1>
-                <p class="subtitle">A free, day-long event built around physical movement, creativity & community. Activities staggered along a one-mile route, programmed to encourage movement and interaction across all walks of life.</p>
-                <a href="#" class="cta-btn">Book Now</a>
+                <div class="hero-datetime">
+                    Sunday 27th September 2026<br>
+                    11am - 4pm
+                </div>
+                <p class="subtitle">Free event built around physical movement, creativity & community. Activities staggered along a one-mile route encouraging movement, interaction and play across all walks of life.</p>
+                <a href="#" class="cta-btn">Book Free Tickets</a>
             </div>
             
             <div class="header-video">
@@ -387,10 +460,10 @@
 
         <section class="section">
             <div class="concept-grid">
-                <div class="text-content">
+                <div class="text-content" style="text-align: left;">
                     <h2 style="margin-bottom: 1.5rem;">The Concept</h2>
                     <p>A one-mile celebration of creativity, community and wellbeing is taking over Stockport on Sunday 27 September. After the sucess of the Salford event, GRIT Studios and The Coping partner again to launch Move a Mile Stockport – a free, family-friendly festival inviting people of all ages to explore a vibrant one-mile trail packed with creativity, culture and fun.</p>
-                    <a href="#" class="cta-btn">Book Now</a>
+                    <a href="#" class="cta-btn">Book Free Tickets</a>
                 </div>
                 <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); aspect-ratio: 4/3;">
                     <img src="photos Sam Eckersley/4H5A1872.jpg" alt="Move a mile concept" style="width: 100%; height: 100%; object-fit: cover;">
@@ -399,14 +472,14 @@
         </section>
 
         <section class="section">
-            <h2>The Route</h2>
+            <h2 style="text-align: center;">The Route</h2>
             <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff; position: relative; height: 430px;">
                 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo" width="100%" height="480" frameborder="0" style="border:0; position: absolute; top: -55px; left: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </section>
 
         <section class="section">
-            <h2>Four Categories, Loads of Activities</h2>
+            <h2 style="text-align: center;">Four Categories, Loads of Activities</h2>
             <div class="lanes-grid">
                 <div class="lane-card skate">
                     <h4>Skate</h4>
@@ -444,7 +517,7 @@
         </section>
 
         <div style="text-align: center; margin-bottom: 4rem;">
-            <a href="#" class="cta-btn">Book Now</a>
+            <a href="#" class="cta-btn">Book Free Tickets</a>
         </div>
         
         <section class="section" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
@@ -453,18 +526,28 @@
         </section>
 
         <section class="section">
-            <h2>Gallery</h2>
+            <h2 style="text-align: center;">Gallery</h2>
             <p class="credit">Photography by: Eckers Photo</p>
             <div class="gallery" id="photo-gallery">
                 <!-- Images will be injected here -->
             </div>
         </section>
 
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <a href="#" class="cta-btn">Book Free Tickets</a>
+        </div>
+
     </div>
 
     <footer>
-        <p>Coping CIC — Move a Mile — Stockport, 27 Sept 2026</p>
-        <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.7;">Built via C.A.R.E. — Connection, Action, Reflection, Education</p>
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
+            </div>
+            <div class="marquee-content">
+                <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -478,7 +561,7 @@
             }
         });
 
-        const photos = ["4H5A1844.jpg", "4H5A1872.jpg", "4H5A1887.jpg", "4H5A1893.jpg", "4H5A1927.jpg", "4H5A1941.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "4H5A1980.jpg", "4H5A2017.jpg", "4H5A2029.jpg", "4H5A2048.jpg", "P2124522.jpg", "P2124670.jpg", "P2124710.jpg", "P2124715.jpg", "P2124724.jpg", "P2124739.jpg", "P2124743.jpg", "P2124760.jpg", "P2124773.jpg", "P2124804.jpg", "P2124815.jpg", "P2124826.jpg", "P2124857.jpg", "P2124860.jpg", "P2124917.jpg", "P2124921.jpg", "P2125001.jpg", "P2125015.jpg", "P2125028.jpg", "P2125076.jpg", "P2125093.jpg", "P2125112.jpg", "P2125141.jpg", "P2125150.jpg", "P2125238.jpg", "P2125293.jpg", "P2125305.jpg", "P2125321.jpg", "P2125352.jpg", "P2125420.jpg"];
+        const photos = ["4H5A1844.jpg", "4H5A1872.jpg", "4H5A1893.jpg", "4H5A1941.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "4H5A2048.jpg", "P2124522.jpg", "P2124670.jpg", "P2124710.jpg", "P2124739.jpg", "P2124743.jpg", "P2124760.jpg", "P2124773.jpg", "P2124804.jpg", "P2124815.jpg", "P2124857.jpg", "P2124921.jpg", "P2125001.jpg", "P2125015.jpg", "P2125076.jpg", "P2125093.jpg", "P2125150.jpg", "P2125238.jpg", "P2125293.jpg", "P2125352.jpg"];
         const gallery = document.getElementById('photo-gallery');
         
         photos.forEach(photo => {
@@ -493,6 +576,11 @@
             div.appendChild(img);
             gallery.appendChild(div);
         });
+        
+        // Add mobile-specific text-align correction for concept grid
+        if (window.innerWidth <= 800) {
+            document.querySelector('.concept-grid .text-content').style.textAlign = 'center';
+        }
     </script>
 </body>
 </html>
