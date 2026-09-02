@@ -191,7 +191,9 @@
                 text-align: center;
             }
             .concept-grid {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 2rem;
             }
             /* Stats fixes */
             .stat-card h3 {
@@ -199,13 +201,19 @@
             }
             /* Lane card bullet workaround */
             .lane-card ul {
-                padding-left: 0;
+                padding: 0;
+                margin: 0;
                 list-style: none;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
             .lane-card li {
                 margin-bottom: 0.8rem;
                 padding-bottom: 0.8rem;
                 border-bottom: 1px solid rgba(0,0,0,0.05);
+                text-align: center;
             }
             .lane-card li:last-child {
                 border-bottom: none;
@@ -383,10 +391,10 @@
         }
         
         .marquee-content img {
-            height: 30px;
-            max-width: 160px;
+            height: 40px;
+            max-width: 180px;
             object-fit: contain;
-            margin: 0 2rem;
+            margin: 0 2.5rem;
             filter: brightness(0) invert(1);
         }
         
@@ -561,7 +569,7 @@
             }
         });
 
-        const photos = ["4H5A1844.jpg", "4H5A1872.jpg", "4H5A1893.jpg", "4H5A1941.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "4H5A2048.jpg", "P2124522.jpg", "P2124670.jpg", "P2124710.jpg", "P2124739.jpg", "P2124743.jpg", "P2124760.jpg", "P2124773.jpg", "P2124804.jpg", "P2124815.jpg", "P2124857.jpg", "P2124921.jpg", "P2125001.jpg", "P2125015.jpg", "P2125076.jpg", "P2125093.jpg", "P2125150.jpg", "P2125238.jpg", "P2125293.jpg", "P2125352.jpg"];
+        const photos = ["4H5A1844.jpg", "4H5A1872.jpg", "4H5A1893.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "P2124522.jpg", "P2124710.jpg", "P2124760.jpg", "P2124857.jpg", "P2124921.jpg", "P2125001.jpg", "P2125015.jpg", "P2125076.jpg", "P2125093.jpg", "P2125150.jpg", "P2125238.jpg", "P2125293.jpg", "P2125352.jpg"];
         const gallery = document.getElementById('photo-gallery');
         
         photos.forEach(photo => {
