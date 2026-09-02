@@ -126,7 +126,7 @@
         
         .hero-datetime {
             font-family: 'Archivo Black', sans-serif; 
-            color: var(--mam-yellow); 
+            color: white; 
             margin-bottom: 1.5rem; 
             font-size: 1.25rem;
             line-height: 1.3;
@@ -331,10 +331,16 @@
             left: 0;
             width: 100%;
             z-index: 100;
-            padding: 12px 0;
+            padding: 15px 0;
             overflow: hidden;
             display: flex;
             align-items: center;
+        }
+        
+        .marquee-scroll-container {
+            width: 100%;
+            display: flex;
+            will-change: transform;
         }
 
         .marquee-wrapper {
@@ -351,10 +357,10 @@
         }
         
         .marquee-content img {
-            height: 40px;
-            max-width: 180px;
+            height: 50px;
+            max-width: 225px;
             object-fit: contain;
-            margin: 0 2.5rem;
+            margin: 0 3rem;
             filter: brightness(0) invert(1);
         }
         
@@ -416,7 +422,7 @@
                     Sunday 27th September 2026<br>
                     11am - 4pm
                 </div>
-                <p class="subtitle">Free event built around physical movement, creativity & community. Activities staggered along a one-mile route encouraging movement, interaction and play across all walks of life.</p>
+                <p class="subtitle">Free event built around physical movement, creativity & community. Activities staggered along a one-mile route encouraging movement, interaction and play across organisations, businesses and all walks of life.</p>
                 <a href="#" class="cta-btn">Book Free Tickets</a>
             </div>
             
@@ -457,7 +463,7 @@
 
         <section class="section">
             <div class="concept-grid">
-                <div class="text-content" style="text-align: left;">
+                <div class="text-content" style="text-align: center;">
                     <h2 style="margin-bottom: 1.5rem;">The Concept</h2>
                     <p>A one-mile celebration of creativity, community and wellbeing is taking over Stockport on Sunday 27 September. After the sucess of the Salford event, GRIT Studios and The Coping partner again to launch Move a Mile Stockport – a free, family-friendly festival inviting people of all ages to explore a vibrant one-mile trail packed with creativity, culture and fun.</p>
                     <a href="#" class="cta-btn">Book Free Tickets</a>
@@ -537,24 +543,38 @@
     </div>
 
     <footer>
-        <div class="marquee-wrapper">
-            <div class="marquee-content">
-                <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
-            </div>
-            <div class="marquee-content">
-                <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
+        <div class="marquee-scroll-container">
+            <div class="marquee-wrapper">
+                <div class="marquee-content">
+                    <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
+                </div>
+                <div class="marquee-content">
+                    <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Scroll effect for top bar
+        // Scroll effect for top bar and marquee
+        const marqueeScroll = document.querySelector('.marquee-scroll-container');
+        
         window.addEventListener('scroll', () => {
             const topBar = document.querySelector('.top-bar');
             if (window.scrollY > 50) {
                 topBar.classList.add('scrolled');
             } else {
                 topBar.classList.remove('scrolled');
+            }
+            
+            // Add scroll-responsive movement to footer
+            if (marqueeScroll) {
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                if (maxScroll > 0) {
+                    const scrollFraction = window.scrollY / maxScroll;
+                    // Move the marquee wrapper leftwards as user scrolls down
+                    marqueeScroll.style.transform = `translateX(-${scrollFraction * 20}%)`;
+                }
             }
         });
 
@@ -573,11 +593,6 @@
             div.appendChild(img);
             gallery.appendChild(div);
         });
-        
-        // Add mobile-specific text-align correction for concept grid
-        if (window.innerWidth <= 800) {
-            document.querySelector('.concept-grid .text-content').style.textAlign = 'center';
-        }
     </script>
 </body>
 </html>
