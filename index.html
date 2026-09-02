@@ -346,7 +346,6 @@
         .marquee-wrapper {
             display: flex;
             width: 200%;
-            animation: marquee 20s linear infinite;
         }
         
         .marquee-content {
@@ -362,11 +361,6 @@
             object-fit: contain;
             margin: 0 3rem;
             filter: brightness(0) invert(1);
-        }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
         }
 
         /* Mobile Adjustments placed at the bottom to override properly */
@@ -557,7 +551,7 @@
 
     <script>
         // Scroll effect for top bar and marquee
-        const marqueeScroll = document.querySelector('.marquee-scroll-container');
+        const marqueeWrapper = document.querySelector('.marquee-wrapper');
         
         window.addEventListener('scroll', () => {
             const topBar = document.querySelector('.top-bar');
@@ -568,12 +562,12 @@
             }
             
             // Add scroll-responsive movement to footer
-            if (marqueeScroll) {
+            if (marqueeWrapper) {
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
                 if (maxScroll > 0) {
                     const scrollFraction = window.scrollY / maxScroll;
                     // Move the marquee wrapper leftwards as user scrolls down
-                    marqueeScroll.style.transform = `translateX(-${scrollFraction * 20}%)`;
+                    marqueeWrapper.style.transform = `translateX(-${scrollFraction * 50}%)`;
                 }
             }
         });
