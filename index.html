@@ -65,8 +65,8 @@
         header {
             position: relative;
             color: white;
-            padding: 8rem 2rem 4rem 2rem; /* Extra top padding for fixed nav */
-            background-color: var(--mam-purple);
+            padding: 8rem 2rem 4rem 2rem;
+            background-color: #222;
             overflow: hidden;
         }
 
@@ -77,7 +77,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.2;
+            opacity: 0.3;
             z-index: 0;
         }
 
@@ -127,6 +127,26 @@
             font-size: 1.25rem;
             opacity: 0.95;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--mam-purple);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-family: 'Archivo Black', sans-serif;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(51, 42, 124, 0.3);
+            color: white;
         }
 
         .header-video {
@@ -205,7 +225,7 @@
             font-family: 'Archivo Black', sans-serif;
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--mam-purple);
+            color: var(--text-dark);
         }
 
         .section {
@@ -242,7 +262,7 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-top: 6px solid var(--mam-purple);
+            border-top: 6px solid var(--text-dark);
         }
 
         .lane-card.skate { border-color: var(--mam-blue); }
@@ -299,7 +319,7 @@
         }
 
         footer {
-            background: var(--mam-purple);
+            background: #222;
             color: white;
             text-align: center;
             padding: 3rem 2rem;
@@ -318,7 +338,7 @@
     </div>
 
     <header>
-        <img class="header-bg" src="photos Sam Eckersley/4H5A1833.jpg" alt="Header Background">
+        <img class="header-bg" src="photos Sam Eckersley/4H5A1844.jpg" alt="Header Background">
         <div class="header-content">
             <div class="header-text">
                 <div class="presents-lockup">
@@ -327,6 +347,7 @@
                 </div>
                 <h1>Move a Mile<br>Stockport</h1>
                 <p class="subtitle">A free, day-long event built around physical movement, creativity & community. Activities staggered along a one-mile route, programmed to encourage movement and interaction across all walks of life.</p>
+                <a href="#" class="cta-btn">Book Now</a>
             </div>
             
             <div class="header-video">
@@ -351,8 +372,8 @@
                 <p>Stockport</p>
             </div>
             <div class="stat-card">
-                <h3>£20k</h3>
-                <p>Budget secured</p>
+                <h3>1 Mile</h3>
+                <p>Of interactive activities</p>
             </div>
             <div class="stat-card">
                 <h3>3000</h3>
@@ -369,57 +390,62 @@
                 <div class="text-content">
                     <h2 style="margin-bottom: 1.5rem;">The Concept</h2>
                     <p>A one-mile celebration of creativity, community and wellbeing is taking over Stockport on Sunday 27 September. After the sucess of the Salford event, GRIT Studios and The Coping partner again to launch Move a Mile Stockport – a free, family-friendly festival inviting people of all ages to explore a vibrant one-mile trail packed with creativity, culture and fun.</p>
+                    <a href="#" class="cta-btn">Book Now</a>
                 </div>
                 <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); aspect-ratio: 4/3;">
-                    <img src="photos Sam Eckersley/4H5A1844.jpg" alt="Move a mile concept" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="photos Sam Eckersley/4H5A1872.jpg" alt="Move a mile concept" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
         </section>
 
         <section class="section">
             <h2>The Route</h2>
-            <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff;">
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo" width="100%" height="480" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff; position: relative; height: 430px;">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo" width="100%" height="480" frameborder="0" style="border:0; position: absolute; top: -55px; left: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </section>
 
         <section class="section">
-            <h2>Four Categories, 12 Sponsorship Opportunities</h2>
+            <h2>Four Categories, Loads of Activities</h2>
             <div class="lanes-grid">
                 <div class="lane-card skate">
                     <h4>Skate</h4>
                     <ul>
-                        <li><b>Low Level:</b> Product Sponsorship for Beginner Lessons & Kids' Jams</li>
-                        <li><b>Mid Level:</b> Financial Investment for naming rights on smaller Skate Event</li>
-                        <li><b>Headline:</b> Financial Investment for naming rights for main feature Skate Event</li>
+                        <li>Free beginner skate lessons open to all.</li>
+                        <li>Fun skate jams with giveaways and prizes.</li>
+                        <li>Cash prizes for best tricks landed on various features.</li>
                     </ul>
                 </div>
                 <div class="lane-card music">
                     <h4>Music</h4>
                     <ul>
-                        <li><b>Low Level:</b> Product Sponsorship for Kids' Activities like Silent Disco</li>
-                        <li><b>Mid Level:</b> Financial Investment for naming rights on smaller stages</li>
-                        <li><b>Headline:</b> Financial Investment for naming rights for main stage</li>
+                        <li>Kids Disco</li>
+                        <li>Live DJs</li>
+                        <li>Live Performances</li>
                     </ul>
                 </div>
                 <div class="lane-card art">
                     <h4>Street Art</h4>
                     <ul>
-                        <li><b>Low Level:</b> Product Sponsorship for Kids' Street Art & Craft Workshops</li>
-                        <li><b>Mid Level:</b> Financial Investment for naming rights on Community Murals</li>
-                        <li><b>Headline:</b> Financial Investment for naming rights for main paint jam</li>
+                        <li>Interactive workshops</li>
+                        <li>Community mural</li>
+                        <li>Street artists painting live</li>
                     </ul>
                 </div>
                 <div class="lane-card dance">
                     <h4>Dance</h4>
                     <ul>
-                        <li><b>Low Level:</b> Product Sponsorship for Kids' Breakdance taster sessions</li>
-                        <li><b>Mid Level:</b> Financial Investment for naming rights to popup CIC showcases</li>
-                        <li><b>Headline:</b> Financial Investment for naming rights for main world-class breakdance show</li>
+                        <li>Silent Disco</li>
+                        <li>Dance Workshops</li>
+                        <li>Breakdance Demos</li>
                     </ul>
                 </div>
             </div>
         </section>
+
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <a href="#" class="cta-btn">Book Now</a>
+        </div>
         
         <section class="section" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
             <img src="MAM-own style gfx 1.0.svg" alt="Tagline" style="max-width: 100%; margin: 2rem 0 -0.5rem 0;">
@@ -452,7 +478,7 @@
             }
         });
 
-        const photos = ["4H5A1833.jpg", "4H5A1844.jpg", "4H5A1872.jpg", "4H5A1881.jpg", "4H5A1887.jpg", "4H5A1893.jpg", "4H5A1899.jpg", "4H5A1927.jpg", "4H5A1941.jpg", "4H5A1969.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "4H5A1980.jpg", "4H5A1999.jpg", "4H5A2017.jpg", "4H5A2029.jpg", "4H5A2042.jpg", "4H5A2043.jpg", "4H5A2048.jpg", "P2124522.jpg", "P2124667.jpg", "P2124670.jpg", "P2124710.jpg", "P2124715.jpg", "P2124724.jpg", "P2124739.jpg", "P2124743.jpg", "P2124760.jpg", "P2124773.jpg", "P2124804.jpg", "P2124815.jpg", "P2124826.jpg", "P2124841.jpg", "P2124857.jpg", "P2124860.jpg", "P2124879.jpg", "P2124917.jpg", "P2124921.jpg", "P2124945.jpg", "P2124963.jpg", "P2124964.jpg", "P2125001.jpg", "P2125015.jpg", "P2125028.jpg", "P2125045.jpg", "P2125076.jpg", "P2125093.jpg", "P2125112.jpg", "P2125141.jpg", "P2125150.jpg", "P2125169.jpg", "P2125189.jpg", "P2125206.jpg", "P2125238.jpg", "P2125271.jpg", "P2125293.jpg", "P2125305.jpg", "P2125321.jpg", "P2125352.jpg", "P2125420.jpg"];
+        const photos = ["4H5A1844.jpg", "4H5A1872.jpg", "4H5A1887.jpg", "4H5A1893.jpg", "4H5A1927.jpg", "4H5A1941.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "4H5A1980.jpg", "4H5A2017.jpg", "4H5A2029.jpg", "4H5A2048.jpg", "P2124522.jpg", "P2124670.jpg", "P2124710.jpg", "P2124715.jpg", "P2124724.jpg", "P2124739.jpg", "P2124743.jpg", "P2124760.jpg", "P2124773.jpg", "P2124804.jpg", "P2124815.jpg", "P2124826.jpg", "P2124857.jpg", "P2124860.jpg", "P2124917.jpg", "P2124921.jpg", "P2125001.jpg", "P2125015.jpg", "P2125028.jpg", "P2125076.jpg", "P2125093.jpg", "P2125112.jpg", "P2125141.jpg", "P2125150.jpg", "P2125238.jpg", "P2125293.jpg", "P2125305.jpg", "P2125321.jpg", "P2125352.jpg", "P2125420.jpg"];
         const gallery = document.getElementById('photo-gallery');
         
         photos.forEach(photo => {
