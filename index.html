@@ -361,7 +361,7 @@
 
         .marquee-wrapper {
             display: flex;
-            width: 200%;
+            width: 400%;
         }
         
         .marquee-content {
@@ -573,6 +573,12 @@
                 <div class="marquee-content">
                     <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
                 </div>
+                <div class="marquee-content">
+                    <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
+                </div>
+                <div class="marquee-content">
+                    <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
+                </div>
             </div>
         </div>
     </footer>
@@ -596,7 +602,7 @@
                     const scrollFraction = window.scrollY / maxScroll;
                     
                     // Increase speed multiplier on mobile since scroll distance is physically shorter
-                    const speedMultiplier = window.innerWidth <= 800 ? 120 : 50;
+                    const speedMultiplier = window.innerWidth <= 800 ? 250 : 100;
                     
                     // Move the marquee wrapper leftwards as user scrolls down
                     marqueeScroll.style.transform = `translateX(-${scrollFraction * speedMultiplier}%)`;
