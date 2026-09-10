@@ -379,10 +379,28 @@
             filter: brightness(0) invert(1);
         }
 
+        .mobile-swipe-hint {
+            display: none;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
         /* Mobile Adjustments placed at the bottom to override properly */
         @media (max-width: 800px) {
             body, .text-content, .stat-card {
                 text-align: center;
+            }
+            .mobile-swipe-hint {
+                display: block;
             }
             .top-bar-inner {
                 justify-content: center;
@@ -504,6 +522,9 @@
             <h2 style="text-align: center;">The Route</h2>
             <div style="text-align: center; margin-bottom: 1.5rem;">
                 <a href="https://www.google.com/maps/d/u/0/edit?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo&usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--mam-purple); font-weight: 600; text-decoration: underline;">View interactive route on Google Maps</a>
+            </div>
+            <div class="mobile-swipe-hint">
+                &larr; Swipe map to explore &rarr;
             </div>
             <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff; text-align: center; padding: 1rem; overflow-x: auto;">
                 <img src="MaM26-Stock-Map-1.0.svg" alt="Move a Mile Route Map" style="width: 100%; min-width: 800px; height: auto;">
