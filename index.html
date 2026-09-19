@@ -506,20 +506,20 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" style="max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="text-align: center;">The Route</h2>
             <div style="text-align: center; margin-bottom: 1.5rem;">
                 <a href="https://www.google.com/maps/d/u/0/edit?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo&usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--mam-purple); font-weight: 600; text-decoration: underline;">View interactive route on Google Maps</a>
             </div>
             
-            <div style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff; padding: 1rem; min-height: 300px;">
+            <div style="position: relative; overflow: hidden; background: #fff; padding: 0; min-height: 50vh; width: 100%;">
                 <div style="position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10; display: flex; flex-direction: column; gap: 8px;">
                     <button id="zoom-in" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">+</button>
                     <button id="zoom-out" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">&minus;</button>
                     <button id="zoom-reset" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">&#x21BA;</button>
                 </div>
                 <div id="panzoom-element" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; cursor: move; touch-action: none;">
-                    <img src="MaM26-Stock-Map-1.3.svg" alt="Move a Mile Route Map" style="width: 100%; height: auto; max-width: 1000px; pointer-events: none;">
+                    <img src="MaM26-Stock-Map-1.3.svg" alt="Move a Mile Route Map" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
                 </div>
             </div>
             <p style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.8rem; font-style: italic;">Use buttons or pinch to zoom. Drag to move around.</p>
@@ -649,7 +649,6 @@
             const elem = document.getElementById('panzoom-element');
             const panzoom = Panzoom(elem, {
                 maxScale: 5,
-                contain: 'outside',
                 canvas: true
             });
             document.getElementById('zoom-in').addEventListener('click', panzoom.zoomIn);
