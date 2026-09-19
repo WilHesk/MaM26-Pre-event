@@ -381,8 +381,9 @@
         /* Mobile Adjustments placed at the bottom to override properly */
         @media (max-width: 800px) {
             .map-wrapper {
-                width: 95% !important;
-                margin: 0 auto !important;
+                width: 95vw !important;
+                max-width: none !important;
+                margin-left: calc(-47.5vw + 50%) !important;
                 border-radius: 12px !important;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             }
@@ -473,9 +474,7 @@
         </div>
     </header>
 
-    <div class="container">
-        
-        <section class="section" style="max-width: 100%; padding-left: 0; padding-right: 0;">
+    <section class="section" style="max-width: 100%; padding-left: 0; padding-right: 0; margin-top: 2rem;">
             <h2 style="text-align: center;">The Route</h2>
             <div style="text-align: center; margin-bottom: 1.5rem;">
                 <a href="https://www.google.com/maps/d/u/0/edit?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo&usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--mam-purple); font-weight: 600; text-decoration: underline;">View interactive route on Google Maps</a>
@@ -493,6 +492,10 @@
             </div>
             <p style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.8rem; font-style: italic;">Use buttons or pinch/double-tap to zoom. Drag to move around.</p>
         </section>
+
+    <div class="container">
+        
+        
 
         <div class="stats-grid">
             <div class="stat-card">
