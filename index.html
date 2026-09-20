@@ -378,14 +378,11 @@
             filter: brightness(0) invert(1);
         }
 
-        /* Mobile Adjustments placed at the bottom to override properly */
         @media (max-width: 800px) {
             .map-wrapper {
-                width: 95vw !important;
+                width: 95% !important;
                 max-width: none !important;
-                margin-left: calc(-47.5vw + 50%) !important;
-                border-radius: 12px !important;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                margin: 0 auto !important;
             }
             body, .text-content, .stat-card {
                 text-align: center;
@@ -474,13 +471,13 @@
         </div>
     </header>
 
-    <section class="section" style="max-width: 100%; padding-left: 0; padding-right: 0; margin-top: 2rem;">
+        <section class="section map-section" style="max-width: 100%; padding-left: 0; padding-right: 0; margin-top: 2rem;">
             <h2 style="text-align: center;">The Route</h2>
             <div style="text-align: center; margin-bottom: 1.5rem;">
                 <a href="https://www.google.com/maps/d/u/0/edit?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo&usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--mam-purple); font-weight: 600; text-decoration: underline;">View interactive route on Google Maps</a>
             </div>
             
-            <div class="map-wrapper" style="position: relative; overflow: hidden; background: #fff; padding: 0; width: 100%;">
+            <div class="map-wrapper" style="position: relative; overflow: hidden; background: #fff; padding: 0; width: 80%; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
                 <div style="position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10; display: flex; flex-direction: column; gap: 8px;">
                     <button id="zoom-in" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">+</button>
                     <button id="zoom-out" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">&minus;</button>
@@ -654,52 +651,43 @@
             gallery.appendChild(div);
         });
     </script>
-    <script src="https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js"></script>
+    <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const elem = document.getElementById('panzoom-element');
-            const wrapper = elem.parentElement;
-            
-            const pz = panzoom(elem, {
-                bounds: true,
-                boundsPadding: 0.1,
-                maxZoom: 5,
-                minZoom: 1
+            const panzoom = Panzoom(elem, {
+                maxScale: 5,
+                contain: 'inside',
+                canvas: true
             });
             
-            document.getElementById('zoom-in').addEventListener('click', function() {
-                const rect = wrapper.getBoundingClientRect();
-                pz.smoothZoom(rect.width / 2, rect.height / 2, 1.5);
-            });
+            document.getElementById('zoom-in').addEventListener('click', panzoom.zoomIn);
+            document.getElementById('zoom-out').addEventListener('click', panzoom.zoomOut);
+            document.getElementById('zoom-reset').addEventListener('click', panzoom.reset);
             
-            document.getElementById('zoom-out').addEventListener('click', function() {
-                const rect = wrapper.getBoundingClientRect();
-                pz.smoothZoom(rect.width / 2, rect.height / 2, 0.66);
-            });
-            
-            document.getElementById('zoom-reset').addEventListener('click', function() {
-                pz.zoomAbs(0, 0, 1);
-                pz.moveTo(0, 0);
-            });
-            
-            // Double tap to zoom (anvaka handles dblclick natively on desktop)
+            // Double tap to zoom
             let lastTap = 0;
             elem.addEventListener('touchend', function(e) {
                 const currentTime = new Date().getTime();
                 const tapLength = currentTime - lastTap;
-                if (tapLength < 300 && tapLength > 0) {
-                    const transform = pz.getTransform();
-                    if (transform.scale > 1.2) {
-                        pz.zoomAbs(0, 0, 1);
-                        pz.moveTo(0, 0);
+                if (tapLength < 500 && tapLength > 0) {
+                    if (panzoom.getScale() > 1) {
+                        panzoom.reset();
                     } else {
-                        const touch = e.changedTouches[0];
-                        const rect = wrapper.getBoundingClientRect();
-                        pz.smoothZoom(touch.clientX - rect.left, touch.clientY - rect.top, 2);
+                        panzoom.zoomIn({ step: 1 });
                     }
                     e.preventDefault();
                 }
                 lastTap = currentTime;
+            });
+            
+            // Double click to zoom (desktop)
+            elem.addEventListener('dblclick', function(e) {
+                if (panzoom.getScale() > 1) {
+                    panzoom.reset();
+                } else {
+                    panzoom.zoomIn({ step: 1 });
+                }
             });
         });
     </script>
