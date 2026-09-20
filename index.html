@@ -661,6 +661,7 @@
                 minScale: 1,
                 contain: 'outside',
                 canvas: true,
+                touchAction: 'pan-x pan-y',
                 handleStartEvent: (e) => {
                     // Prevent image dragging on desktop
                     if (e.pointerType === 'mouse' || e.type === 'mousedown') {
