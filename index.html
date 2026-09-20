@@ -654,43 +654,52 @@
             gallery.appendChild(div);
         });
     </script>
-    <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+    <script src="https://unpkg.com/panzoom@9.4.0/dist/panzoom.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const elem = document.getElementById('panzoom-element');
-            const panzoom = Panzoom(elem, {
-                maxScale: 5,
-                canvas: true
+            const wrapper = elem.parentElement;
+            
+            const pz = panzoom(elem, {
+                bounds: true,
+                boundsPadding: 0.1,
+                maxZoom: 5,
+                minZoom: 1
             });
-            document.getElementById('zoom-in').addEventListener('click', panzoom.zoomIn);
-            document.getElementById('zoom-out').addEventListener('click', panzoom.zoomOut);
-            document.getElementById('zoom-reset').addEventListener('click', panzoom.reset);
             
-            elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+            document.getElementById('zoom-in').addEventListener('click', function() {
+                const rect = wrapper.getBoundingClientRect();
+                pz.smoothZoom(rect.width / 2, rect.height / 2, 1.5);
+            });
             
-            // Double tap to zoom
+            document.getElementById('zoom-out').addEventListener('click', function() {
+                const rect = wrapper.getBoundingClientRect();
+                pz.smoothZoom(rect.width / 2, rect.height / 2, 0.66);
+            });
+            
+            document.getElementById('zoom-reset').addEventListener('click', function() {
+                pz.zoomAbs(0, 0, 1);
+                pz.moveTo(0, 0);
+            });
+            
+            // Double tap to zoom (anvaka handles dblclick natively on desktop)
             let lastTap = 0;
             elem.addEventListener('touchend', function(e) {
                 const currentTime = new Date().getTime();
                 const tapLength = currentTime - lastTap;
-                if (tapLength < 500 && tapLength > 0) {
-                    if (panzoom.getScale() > 1) {
-                        panzoom.reset();
+                if (tapLength < 300 && tapLength > 0) {
+                    const transform = pz.getTransform();
+                    if (transform.scale > 1.2) {
+                        pz.zoomAbs(0, 0, 1);
+                        pz.moveTo(0, 0);
                     } else {
-                        panzoom.zoomIn({ step: 1 });
+                        const touch = e.changedTouches[0];
+                        const rect = wrapper.getBoundingClientRect();
+                        pz.smoothZoom(touch.clientX - rect.left, touch.clientY - rect.top, 2);
                     }
                     e.preventDefault();
                 }
                 lastTap = currentTime;
-            });
-            
-            // Double click to zoom (desktop)
-            elem.addEventListener('dblclick', function(e) {
-                if (panzoom.getScale() > 1) {
-                    panzoom.reset();
-                } else {
-                    panzoom.zoomIn({ step: 1 });
-                }
             });
         });
     </script>
