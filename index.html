@@ -483,7 +483,7 @@
                     <button id="zoom-out" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">&minus;</button>
                     <button id="zoom-reset" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">&#x21BA;</button>
                 </div>
-                <div id="panzoom-element" style="width: 100%; display: block; cursor: move; touch-action: none; line-height: 0;">
+                <div id="panzoom-element" style="width: 100%; display: block; cursor: move; line-height: 0;">
                     <img src="MaM26-Stock-Map-1.3.svg" alt="Move a Mile Route Map" style="width: 100%; height: auto; display: block; pointer-events: none;">
                 </div>
             </div>
@@ -657,7 +657,9 @@
             const elem = document.getElementById('panzoom-element');
             const panzoom = Panzoom(elem, {
                 maxScale: 5,
-                contain: 'inside',
+                minScale: 1,
+                contain: 'outside',
+                panOnlyWhenZoomed: true,
                 canvas: true
             });
             
@@ -665,29 +667,29 @@
             document.getElementById('zoom-out').addEventListener('click', panzoom.zoomOut);
             document.getElementById('zoom-reset').addEventListener('click', panzoom.reset);
             
+            function handleToggleZoom(e) {
+                if (panzoom.getScale() > 1) {
+                    panzoom.reset({ animate: true });
+                } else {
+                    panzoom.zoom(2, { animate: true });
+                }
+                if(e) e.preventDefault();
+            }
+            
             // Double tap to zoom
             let lastTap = 0;
             elem.addEventListener('touchend', function(e) {
                 const currentTime = new Date().getTime();
                 const tapLength = currentTime - lastTap;
                 if (tapLength < 500 && tapLength > 0) {
-                    if (panzoom.getScale() > 1) {
-                        panzoom.reset();
-                    } else {
-                        panzoom.zoomIn({ step: 1 });
-                    }
-                    e.preventDefault();
+                    handleToggleZoom(e);
                 }
                 lastTap = currentTime;
             });
             
             // Double click to zoom (desktop)
             elem.addEventListener('dblclick', function(e) {
-                if (panzoom.getScale() > 1) {
-                    panzoom.reset();
-                } else {
-                    panzoom.zoomIn({ step: 1 });
-                }
+                handleToggleZoom();
             });
         });
     </script>
