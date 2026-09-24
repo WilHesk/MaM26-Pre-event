@@ -73,9 +73,9 @@
 
         header {
             position: relative;
-            color: white;
+            color: var(--mam-purple);
             padding: 8rem 2rem 4rem 2rem;
-            background-color: #222;
+            background: linear-gradient(135deg, #fff2d7, #d2faff, #ffdee7);
             overflow: hidden;
         }
 
@@ -86,7 +86,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.3;
+            opacity: 0.15;
+            mix-blend-mode: multiply;
             z-index: 0;
         }
 
@@ -112,7 +113,7 @@
         .presents-lockup img {
             height: 75px;
             margin-bottom: 0.5rem;
-            filter: brightness(0) invert(1);
+            filter: brightness(0) opacity(0.8);
         }
 
         .presents-text {
@@ -450,7 +451,7 @@
                 <div class="hero-datetime" style="margin-bottom: 0.2rem;">
                     Sunday 27th September 2026 &nbsp;|&nbsp; 11am - 4pm
                 </div>
-                <div class="hero-datetime" style="color: var(--mam-yellow); font-size: clamp(1rem, 2.2vw, 1.3rem); margin-bottom: 1.5rem;">
+                <div class="hero-datetime" style="color: var(--mam-purple); font-weight: 700; font-size: clamp(1rem, 2.2vw, 1.3rem); margin-bottom: 1.5rem;">
                     A Mile of Fun Passing Through The Underbank
                 </div>
                 <p class="subtitle">Creative street festival built around physical movement, creativity & community. Activities staggered along a one-mile route encouraging movement, interaction and play across organisations, businesses and all walks of life.</p>
