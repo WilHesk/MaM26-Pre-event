@@ -428,6 +428,70 @@
             .credit { text-align: center; }
         }
 
+
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            touch-action: pan-y;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            color: var(--mam-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .carousel-button.prev {
+            left: 10px;
+        }
+        .carousel-button.next {
+            right: 10px;
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .carousel-dot.active {
+            background: var(--mam-purple);
+        }
     </style>
 </head>
 <body>
@@ -758,6 +822,35 @@
             <img src="MaM-styles-gfx-1.0.svg" alt="Styles Tagline" style="max-width: 100%; margin: 0;">
         </section>
 
+        
+        <section class="section" style="padding: 4rem 5%; background: #f9f9f9; margin-top: 2rem;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; text-transform: uppercase;">FAQ</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="faq-track">
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 1.jpg" alt="FAQ 1"></div>
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 2.jpg" alt="FAQ 2"></div>
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 3.jpg" alt="FAQ 3"></div>
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 4.jpg" alt="FAQ 4"></div>
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 5.jpg" alt="FAQ 5"></div>
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 6.jpg" alt="FAQ 6"></div>
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 7.jpg" alt="FAQ 7"></div>
+            <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 8.jpg" alt="FAQ 8"></div>
+                </div>
+                <button class="carousel-button prev" id="faq-prev">&#10094;</button>
+                <button class="carousel-button next" id="faq-next">&#10095;</button>
+            </div>
+            <div class="carousel-dots" id="faq-dots">
+        <div class="carousel-dot active"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+        <div class="carousel-dot"></div>
+            </div>
+        </section>
+
         <section class="section">
             <h2 style="text-align: center;">Gallery</h2>
             <p class="credit">Photography by: Eckers Photo</p>
@@ -790,6 +883,65 @@
         // Scroll effect for top bar and marquee
         const marqueeScroll = document.querySelector('.marquee-scroll-container');
         
+
+        // FAQ Carousel
+        const track = document.getElementById('faq-track');
+        if (track) {
+            const slides = Array.from(track.children);
+            const nextButton = document.getElementById('faq-next');
+            const prevButton = document.getElementById('faq-prev');
+            const dotsNav = document.getElementById('faq-dots');
+            const dots = Array.from(dotsNav.children);
+
+            let currentSlide = 0;
+
+            const moveToSlide = (index) => {
+                track.style.transform = 'translateX(-' + index * 100 + '%)';
+                dots.forEach(d => d.classList.remove('active'));
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            nextButton.addEventListener('click', () => {
+                if (currentSlide === slides.length - 1) {
+                    moveToSlide(0);
+                } else {
+                    moveToSlide(currentSlide + 1);
+                }
+            });
+
+            prevButton.addEventListener('click', () => {
+                if (currentSlide === 0) {
+                    moveToSlide(slides.length - 1);
+                } else {
+                    moveToSlide(currentSlide - 1);
+                }
+            });
+
+            dotsNav.addEventListener('click', e => {
+                const targetDot = e.target.closest('.carousel-dot');
+                if (!targetDot) return;
+                const targetIndex = dots.findIndex(dot => dot === targetDot);
+                moveToSlide(targetIndex);
+            });
+
+            let startX = 0;
+            let currentX = 0;
+            track.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                currentX = startX;
+            });
+            track.addEventListener('touchmove', e => {
+                currentX = e.touches[0].clientX;
+            });
+            track.addEventListener('touchend', () => {
+                if (startX - currentX > 50) {
+                    nextButton.click();
+                } else if (currentX - startX > 50) {
+                    prevButton.click();
+                }
+            });
+        }
         window.addEventListener('scroll', () => {
             const topBar = document.querySelector('.top-bar');
             if (window.scrollY > 50) {
