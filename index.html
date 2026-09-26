@@ -925,9 +925,39 @@
         </div>
     </footer>
 
-    <script>
+        <script>
         // Scroll effect for top bar and marquee
         const marqueeScroll = document.querySelector('.marquee-scroll-container');
+        
+        window.addEventListener('scroll', () => {
+            const topBar = document.querySelector('.top-bar');
+            if (topBar) {
+                if (window.scrollY > 50) {
+                    topBar.classList.add('scrolled');
+                } else {
+                    topBar.classList.remove('scrolled');
+                }
+            }
+            
+            // Marquee scroll effect
+            if (marqueeScroll) {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.body.scrollHeight;
+                
+                // Only start translating when the footer comes into view
+                if (scrollPosition + windowHeight > documentHeight - 1000) {
+                    const scrollFraction = (scrollPosition + windowHeight - (documentHeight - 1000)) / 1000;
+                    
+                    // Increase speed multiplier on mobile since scroll distance is physically shorter
+                    const speedMultiplier = window.innerWidth <= 800 ? 500 : 100;
+                    
+                    // Move the marquee wrapper leftwards as user scrolls down
+                    marqueeScroll.style.transform = `translateX(-${scrollFraction * speedMultiplier}%)`;
+                }
+            }
+        });
+
         // FAQ Carousel
         const track = document.getElementById('faq-track');
         if (track) {
@@ -948,28 +978,34 @@
                 currentSlide = index;
             }
 
-            nextButton.addEventListener('click', () => {
-                if (currentSlide === slides.length - 1) {
-                    moveToSlide(0);
-                } else {
-                    moveToSlide(currentSlide + 1);
-                }
-            });
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (currentSlide === slides.length - 1) {
+                        moveToSlide(0);
+                    } else {
+                        moveToSlide(currentSlide + 1);
+                    }
+                });
+            }
 
-            prevButton.addEventListener('click', () => {
-                if (currentSlide === 0) {
-                    moveToSlide(slides.length - 1);
-                } else {
-                    moveToSlide(currentSlide - 1);
-                }
-            });
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    if (currentSlide === 0) {
+                        moveToSlide(slides.length - 1);
+                    } else {
+                        moveToSlide(currentSlide - 1);
+                    }
+                });
+            }
 
-            dotsNav.addEventListener('click', e => {
-                const targetDot = e.target.closest('.carousel-dot');
-                if (!targetDot) return;
-                const targetIndex = dots.findIndex(dot => dot === targetDot);
-                moveToSlide(targetIndex);
-            });
+            if (dotsNav) {
+                dotsNav.addEventListener('click', e => {
+                    const targetDot = e.target.closest('.carousel-dot');
+                    if (!targetDot) return;
+                    const targetIndex = dots.findIndex(dot => dot === targetDot);
+                    moveToSlide(targetIndex);
+                });
+            }
 
             // Better Swipe Logic
             let startX = 0;
@@ -999,9 +1035,9 @@
                 const diff = startX - endX;
                 
                 if (diff > 40) {
-                    nextButton.click();
+                    if (nextButton) nextButton.click();
                 } else if (diff < -40) {
-                    prevButton.click();
+                    if (prevButton) prevButton.click();
                 }
                 isSwiping = false;
             });
@@ -1047,31 +1083,24 @@
                 });
             }
         }
-                    
-                    // Increase speed multiplier on mobile since scroll distance is physically shorter
-                    const speedMultiplier = window.innerWidth <= 800 ? 500 : 100;
-                    
-                    // Move the marquee wrapper leftwards as user scrolls down
-                    marqueeScroll.style.transform = `translateX(-${scrollFraction * speedMultiplier}%)`;
-                }
-            }
-        });
 
         const photos = ["4H5A1844.jpg", "4H5A1872.jpg", "4H5A1893.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "P2124522.jpg", "P2124710.jpg", "P2124760.jpg", "P2124857.jpg", "P2124921.jpg", "P2125001.jpg", "P2125015.jpg", "P2125076.jpg", "P2125093.jpg", "P2125150.jpg", "P2125238.jpg", "P2125293.jpg", "P2125352.jpg"];
         const gallery = document.getElementById('photo-gallery');
         
-        photos.forEach(photo => {
-            const div = document.createElement('div');
-            div.className = 'gallery-item';
-            
-            const img = document.createElement('img');
-            img.src = `photos Sam Eckersley/${photo}`;
-            img.loading = 'lazy';
-            img.alt = 'Move a Mile Event Photo';
-            
-            div.appendChild(img);
-            gallery.appendChild(div);
-        });
+        if (gallery) {
+            photos.forEach(photo => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                
+                const img = document.createElement('img');
+                img.src = `photos Sam Eckersley/${photo}`;
+                img.loading = 'lazy';
+                img.alt = 'Move a Mile Event Photo';
+                
+                div.appendChild(img);
+                gallery.appendChild(div);
+            });
+        }
     </script>
     <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
     <script>
