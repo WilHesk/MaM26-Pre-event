@@ -427,8 +427,6 @@
             }
             .credit { text-align: center; }
         }
-
-
         .carousel-container {
             position: relative;
             max-width: 800px;
@@ -436,20 +434,42 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        .carousel-container.fullscreen-carousel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            max-width: none;
+            z-index: 9999;
+            background: #000;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
         }
         .carousel-track {
             display: flex;
             transition: transform 0.4s ease-in-out;
             touch-action: pan-y;
+            width: 100%;
         }
         .carousel-slide {
             min-width: 100%;
             box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .carousel-slide img {
             width: 100%;
             display: block;
             height: auto;
+            max-height: 100vh;
+            object-fit: contain;
+            pointer-events: none; /* helps with swipe logic */
         }
         .carousel-button {
             position: absolute;
@@ -461,7 +481,7 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 10;
+            z-index: 10000;
             font-size: 1.5rem;
             color: var(--mam-purple);
             display: flex;
@@ -474,6 +494,27 @@
         }
         .carousel-button.next {
             right: 10px;
+        }
+        .carousel-back-btn {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10001;
+            font-size: 1.5rem;
+            color: var(--mam-purple);
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .carousel-container.fullscreen-carousel .carousel-back-btn {
+            display: flex;
         }
         .carousel-dots {
             display: flex;
@@ -492,6 +533,7 @@
         .carousel-dot.active {
             background: var(--mam-purple);
         }
+    }
     </style>
 </head>
 <body>
@@ -826,6 +868,7 @@
         <section class="section" style="padding: 4rem 5%; background: #f9f9f9; margin-top: 2rem;">
             <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; text-transform: uppercase;">FAQ</h2>
             <div class="carousel-container">
+                <button class="carousel-back-btn" id="faq-back" title="Close Fullscreen">&#10005;</button>
                 <div class="carousel-track" id="faq-track">
             <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 1.webp" alt="FAQ 1"></div>
             <div class="carousel-slide"><img src="FAQ/MaM26 Salf FAQ 2.webp" alt="FAQ 2"></div>
@@ -885,14 +928,14 @@
     <script>
         // Scroll effect for top bar and marquee
         const marqueeScroll = document.querySelector('.marquee-scroll-container');
-        
-
         // FAQ Carousel
         const track = document.getElementById('faq-track');
         if (track) {
+            const carouselContainer = track.parentElement;
             const slides = Array.from(track.children);
             const nextButton = document.getElementById('faq-next');
             const prevButton = document.getElementById('faq-prev');
+            const backButton = document.getElementById('faq-back');
             const dotsNav = document.getElementById('faq-dots');
             const dots = Array.from(dotsNav.children);
 
@@ -928,36 +971,82 @@
                 moveToSlide(targetIndex);
             });
 
+            // Better Swipe Logic
             let startX = 0;
-            let currentX = 0;
+            let startY = 0;
+            let isSwiping = false;
+
             track.addEventListener('touchstart', e => {
                 startX = e.touches[0].clientX;
-                currentX = startX;
-            });
+                startY = e.touches[0].clientY;
+                isSwiping = true;
+            }, {passive: true});
+
             track.addEventListener('touchmove', e => {
-                currentX = e.touches[0].clientX;
-            });
-            track.addEventListener('touchend', () => {
-                if (startX - currentX > 50) {
+                if (!isSwiping) return;
+                const currentX = e.touches[0].clientX;
+                const currentY = e.touches[0].clientY;
+                
+                // If scrolling vertically, let the browser scroll naturally
+                if (Math.abs(currentY - startY) > Math.abs(currentX - startX)) {
+                    isSwiping = false; 
+                }
+            }, {passive: true});
+
+            track.addEventListener('touchend', e => {
+                if (!isSwiping) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                
+                if (diff > 40) {
                     nextButton.click();
-                } else if (currentX - startX > 50) {
+                } else if (diff < -40) {
                     prevButton.click();
                 }
+                isSwiping = false;
             });
-        }
-        window.addEventListener('scroll', () => {
-            const topBar = document.querySelector('.top-bar');
-            if (window.scrollY > 50) {
-                topBar.classList.add('scrolled');
-            } else {
-                topBar.classList.remove('scrolled');
-            }
+
+            // Fullscreen double-tap logic
+            let lastTap = 0;
+            const toggleFullscreen = (e) => {
+                // Ignore double taps on buttons
+                if(e.target.closest('button')) return;
+
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                if (tapLength < 500 && tapLength > 0) {
+                    carouselContainer.classList.toggle('fullscreen-carousel');
+                    // Ensure body can't scroll if fullscreen
+                    if (carouselContainer.classList.contains('fullscreen-carousel')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                    e.preventDefault();
+                }
+                lastTap = currentTime;
+            };
             
-            // Add scroll-responsive movement to footer
-            if (marqueeScroll) {
-                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                if (maxScroll > 0) {
-                    const scrollFraction = window.scrollY / maxScroll;
+            // Listen on track for double clicks / taps
+            track.addEventListener('touchend', toggleFullscreen);
+            track.addEventListener('dblclick', (e) => {
+                if(e.target.closest('button')) return;
+                carouselContainer.classList.toggle('fullscreen-carousel');
+                if (carouselContainer.classList.contains('fullscreen-carousel')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Back button
+            if (backButton) {
+                backButton.addEventListener('click', () => {
+                    carouselContainer.classList.remove('fullscreen-carousel');
+                    document.body.style.overflow = '';
+                });
+            }
+        }
                     
                     // Increase speed multiplier on mobile since scroll distance is physically shorter
                     const speedMultiplier = window.innerWidth <= 800 ? 500 : 100;
