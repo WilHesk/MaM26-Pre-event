@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Move a Mile Stockport - A creative street festival built around physical movement, creativity & community. Skateboarding, street art, live music, dance and more.">
-    <meta name="keywords" content="Free event, Family, Creative, Skateboarding, Stockport, Move a Mile, Community event, Festival, Street Art, Live Music, Kids Disco, Dance Workshops">
-    <meta property="og:title" content="Move a Mile — Stockport">
-    <meta property="og:description" content="A creative street festival built around physical movement, creativity & community. Join us in Stockport for skateboarding, street art, live music, and more.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Move a Mile Stockport - A creative street festival celebrating physical movement, creativity & community.">
     <title>Move a Mile — Stockport</title>
     <link rel="icon" type="image/svg+xml" href="MaM-Favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +12,13 @@
     <style>
         :root {
             --mam-purple: #332A7C;
+            --mam-lavender: #afa4d0;
+            --mam-yellow: #FCB714;
             --mam-pink-dark: #CC356A;
             --mam-pink-light: #F27188;
-            --mam-yellow: #FCB714;
             --mam-blue: #00A3C5;
             --text-dark: #1a1330;
-            --bg-light: #f9f9f9;
+            --bg-light: #fdfbf7;
         }
 
         * {
@@ -35,1247 +32,673 @@
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
-            padding-bottom: 70px; /* Space for fixed footer */
+            overflow-x: hidden;
         }
 
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Top Header */
+        .site-header {
             width: 100%;
-            background: rgba(255, 255, 255, 1);
+            background: #ffffff;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(51, 42, 124, 0.05);
+            position: sticky;
+            top: 0;
             z-index: 100;
-            transition: background-color 0.3s, backdrop-filter 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .top-bar-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0.5rem 2rem;
+        .header-logo-wrap {
+            max-width: 900px;
+            width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
-        .top-bar.scrolled {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .top-bar img {
-            height: 60px;
-            max-width: 100%;
+        .header-main-img {
+            max-height: 75px;
             width: auto;
+            max-width: 90%;
             object-fit: contain;
+            display: block;
         }
 
-        header {
+        /* Hero Section */
+        .hero-section {
             position: relative;
-            color: var(--mam-purple);
-            padding: 8rem 2rem 4rem 2rem;
-            background: linear-gradient(135deg, #fff2d7, #d2faff, #ffdee7);
+            background: linear-gradient(135deg, #fff2d7 0%, #e3f8fc 50%, #ffe9f0 100%);
+            padding: 4rem 2rem 5rem 2rem;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .header-bg {
+        /* Background ambient orbs */
+        .hero-section::before,
+        .hero-section::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.15;
-            mix-blend-mode: multiply;
+            border-radius: 50%;
+            filter: blur(80px);
             z-index: 0;
+            pointer-events: none;
+            opacity: 0.45;
         }
 
-        .header-content {
+        .hero-section::before {
+            width: 450px;
+            height: 450px;
+            background: #fedc90;
+            top: -100px;
+            left: -100px;
+        }
+
+        .hero-section::after {
+            width: 500px;
+            height: 500px;
+            background: #c5f1fa;
+            bottom: -120px;
+            right: -100px;
+        }
+
+        .hero-container {
             position: relative;
             z-index: 1;
-            max-width: 1200px;
+            max-width: 1250px;
+            width: 100%;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
         }
 
-        .header-text {
-            text-align: left;
-        }
-
-        .presents-lockup {
-            margin-bottom: 1.5rem;
-        }
-        
-        .presents-lockup img {
-            height: 75px;
-            margin-bottom: 0.5rem;
-            filter: brightness(0) opacity(0.8);
-        }
-
-        .presents-text {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            opacity: 0.8;
-            font-weight: 500;
-        }
-
-        h1 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 0.9;
-            margin-bottom: 0.5rem;
-            color: var(--mam-yellow);
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.25);
-            text-transform: uppercase;
-        }
-        
-        .hero-datetime {
-            font-family: 'Archivo Black', sans-serif; 
-            color: var(--mam-purple); 
-            margin-bottom: 1.5rem; 
-            font-size: clamp(1rem, 2.2vw, 1.3rem);
-            line-height: 1.3;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            opacity: 0.95;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background-color: var(--mam-purple);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-transform: uppercase;
-            font-family: 'Archivo Black', sans-serif;
-            text-decoration: none;
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(51, 42, 124, 0.3);
-            color: white;
-        }
-
-        .header-video {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            background: #000;
-            aspect-ratio: 1 / 1;
-        }
-        
-        .header-video iframe {
-            width: 100%;
-            height: 100%;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-bottom: 4px solid var(--mam-blue);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-card h3 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2.5rem;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .stat-card p {
-            font-weight: 600;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        h2 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .section {
-            margin-bottom: 4rem;
-        }
-
-        .text-content {
-            max-width: 800px;
-            font-size: 1.125rem;
-            margin: 0 auto;
-        }
-
-        .lanes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .concept-grid {
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 3rem; 
+        /* Hero Left: Main Logo */
+        .hero-logo-col {
+            display: flex;
+            justify-content: center;
             align-items: center;
+            padding: 1rem;
         }
 
-        .lane-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border-top: 6px solid var(--text-dark);
-            text-align: center;
+        .hero-logo-col img {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 15px 35px rgba(51, 42, 124, 0.12));
+            animation: gentleBreathe 8s ease-in-out infinite alternate;
         }
 
-        .lane-card.skate { border-color: var(--mam-blue); }
-        .lane-card.music { border-color: var(--mam-pink-light); }
-        .lane-card.art { border-color: var(--mam-yellow); }
-        .lane-card.dance { border-color: var(--mam-pink-dark); }
-
-        .lane-card h4 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        @keyframes gentleBreathe {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-8px) scale(1.015);
+            }
         }
 
-        .lane-card ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
+        /* Hero Right: Animated Showcase */
+        .hero-showcase-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .showcase-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 1.5rem 1.5rem 1.25rem 1.5rem;
+            box-shadow: 0 25px 60px rgba(51, 42, 124, 0.14);
+            max-width: 460px;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-
-        .lane-card li {
-            margin-bottom: 0.8rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            width: 100%;
-        }
-        
-        .lane-card li:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1;
-            border-radius: 8px;
-            background: #eee;
             position: relative;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
-        .gallery-item img {
+        .showcase-card:hover {
+            box-shadow: 0 30px 70px rgba(51, 42, 124, 0.18);
+        }
+
+        /* Photo Stage */
+        .photo-stage {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: #f0ecf6;
+            box-shadow: 0 8px 24px rgba(51, 42, 124, 0.08);
+            cursor: pointer;
+        }
+
+        .photo-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            z-index: 10;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 0.85s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            pointer-events: none;
         }
 
-        @media (min-width: 801px) {
-            .gallery-item:hover img {
-                transform: scale(2);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            }
+        .photo-layer.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
         }
 
-        .credit {
-            text-align: right;
-            margin-top: 1rem;
-            font-style: italic;
-            color: #666;
-            font-size: 0.9rem;
+        .photo-layer.exiting {
+            opacity: 0;
+            transform: scale(0.98);
+            transition: opacity 0.65s ease, transform 0.65s ease;
         }
-        
-        /* Sponsor Marquee Footer */
-        footer {
-            background: #000;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+
+        /* Quote Stage */
+        .quote-stage {
             width: 100%;
-            z-index: 100;
-            padding: 15px 0;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-        
-        .marquee-scroll-container {
-            width: 100%;
-            display: flex;
-            will-change: transform;
-            overflow: visible;
-        }
-
-        .marquee-wrapper {
-            display: flex;
-            width: max-content;
-        }
-        
-        .marquee-content {
-            display: flex;
-            align-items: center;
-        }
-        
-        .marquee-content img {
-            height: 50px;
-            max-width: 225px;
-            object-fit: contain;
-            margin: 0 2rem;
-            filter: brightness(0) invert(1);
-        }
-
-        @media (max-width: 800px) {
-            .map-wrapper {
-                width: 95% !important;
-                max-width: none !important;
-                margin: 0 auto !important;
-            }
-            body, .text-content, .stat-card {
-                text-align: center;
-            }
-            .marquee-content img {
-                margin: 0 1rem;
-                height: 40px;
-            }
-            .top-bar-inner {
-                justify-content: center;
-            }
-            .desktop-only {
-                display: none !important;
-            }
-            .header-content {
-                grid-template-columns: 1fr;
-            }
-            .header-video {
-                grid-row: 1;
-            }
-            .header-text {
-                grid-row: 2;
-                text-align: center;
-            }
-            .presents-lockup {
-                text-align: center;
-            }
-            .concept-grid {
-                display: flex;
-                flex-direction: column-reverse;
-                gap: 2rem;
-            }
-            .stat-card h3 {
-                font-size: 2.2rem;
-            }
-            .gallery-item {
-                overflow: hidden;
-            }
-            .gallery-item:hover img {
-                transform: scale(1.05);
-            }
-            .credit { text-align: center; }
-        }
-        .carousel-container {
+            min-height: 85px;
+            margin-top: 1.25rem;
             position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            background: #fff;
-        }
-        .carousel-container.fullscreen-carousel {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            max-width: none;
-            z-index: 9999;
-            background: #000;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-        }
-        .carousel-track {
-            display: flex;
-            transition: transform 0.4s ease-in-out;
-            touch-action: pan-y;
-            width: 100%;
-        }
-        .carousel-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .carousel-slide img {
-            width: 100%;
-            display: block;
-            height: auto;
-            max-height: 100vh;
-            object-fit: contain;
-            pointer-events: none; /* helps with swipe logic */
-        }
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10000;
-            font-size: 1.5rem;
-            color: var(--mam-purple);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .carousel-button.prev {
-            left: 10px;
-        }
-        .carousel-button.next {
-            right: 10px;
-        }
-        .carousel-back-btn {
-            display: none;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10001;
-            font-size: 1.5rem;
-            color: var(--mam-purple);
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .carousel-container.fullscreen-carousel .carousel-back-btn {
-            display: flex;
-        }
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .carousel-dot.active {
-            background: var(--mam-purple);
-        }
-    }
-    
-        .faq-item {
-            background: #f9f9f9;
-            border: 2px solid var(--mam-yellow);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .faq-question {
-            font-size: 1.2rem;
-            font-weight: 700;
-            padding: 1rem;
-            cursor: pointer;
-            background: #fff;
-            color: var(--mam-purple);
-            outline: none;
-            transition: background 0.3s ease;
-        }
-        .faq-question:hover {
-            background: #fffbeb;
-        }
-        .faq-answer {
-            padding: 1rem;
-            border-top: 1px solid #eee;
-            background: #fff;
-            color: #444;
-            line-height: 1.6;
-        }
-        .faq-answer p {
-            margin-bottom: 0.5rem;
+            padding: 0.25rem 0.5rem;
         }
 
+        .quote-layer {
+            position: absolute;
+            max-width: 92%;
+            max-height: 80px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateY(16px) scale(0.95);
+            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+            display: block;
+        }
+
+        .quote-layer.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .quote-layer.exiting {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.97);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+
+        /* Showcase Controls & Progress */
+        .showcase-footer {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(51, 42, 124, 0.08);
+        }
+
+        .controls-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .showcase-btn {
+            background: #ffffff;
+            border: 1px solid rgba(51, 42, 124, 0.15);
+            color: var(--mam-purple);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 3px 8px rgba(51, 42, 124, 0.08);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .showcase-btn:hover {
+            background: var(--mam-purple);
+            color: #ffffff;
+            border-color: var(--mam-purple);
+            transform: scale(1.08);
+            box-shadow: 0 6px 14px rgba(51, 42, 124, 0.2);
+        }
+
+        .showcase-btn:active {
+            transform: scale(0.95);
+        }
+
+        .showcase-counter {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--mam-purple);
+            opacity: 0.75;
+            letter-spacing: 1px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .progress-bar-wrap {
+            flex: 1;
+            margin-left: 1rem;
+            height: 4px;
+            background: rgba(51, 42, 124, 0.08);
+            border-radius: 99px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--mam-pink-dark), var(--mam-yellow));
+            border-radius: 99px;
+            transition: width 0.1s linear;
+        }
+
+        /* Stockport Vibes Section */
+        .vibes-section {
+            background-color: #afa4d0;
+            padding: 3.5rem 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .vibes-container {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vibes-img {
+            width: 100%;
+            max-width: 1100px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
+        }
+
+        /* Sponsors Section */
+        .sponsors-section {
+            background-color: #ffffff;
+            padding: 4.5rem 2rem 5rem 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sponsors-container {
+            max-width: 1250px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sponsors-img {
+            width: 100%;
+            max-width: 1050px;
+            height: auto;
+            display: block;
+            opacity: 0.95;
+            transition: opacity 0.3s ease;
+        }
+
+        .sponsors-img:hover {
+            opacity: 1;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 950px) {
+            .hero-section {
+                padding: 3rem 1.5rem 4rem 1.5rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .hero-logo-col img {
+                max-width: 380px;
+            }
+
+            .showcase-card {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 1rem;
+            }
+
+            .header-main-img {
+                max-height: 52px;
+            }
+
+            .hero-section {
+                padding: 2.5rem 1rem 3.5rem 1rem;
+            }
+
+            .hero-logo-col img {
+                max-width: 320px;
+            }
+
+            .showcase-card {
+                padding: 1.15rem 1.15rem 1rem 1.15rem;
+                border-radius: 20px;
+            }
+
+            .quote-stage {
+                min-height: 70px;
+            }
+
+            .quote-layer {
+                max-height: 65px;
+            }
+
+            .vibes-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .sponsors-section {
+                padding: 3.5rem 1rem 4rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="top-bar-inner">
-            <img src="MaM-logo-wide.svg" alt="Move a Mile Logo">
-            <img src="MAM-date-GFX 1.0.svg" alt="Date Graphic" class="desktop-only">
-        </div>
-    </div>
-
-    <header>
-        <img class="header-bg" src="photos Sam Eckersley/4H5A1844.jpg" alt="Header Background">
-        <div class="header-content">
-            <div class="header-text">
-                <div class="presents-lockup">
-                    <img src="MAM-logo lockup-GRIT x TC.svg" alt="Grit x The Coping Logo">
-                    <p class="presents-text">presents</p>
-                </div>
-                <h1>Move a Mile<br>Stockport</h1>
-                <div class="hero-datetime" style="margin-bottom: 0.2rem;">
-                    Sunday 27th September 2026 &nbsp;|&nbsp; 11am - 4pm
-                </div>
-                <div class="hero-datetime">
-                    A Mile of Fun Passing Through The Underbank
-                </div>
-                <p class="subtitle">Creative street festival built around physical movement, creativity & community. Activities staggered along a one-mile route encouraging movement, interaction and play across organisations, businesses and all walks of life.</p>
-                <a href="https://www.eventbrite.co.uk/e/move-a-mile-stockport-tickets-1999687659620?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="cta-btn">Get Free Tickets</a>
-            </div>
-            
-            <div class="header-video">
-                <iframe
-                    src="https://player.cloudinary.com/embed/?cloud_name=dd7inzbhy&public_id=Move-a-mile-free-event-stockport&autoplay=true&muted=true&loop=true"
-                    width="100%"
-                    height="100%" 
-                    style="height: 100%; width: 100%; border: none;"
-                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                    allowfullscreen
-                    frameborder="0"
-                ></iframe>
-            </div>
+    <!-- Header with Main Header.svg in centre -->
+    <header class="site-header">
+        <div class="header-logo-wrap">
+            <img src="Logos and GFX/Main Header.svg" alt="Move a Mile" class="header-main-img">
         </div>
     </header>
 
-        <section class="section map-section" style="max-width: 100%; padding-left: 0; padding-right: 0; margin-top: 2rem;">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 0.2rem; text-transform: uppercase;">The Route</h2>
-            
-            <div style="text-align: center; margin-bottom: 1.2rem; padding: 0 1rem; font-family: 'Poppins', sans-serif;">
-                <p style="margin: 0; font-size: 1.1rem; font-weight: 500; color: #333;">Pinch or double-tap to zoom. Drag to explore.</p>
-            </div>
-            
-            <div class="map-wrapper" style="position: relative; overflow: hidden; background: #fff; padding: 0; width: 80%; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                <div style="position: absolute; top: 1.5rem; right: 1.5rem; z-index: 10; display: flex; flex-direction: column; gap: 8px;">
-                    <button id="zoom-in" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">+</button>
-                    <button id="zoom-out" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">&minus;</button>
-                    <button id="zoom-reset" style="background: white; color: var(--mam-purple); border: 2px solid var(--mam-purple); border-radius: 6px; width: 36px; height: 36px; font-size: 1.2rem; font-weight: bold; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; padding: 0;">&#x21BA;</button>
-                </div>
-                <div id="panzoom-element" style="width: 100%; display: block; cursor: move; touch-action: pan-x pan-y; line-height: 0;">
-                    <img src="MaM26-Stock-Map-2.0.svg" alt="Move a Mile Route Map" style="width: 100%; height: auto; display: block; pointer-events: none;">
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                <a href="MaM26-Stock-Map-2.0.pdf" download style="color: var(--mam-purple); font-weight: 600; font-size: 1.1rem; text-decoration: underline;">Download the map & full schedule here (PDF)</a>
-                <a href="https://www.google.com/maps/d/u/0/edit?mid=1J1EtlGvLJrKzQVxB2E5fSIZzvYkWcNo&usp=sharing" target="_blank" rel="noopener noreferrer" style="color: #666; font-weight: 400; font-size: 0.9rem; text-decoration: underline;">View interactive route on Google Maps</a>
-            </div>
-        </section>
-
-        <section class="section" style="max-width: 800px; margin: 0 auto; padding: 1rem 5% 2rem; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.6; color: #444; text-align: center;">
-            <p style="margin-bottom: 1.5rem;">There’s no right way to do Move A Mile. Walk, wander, stop, chat, eat, drink, make something, discover somewhere new and enjoy Stockport.</p>
-            <p style="margin-bottom: 1.5rem;">Dress for the weather! It’s Stockport, so anything could happen! Wear sensible footwear and bring something waterproof if the forecast suggests it. There are some hills, so comfortable shoes are definitely recommended.</p>
-            <p>Move A Mile is about much more than walking a mile. It’s an opportunity to explore somewhere you might not normally go, discover something new, meet people, support local businesses, get moving and have a bit of fun along the way.</p>
-        </section>
-
-<section class="section" id="schedule-section" style="max-width: 800px; margin: 0 auto; padding: 2rem 5%;">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; text-transform: uppercase;">Schedule</h2>
-    <div style="display: flex; flex-direction: column; gap: 3rem;">
-    <div class="schedule-location">
-        <h3 style="color: #e83a45; font-size: 1.8rem; border-bottom: 3px solid #e83a45; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Canal Street</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">GRIT Studios Open Day</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Creative Workshops</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-13:00 & 14:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Skateboarding Lessons</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Stockport County Shoot Out</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live DJs Helen K & Acid Reflux</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live Street Art</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Spraypaint workshop</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Refreshments from Tibetan Kitchen & Runaway Brewery</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">12:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Stocky Skate Tour Start Point</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">15:00-15:30</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Breakdance Demo</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">15:30-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live Drumming</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #3b82f6; font-size: 1.8rem; border-bottom: 3px solid #3b82f6; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Park / Hopes Carr</h3>
-        <p style="font-style: italic; color: #666; margin-top: -1rem; margin-bottom: 1.2rem; font-size: 1rem;">Check out the amazing La Bocca Mural</p>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #3b82f6; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Hula Hoop Workshop</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #3b82f6; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Stockports Longest Hopscotch</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #3b82f6; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-13:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live Music from Liam Mcclair</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #eab308; font-size: 1.8rem; border-bottom: 3px solid #eab308; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Junction of Wellington & Hillgate</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Storytelling Lollipop Lady</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Info Point & City Heart News Stand</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #eab308; font-size: 1.8rem; border-bottom: 3px solid #eab308; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Lower Hillgate</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live Street Art</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Lino Printing Workshop</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live Music from James Holt</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">15:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Chambers Skate Shop Hill Bomb</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #8b5cf6; font-size: 1.8rem; border-bottom: 3px solid #8b5cf6; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Underbank</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #8b5cf6; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live Art from Dave Draws</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #8b5cf6; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live DJs</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #8b5cf6; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">SK1 Records Sunday Social</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #06b6d4; font-size: 1.8rem; border-bottom: 3px solid #06b6d4; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Stockroom</h3>
-        <p style="font-style: italic; color: #666; margin-top: -1rem; margin-bottom: 1.2rem; font-size: 1rem;">Information Point & Good Acsessible Toilets</p>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #06b6d4; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Silent Disco</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #eab308; font-size: 1.8rem; border-bottom: 3px solid #eab308; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Great Underbank</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">The Wheel Trim Shady Workshop</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #eab308; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-15:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Pure Innovations Baking Skills Workshop</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #2563eb; font-size: 1.8rem; border-bottom: 3px solid #2563eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Bearpit</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #2563eb; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">14:30-15:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Tanate Live Drumming</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #e83a45; font-size: 1.8rem; border-bottom: 3px solid #e83a45; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">The Swirly Whirly (Interchange)</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">12:30 | 13:30 | 14:30</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live Music from Gideon Conn</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Bubble Girl</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">12:30-13:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Breakdance Demo</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #e83a45; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">14:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Skate Race</div>
-            </div>
-        </div>
-    </div>
-    <div class="schedule-location">
-        <h3 style="color: #06b6d4; font-size: 1.8rem; border-bottom: 3px solid #06b6d4; padding-bottom: 0.5rem; margin-bottom: 1.5rem; line-height: 1.2;">Kingston Street</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-family: 'Poppins', sans-serif;">
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #06b6d4; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">GRIT Studios Open Day</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #06b6d4; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Creative Workshops</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #06b6d4; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Live DJs Shimrise & Disco Demi</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #06b6d4; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Refreshments from Hustle Coffee</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #06b6d4; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Climbing Wall</div>
-            </div>
-            <div style="display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 0.8rem;">
-                <div style="font-weight: 700; color: #06b6d4; flex: 0 0 110px; font-size: 1rem; line-height: 1.4;">11:00-16:00</div>
-                <div style="font-size: 1.05rem; color: #444; line-height: 1.4; flex: 1;">Re-Stocked CIC First Birthday</div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-
-    <div class="container">
-        
-        
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>27th Sep</h3>
-                <p>Stockport</p>
-            </div>
-            <div class="stat-card">
-                <h3>1 Mile</h3>
-                <p>Of interactive activities</p>
-            </div>
-            <div class="stat-card">
-                <h3>3000</h3>
-                <p>People expected</p>
-            </div>
-            <div class="stat-card">
-                <h3>Free</h3>
-                <p>Community event</p>
-            </div>
-        </div>
-
-        <div style="background-color: var(--mam-purple); color: white; text-align: center; padding: 3rem 2rem; margin: 4rem -2rem; font-family: 'Archivo Black', sans-serif; font-size: clamp(1.2rem, 3vw, 2rem); text-transform: uppercase; line-height: 1.4; letter-spacing: 1px;">
-            A mile of free entertainment! Create together, see new things, explore Stockport and meet your community.
-        </div>
-
-        <section class="section">
-            <div class="concept-grid">
-                <div class="text-content" style="text-align: center;">
-                    <h2 style="margin-bottom: 1.5rem;">The Concept</h2>
-                    <p>A one-mile celebration of creativity, community and wellbeing is taking over Stockport on Sunday 27 September. After the sucess of the Salford event, GRIT Studios and The Coping partner again to launch Move a Mile Stockport – a free, family-friendly festival inviting people of all ages to explore a vibrant one-mile trail packed with creativity, culture and fun.</p>
-                    <p style="margin-top: 1.5rem; font-weight: 600;">This event is free &amp; open to all, register for a free Eventbrite ticket now.</p>
-                    <a href="https://www.eventbrite.co.uk/e/move-a-mile-stockport-tickets-1999687659620?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="cta-btn">Get Free Tickets</a>
-                </div>
-                <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); aspect-ratio: 4/3;">
-                    <img src="photos Sam Eckersley/4H5A1872.jpg" alt="Move a mile concept" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-            </div>
-        </section>
-
-        
-
-        
-
-        <section class="section" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <img src="MAM-own style gfx 1.0.svg" alt="Tagline" style="max-width: 100%; margin: 2rem 0 -0.5rem 0;">
-            <img src="MaM-styles-gfx-1.0.svg" alt="Styles Tagline" style="max-width: 100%; margin: 0;">
-        </section>
-
-        
-        
-        <section class="section" id="faq-section" style="max-width: 800px; margin: 0 auto; padding: 4rem 5%; background: #f9f9f9; margin-top: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; text-transform: uppercase;">FAQs</h2>
-            
-            <div class="faq-container" style="display: flex; flex-direction: column; gap: 1rem;">
-                <details class="faq-item">
-                    <summary class="faq-question">What is it?</summary>
-                    <div class="faq-answer">
-                        <p>Move a Mile is a free event organised by two Community Interest Companies called The Coping CIC & GRIT Studios CIC. The aim of the event is to bring the community together to move a mile, celebrating creativity & movement. There will be free skate lessons, live street art & music, a silent disco, break-dancing, creative activities to get involved in & skate jams all happening along the way.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Where is it?</summary>
-                    <div class="faq-answer">
-                        <p>Stockport. We’re creating a mile trail from GRIT Studios Canal Street, all the way through the Underbank area, to GRIT Studios Kingston House. Activities are happening all the way along the mile.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">What time?</summary>
-                    <div class="faq-answer">
-                        <p>Activities from 11am - 4pm.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Is There Food & Drink?</summary>
-                    <div class="faq-answer">
-                        <p>There is plenty of places to buy food and drink along the way. Also Hustle Coffee at Kingston House, and Tibetan Kitchen and Runaway Brewery at Canal Street.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Do I Need a Ticket?</summary>
-                    <div class="faq-answer">
-                        <p>Nope. But if you want to participate in the activities we ask that you sign up for a free Eventbrite ticket, so we know who joined us. This helps us apply for funding and sponsorship in future to keep these events inclusive and free. You may also need to sign a waiver for higher risk activities. Follow the purple buttons to get your Eventbrite ticket.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Is it for Kids?</summary>
-                    <div class="faq-answer">
-                        <p>Absolutely, but please make sure under 16s are with a responsible adult at all times. Anyone under 16 must wear a helmet for any skate activities.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Is it Accessible?</summary>
-                    <div class="faq-answer">
-                        <p>We want everyone to move a mile in their own style, so the route is as accessible as possible with ramps, pavements & pedestrian crossings.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">How Do I Get There?</summary>
-                    <div class="faq-answer">
-                        <p><strong>Bus:</strong> The bus interchange is on the route so any bus arriving at Stockport interchange should land you right onto the mile!<br>
-                        <strong>Train:</strong> Stockport station is a 10 minute walk to GRIT Studios Kingston House.<br>
-                        <strong>Car:</strong> There is no parking available at either of the GRIT Studio sites due to road closure and carpark space being used. However there are plenty of carparks near to the mile route and some free street parking on Sundays too.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Are There Toilets?</summary>
-                    <div class="faq-answer">
-                        <p>There are loads of businesses along the way with toilets, but Stockroom is the best place for toilets.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">What Shall I Bring?</summary>
-                    <div class="faq-answer">
-                        <p>Expect all weather, it’s Stockport! Decent shoes for walking.</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">What if I'm Late?</summary>
-                    <div class="faq-answer">
-                        <p>There are all sorts of activities happening between 11am-4pm so just turn up to any of the activities marked on the map and have a wander along the mile in your own style!</p>
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary class="faq-question">Can I Skate?</summary>
-                    <div class="faq-answer">
-                        <p>Yes! Beginners, the free lessons are for you. They are happening on Canal Street 11:00-13:00 & 14:00-16:00 on a first come, first served basis. Sign ups start from 11am and you will need to sign a waiver. There are limited spaces. If you are an experienced skater, you can skate at your own risk on the tour lead by Chambers Skate Shop. There are inclusive skate jams & sessions happening on the route with prizes and cash for tricks landed and vibes created! You must sign a disclaimer and all under 14s must be accompanied by a responsible adult.</p>
-                    </div>
-                </details>
-            </div>
-            <div style="text-align: center; margin-top: 2.5rem;">
-                <a href="MAM26 Stock FAQ 1.0.pdf" download style="color: var(--mam-purple); font-weight: 600; font-size: 1.1rem; text-decoration: underline;">Download the FAQs here (PDF)</a>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 style="text-align: center;">Gallery</h2>
-            <p class="credit">Photography by: Eckers Photo</p>
-            <div class="gallery" id="photo-gallery">
-                <!-- Images will be injected here -->
-            </div>
-        </section>
-
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <a href="https://www.eventbrite.co.uk/e/move-a-mile-stockport-tickets-1999687659620?aff=oddtdtcreator" target="_blank" rel="noopener noreferrer" class="cta-btn">Get Free Tickets</a>
-        </div>
-        
-        <div style="text-align: center; margin-bottom: 2rem; font-weight: 800; font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 1.2rem;">
-            Thanks to the sponsors of our movement...
-        </div>
-
-    </div>
-
-    <footer>
-        <div class="marquee-scroll-container">
-            <div class="marquee-wrapper">
-                <div class="marquee-content">
-                    <img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Funded by Local Gov Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Stockport Council Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Swansway Motor Group Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Together Grater Manchester Logo.png" alt="Sponsor Logo"><img src="sponsor logos/Totally Stockport Logo.png" alt="Sponsor Logo">
-                </div>
-            </div>
-        </div>
-    </footer>
-
-        <script>
-        // Scroll effect for top bar and marquee
-        const marqueeScroll = document.querySelector('.marquee-scroll-container');
-        
-        window.addEventListener('scroll', () => {
-            const topBar = document.querySelector('.top-bar');
-            if (topBar) {
-                if (window.scrollY > 50) {
-                    topBar.classList.add('scrolled');
-                } else {
-                    topBar.classList.remove('scrolled');
-                }
-            }
-            
-            // Marquee scroll effect
-            if (marqueeScroll) {
-                const scrollPosition = window.scrollY;
-                const windowHeight = window.innerHeight;
-                const documentHeight = document.body.scrollHeight;
+    <!-- Hero Section -->
+    <main>
+        <section class="hero-section">
+            <div class="hero-container">
                 
-                // Only start translating when the footer comes into view
-                if (scrollPosition + windowHeight > documentHeight - 1000) {
-                    const scrollFraction = (scrollPosition + windowHeight - (documentHeight - 1000)) / 1000;
-                    
-                    // Increase speed multiplier on mobile since scroll distance is physically shorter
-                    const speedMultiplier = window.innerWidth <= 800 ? 500 : 100;
-                    
-                    // Move the marquee wrapper leftwards as user scrolls down
-                    marqueeScroll.style.transform = `translateX(-${scrollFraction * speedMultiplier}%)`;
+                <!-- Left: Main logo.svg -->
+                <div class="hero-logo-col">
+                    <img src="Logos and GFX/Main logo.svg" alt="Move a Mile Stockport" class="hero-main-logo">
+                </div>
+
+                <!-- Right: Animated Photos and Quotes -->
+                <div class="hero-showcase-col">
+                    <div class="showcase-card" id="showcase-card">
+                        
+                        <!-- Photo Stage -->
+                        <div class="photo-stage" id="photo-stage" title="Click or tap to view next">
+                            <img id="photo-layer-a" class="photo-layer active" src="" alt="Move a Mile Event Photo">
+                            <img id="photo-layer-b" class="photo-layer" src="" alt="Move a Mile Event Photo">
+                        </div>
+
+                        <!-- Quote Stage (sitting directly underneath photo) -->
+                        <div class="quote-stage" id="quote-stage">
+                            <img id="quote-layer-a" class="quote-layer active" src="" alt="Move a Mile Event Quote">
+                            <img id="quote-layer-b" class="quote-layer" src="" alt="Move a Mile Event Quote">
+                        </div>
+
+                        <!-- Footer Controls & Progress Bar -->
+                        <div class="showcase-footer">
+                            <div class="controls-group">
+                                <button class="showcase-btn" id="btn-prev" aria-label="Previous quote">&#10094;</button>
+                                <div class="showcase-counter">
+                                    <span id="counter-current">1</span> / <span id="counter-total">30</span>
+                                </div>
+                                <button class="showcase-btn" id="btn-next" aria-label="Next quote">&#10095;</button>
+                            </div>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar-fill" id="progress-bar"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Stockport Vibes SVG on #afa4d0 background -->
+        <section class="vibes-section">
+            <div class="vibes-container">
+                <img src="Logos and GFX/Stockport Vibes.svg" alt="Stockport Vibes" class="vibes-img">
+            </div>
+        </section>
+
+        <!-- Sponsors WebP sitting under Stockport Vibes -->
+        <section class="sponsors-section">
+            <div class="sponsors-container">
+                <img src="Logos and GFX/Sponsors.webp" alt="Supported by our sponsors" class="sponsors-img">
+            </div>
+        </section>
+    </main>
+
+    <!-- Animation & Showcase Script -->
+    <script>
+        (function() {
+            // Generate list of 30 quote-photo pairs (1.0 to 30.0)
+            const TOTAL_ITEMS = 30;
+            const items = [];
+            for (let i = 1; i <= TOTAL_ITEMS; i++) {
+                items.push({
+                    number: i,
+                    photo: `Quote Photos/MaM26 Stockport Quote Photo ${i}.0.webp`,
+                    quote: `Quotes/MaM26 Stockport Quote ${i}.0.svg`
+                });
+            }
+
+            // Elements
+            const photoA = document.getElementById('photo-layer-a');
+            const photoB = document.getElementById('photo-layer-b');
+            const quoteA = document.getElementById('quote-layer-a');
+            const quoteB = document.getElementById('quote-layer-b');
+            const counterCurrent = document.getElementById('counter-current');
+            const counterTotal = document.getElementById('counter-total');
+            const progressBar = document.getElementById('progress-bar');
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const photoStage = document.getElementById('photo-stage');
+            const showcaseCard = document.getElementById('showcase-card');
+
+            counterTotal.textContent = TOTAL_ITEMS;
+
+            let currentIndex = 0;
+            let currentLayer = 'A'; // Which layer is currently visible
+            let isTransitioning = false;
+            let isHovered = false;
+
+            // Timer settings (chilled out duration: 5.5s per item)
+            const DISPLAY_DURATION = 5500;
+            let elapsed = 0;
+            let timerInterval = null;
+
+            // Initial load
+            photoA.src = items[0].photo;
+            quoteA.src = items[0].quote;
+            photoA.classList.add('active');
+            quoteA.classList.add('active');
+
+            // Preload next images in background for instant responsiveness
+            function preloadItems(fromIdx) {
+                for (let k = 1; k <= 3; k++) {
+                    const nextIdx = (fromIdx + k) % TOTAL_ITEMS;
+                    const imgP = new Image();
+                    imgP.src = items[nextIdx].photo;
+                    const imgQ = new Image();
+                    imgQ.src = items[nextIdx].quote;
                 }
             }
-        });
+            preloadItems(0);
 
-        // FAQ Carousel
-        const track = document.getElementById('faq-track');
-        if (track) {
-            const carouselContainer = track.parentElement;
-            const slides = Array.from(track.children);
-            const nextButton = document.getElementById('faq-next');
-            const prevButton = document.getElementById('faq-prev');
-            const backButton = document.getElementById('faq-back');
-            const dotsNav = document.getElementById('faq-dots');
-            const dots = Array.from(dotsNav.children);
+            // Transition function: dynamic but chilled out
+            function showItem(index, direction = 'next') {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex = index;
 
-            let currentSlide = 0;
+                counterCurrent.textContent = currentIndex + 1;
+                elapsed = 0;
+                progressBar.style.width = '0%';
 
-            const moveToSlide = (index) => {
-                track.style.transform = 'translateX(-' + index * 100 + '%)';
-                dots.forEach(d => d.classList.remove('active'));
-                dots[index].classList.add('active');
-                currentSlide = index;
+                const nextData = items[currentIndex];
+
+                const activePhoto = currentLayer === 'A' ? photoA : photoB;
+                const nextPhoto = currentLayer === 'A' ? photoB : photoA;
+
+                const activeQuote = currentLayer === 'A' ? quoteA : quoteB;
+                const nextQuote = currentLayer === 'A' ? quoteB : quoteA;
+
+                // 1. Prepare incoming elements in background
+                nextPhoto.src = nextData.photo;
+                nextQuote.src = nextData.quote;
+
+                // Reset incoming classes
+                nextPhoto.classList.remove('active', 'exiting');
+                nextQuote.classList.remove('active', 'exiting');
+
+                // 2. Chilled dynamic choreography:
+                // First exit outgoing elements smoothly
+                activePhoto.classList.add('exiting');
+                activePhoto.classList.remove('active');
+
+                activeQuote.classList.add('exiting');
+                activeQuote.classList.remove('active');
+
+                // 3. Staggered entrance: Quote appears first with subtle rise, then Photo fades in
+                setTimeout(() => {
+                    nextQuote.classList.remove('exiting');
+                    nextQuote.classList.add('active');
+                }, 180);
+
+                setTimeout(() => {
+                    nextPhoto.classList.remove('exiting');
+                    nextPhoto.classList.add('active');
+                }, 320);
+
+                // Flip active layer and allow next transition
+                setTimeout(() => {
+                    activePhoto.classList.remove('exiting');
+                    activeQuote.classList.remove('exiting');
+                    currentLayer = currentLayer === 'A' ? 'B' : 'A';
+                    isTransitioning = false;
+                    preloadItems(currentIndex);
+                }, 900);
             }
 
-            if (nextButton) {
-                nextButton.addEventListener('click', () => {
-                    if (currentSlide === slides.length - 1) {
-                        moveToSlide(0);
-                    } else {
-                        moveToSlide(currentSlide + 1);
-                    }
-                });
+            function nextItem() {
+                const nextIdx = (currentIndex + 1) % TOTAL_ITEMS;
+                showItem(nextIdx, 'next');
             }
 
-            if (prevButton) {
-                prevButton.addEventListener('click', () => {
-                    if (currentSlide === 0) {
-                        moveToSlide(slides.length - 1);
-                    } else {
-                        moveToSlide(currentSlide - 1);
-                    }
-                });
+            function prevItem() {
+                const prevIdx = (currentIndex - 1 + TOTAL_ITEMS) % TOTAL_ITEMS;
+                showItem(prevIdx, 'prev');
             }
 
-            if (dotsNav) {
-                dotsNav.addEventListener('click', e => {
-                    const targetDot = e.target.closest('.carousel-dot');
-                    if (!targetDot) return;
-                    const targetIndex = dots.findIndex(dot => dot === targetDot);
-                    moveToSlide(targetIndex);
-                });
-            }
+            // Controls
+            btnNext.addEventListener('click', () => {
+                nextItem();
+            });
 
-            // Better Swipe Logic
-            let startX = 0;
-            let startY = 0;
+            btnPrev.addEventListener('click', () => {
+                prevItem();
+            });
+
+            // Clicking/tapping the photo triggers next
+            photoStage.addEventListener('click', () => {
+                nextItem();
+            });
+
+            // Pause on hover
+            showcaseCard.addEventListener('mouseenter', () => {
+                isHovered = true;
+            });
+            showcaseCard.addEventListener('mouseleave', () => {
+                isHovered = false;
+            });
+
+            // Mobile swipe support
+            let touchStartX = 0;
+            let touchStartY = 0;
             let isSwiping = false;
 
-            track.addEventListener('touchstart', e => {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
+            photoStage.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
                 isSwiping = true;
-            }, {passive: true});
+            }, { passive: true });
 
-            track.addEventListener('touchmove', e => {
+            photoStage.addEventListener('touchmove', (e) => {
                 if (!isSwiping) return;
-                const currentX = e.touches[0].clientX;
-                const currentY = e.touches[0].clientY;
-                
-                // If scrolling vertically, let the browser scroll naturally
-                if (Math.abs(currentY - startY) > Math.abs(currentX - startX)) {
-                    isSwiping = false; 
+                const diffX = e.touches[0].clientX - touchStartX;
+                const diffY = e.touches[0].clientY - touchStartY;
+                if (Math.abs(diffY) > Math.abs(diffX)) {
+                    isSwiping = false;
                 }
-            }, {passive: true});
+            }, { passive: true });
 
-            track.addEventListener('touchend', e => {
+            photoStage.addEventListener('touchend', (e) => {
                 if (!isSwiping) return;
-                const endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-                
-                if (diff > 40) {
-                    if (nextButton) nextButton.click();
-                } else if (diff < -40) {
-                    if (prevButton) prevButton.click();
+                const diffX = e.changedTouches[0].clientX - touchStartX;
+                if (diffX < -40) {
+                    nextItem();
+                } else if (diffX > 40) {
+                    prevItem();
                 }
                 isSwiping = false;
             });
 
-            // Fullscreen double-tap logic
-            let lastTap = 0;
-            const toggleFullscreen = (e) => {
-                // Ignore double taps on buttons
-                if(e.target.closest('button')) return;
+            // Progress bar and automatic chilled rotation loop
+            const TICK = 50;
+            timerInterval = setInterval(() => {
+                if (!isHovered && !isTransitioning) {
+                    elapsed += TICK;
+                    const percent = Math.min(100, (elapsed / DISPLAY_DURATION) * 100);
+                    progressBar.style.width = percent + '%';
 
-                const currentTime = new Date().getTime();
-                const tapLength = currentTime - lastTap;
-                if (tapLength < 500 && tapLength > 0) {
-                    carouselContainer.classList.toggle('fullscreen-carousel');
-                    // Ensure body can't scroll if fullscreen
-                    if (carouselContainer.classList.contains('fullscreen-carousel')) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = '';
-                    }
-                    e.preventDefault();
-                }
-                lastTap = currentTime;
-            };
-            
-            // Listen on track for double clicks / taps
-            track.addEventListener('touchend', toggleFullscreen);
-            track.addEventListener('dblclick', (e) => {
-                if(e.target.closest('button')) return;
-                carouselContainer.classList.toggle('fullscreen-carousel');
-                if (carouselContainer.classList.contains('fullscreen-carousel')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Back button
-            if (backButton) {
-                backButton.addEventListener('click', () => {
-                    carouselContainer.classList.remove('fullscreen-carousel');
-                    document.body.style.overflow = '';
-                });
-            }
-        }
-
-        const photos = ["4H5A1844.jpg", "4H5A1872.jpg", "4H5A1893.jpg", "4H5A1970.jpg", "4H5A1972.jpg", "4H5A1974.jpg", "4H5A1977.jpg", "P2124522.jpg", "P2124710.jpg", "P2124760.jpg", "P2124857.jpg", "P2124921.jpg", "P2125001.jpg", "P2125015.jpg", "P2125076.jpg", "P2125093.jpg", "P2125150.jpg", "P2125238.jpg", "P2125293.jpg", "P2125352.jpg"];
-        const gallery = document.getElementById('photo-gallery');
-        
-        if (gallery) {
-            photos.forEach(photo => {
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                
-                const img = document.createElement('img');
-                img.src = `photos Sam Eckersley/${photo}`;
-                img.loading = 'lazy';
-                img.alt = 'Move a Mile Event Photo';
-                
-                div.appendChild(img);
-                gallery.appendChild(div);
-            });
-        }
-    </script>
-    <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const elem = document.getElementById('panzoom-element');
-            
-            let panzoom = Panzoom(elem, {
-                maxScale: 5,
-                minScale: 1,
-                contain: 'outside',
-                canvas: true,
-                touchAction: 'pan-x pan-y',
-                handleStartEvent: (e) => {
-                    // Prevent image dragging on desktop
-                    if (e.pointerType === 'mouse' || e.type === 'mousedown') {
-                        e.preventDefault();
-                        return;
-                    }
-                    // On mobile, only prevent default if we are already zoomed in
-                    if (panzoom && panzoom.getScale() > 1) {
-                        e.preventDefault();
+                    if (elapsed >= DISPLAY_DURATION) {
+                        nextItem();
                     }
                 }
-            });
-            
-            document.getElementById('zoom-in').addEventListener('click', panzoom.zoomIn);
-            document.getElementById('zoom-out').addEventListener('click', panzoom.zoomOut);
-            document.getElementById('zoom-reset').addEventListener('click', panzoom.reset);
-            
-            function handleToggleZoom(e) {
-                if (panzoom.getScale() > 1) {
-                    panzoom.reset({ animate: true });
-                } else {
-                    panzoom.zoom(2, { animate: true });
-                }
-                if(e) e.preventDefault();
-            }
-            
-            elem.addEventListener('panzoomchange', () => {
-                if (panzoom.getScale() > 1) {
-                    elem.style.touchAction = 'none';
-                } else {
-                    elem.style.touchAction = 'pan-x pan-y';
-                }
-            });
-            
-            // Fix double tap and prevent pinch from resetting
-            let lastTap = 0;
-            let touchMoved = false;
-            
-            elem.addEventListener('touchmove', function(e) {
-                touchMoved = true;
-            });
-            
-            elem.addEventListener('touchstart', function(e) {
-                if (e.touches.length > 1) {
-                    touchMoved = true;
-                } else {
-                    touchMoved = false;
-                }
-            });
-            
-            elem.addEventListener('touchend', function(e) {
-                if (touchMoved) return;
-                
-                const currentTime = new Date().getTime();
-                const tapLength = currentTime - lastTap;
-                if (tapLength < 500 && tapLength > 0) {
-                    handleToggleZoom(e);
-                    lastTap = 0;
-                } else {
-                    lastTap = currentTime;
-                }
-            });
-            
-            // Double click to zoom (desktop)
-            elem.addEventListener('dblclick', function(e) {
-                handleToggleZoom(e);
-            });
-        });
+            }, TICK);
+
+        })();
     </script>
 </body>
 </html>
