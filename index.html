@@ -70,7 +70,7 @@
         .hero-section {
             position: relative;
             background: linear-gradient(135deg, #fff2d7 0%, #e3f8fc 50%, #ffe9f0 100%);
-            padding: 3.5rem 2rem 4.5rem 2rem;
+            padding: 3.5rem 2rem 5.5rem 2rem;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -123,7 +123,7 @@
             justify-content: center;
             align-items: center;
             padding: 0.5rem;
-            margin-top: -2.5rem; /* Moved up to create plenty of space for the quote box */
+            margin-top: -3.75rem; /* Moved logo up to create ample space */
         }
 
         .logo-quote-wrapper {
@@ -154,17 +154,18 @@
             }
         }
 
-        /* Quote Stage: Lowered so it covers only a tiny rim of the logo */
+        /* Quote Stage: Anchored from top so maximum sized quotes cover only 5% of the logo */
         .quote-stage {
             position: absolute;
-            bottom: -28px;
+            top: calc(100% - 17px); /* Top of badge is fixed at 17px overlap (5% of logo height) */
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             pointer-events: none;
+            width: 100%;
         }
 
         /* Dynamic Quote Badge: Reshapes to fit quote with generous padding and color changing outline */
@@ -439,7 +440,7 @@
         /* Responsive Breakpoints */
         @media (max-width: 950px) {
             .hero-section {
-                padding: 2.75rem 1.5rem 3.5rem 1.5rem;
+                padding: 2.75rem 1.5rem 4rem 1.5rem;
             }
 
             .hero-container {
@@ -448,7 +449,7 @@
             }
 
             .hero-logo-col {
-                margin-top: -1.25rem;
+                margin-top: -2.25rem;
             }
 
             .logo-quote-wrapper {
@@ -456,7 +457,7 @@
             }
 
             .quote-stage {
-                bottom: -24px;
+                top: calc(100% - 14px);
             }
 
             .showcase-card {
@@ -474,7 +475,7 @@
             }
 
             .hero-section {
-                padding: 1.5rem 1rem 2.5rem 1rem;
+                padding: 1.5rem 1rem 3.5rem 1rem;
             }
 
             .hero-container {
@@ -482,7 +483,7 @@
             }
 
             .hero-logo-col {
-                margin-top: -0.75rem;
+                margin-top: -1.25rem;
             }
 
             .logo-quote-wrapper {
@@ -490,7 +491,7 @@
             }
 
             .quote-stage {
-                bottom: -20px;
+                top: calc(100% - 11px);
             }
 
             .quote-prompt {
