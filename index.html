@@ -123,6 +123,7 @@
             justify-content: center;
             align-items: center;
             padding: 0.5rem;
+            margin-top: -2.5rem; /* Moved up to create plenty of space for the quote box */
         }
 
         .logo-quote-wrapper {
@@ -132,7 +133,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 370px; /* 10% smaller than 410px */
+            max-width: 370px; /* 10% smaller */
             margin: 0 auto;
         }
 
@@ -153,13 +154,12 @@
             }
         }
 
-        /* Quote Stage: Lowered so it covers less of the logo rim */
+        /* Quote Stage: Lowered so it covers only a tiny rim of the logo */
         .quote-stage {
             position: absolute;
-            bottom: -22px; /* Covers just the bottom rim of the logo */
+            bottom: -28px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100%;
             z-index: 10;
             display: flex;
             justify-content: center;
@@ -174,12 +174,12 @@
             -webkit-backdrop-filter: blur(12px);
             border: 2.5px solid var(--mam-yellow);
             border-radius: 20px;
-            padding: 0.9rem 1.6rem;
+            padding: 0.85rem 1.6rem 0.95rem 1.6rem;
             box-shadow: 0 12px 30px rgba(252, 183, 20, 0.25);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
             pointer-events: auto;
             box-sizing: border-box;
             transition: width 0.45s cubic-bezier(0.2, 0.9, 0.3, 1),
@@ -189,27 +189,50 @@
             max-width: 95vw;
         }
 
+        /* Prompt Text inside Quote Badge */
+        .quote-prompt {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--mam-purple);
+            text-align: center;
+            margin-bottom: 0.55rem;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            opacity: 0.9;
+            user-select: none;
+        }
+
+        /* Quote Image Content Area */
+        .quote-content-area {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 0.45s cubic-bezier(0.2, 0.9, 0.3, 1),
+                        height 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
         .quote-layer {
             position: absolute;
-            max-width: calc(100% - 2.4rem);
-            max-height: calc(100% - 1.2rem);
-            width: auto;
-            height: auto;
-            object-fit: contain;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(12px) scale(0.95);
             opacity: 0;
-            transform: translateY(12px) scale(0.95);
-            transition: opacity 0.55s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.65s cubic-bezier(0.2, 0.9, 0.3, 1);
+            transition: opacity 0.5s cubic-bezier(0.2, 0.9, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1);
             display: block;
+            pointer-events: none;
         }
 
         .quote-layer.active {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translate(-50%, -50%) translateY(0) scale(1);
         }
 
         .quote-layer.exiting {
             opacity: 0;
-            transform: translateY(-8px) scale(0.97);
+            transform: translate(-50%, -50%) translateY(-8px) scale(0.97);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
@@ -424,12 +447,16 @@
                 gap: 3.25rem;
             }
 
+            .hero-logo-col {
+                margin-top: -1.25rem;
+            }
+
             .logo-quote-wrapper {
-                max-width: 290px; /* 10% smaller */
+                max-width: 290px;
             }
 
             .quote-stage {
-                bottom: -20px;
+                bottom: -24px;
             }
 
             .showcase-card {
@@ -454,12 +481,21 @@
                 gap: 2.75rem;
             }
 
+            .hero-logo-col {
+                margin-top: -0.75rem;
+            }
+
             .logo-quote-wrapper {
-                max-width: 230px; /* 10% smaller so photo is easily above fold on mobile */
+                max-width: 230px;
             }
 
             .quote-stage {
-                bottom: -16px;
+                bottom: -20px;
+            }
+
+            .quote-prompt {
+                font-size: 0.78rem;
+                margin-bottom: 0.45rem;
             }
 
             .showcase-card {
@@ -492,16 +528,19 @@
         <section class="hero-section">
             <div class="hero-container">
                 
-                <!-- Left: Main logo.svg with Overlapping Reshaping Quote Badge -->
+                <!-- Left: Main logo.svg with Reshaping Quote Badge -->
                 <div class="hero-logo-col">
                     <div class="logo-quote-wrapper">
                         <img src="Logos and GFX/Main logo.svg" alt="Move a Mile Stockport" class="hero-main-logo">
                         
-                        <!-- Dynamic quote stage: sits just on the bottom rim of the main logo -->
+                        <!-- Dynamic quote stage: sits neatly on the bottom rim of the main logo -->
                         <div class="quote-stage" id="quote-stage">
                             <div class="quote-badge" id="quote-badge">
-                                <img id="quote-layer-a" class="quote-layer active" src="" alt="Move a Mile Event Quote">
-                                <img id="quote-layer-b" class="quote-layer" src="" alt="Move a Mile Event Quote">
+                                <div class="quote-prompt">What was your favourite bit?</div>
+                                <div class="quote-content-area" id="quote-content-area">
+                                    <img id="quote-layer-a" class="quote-layer active" src="" alt="Move a Mile Event Quote">
+                                    <img id="quote-layer-b" class="quote-layer" src="" alt="Move a Mile Event Quote">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -565,51 +604,51 @@
                 { border: '#afa4d0', shadow: 'rgba(175, 164, 208, 0.35)' }  // Lavender
             ];
 
-            // Quote shape data: aspect ratios and calculated badge dimensions (with generous padding)
-            const quoteShapes = [
-                { w: 196, h: 78 }, // 1
-                { w: 250, h: 72 }, // 2
-                { w: 195, h: 78 }, // 3
-                { w: 305, h: 72 }, // 4
-                { w: 236, h: 72 }, // 5
-                { w: 204, h: 72 }, // 6
-                { w: 215, h: 78 }, // 7
-                { w: 222, h: 72 }, // 8
-                { w: 254, h: 64 }, // 9
-                { w: 195, h: 78 }, // 10
-                { w: 270, h: 64 }, // 11
-                { w: 200, h: 72 }, // 12
-                { w: 248, h: 72 }, // 13
-                { w: 278, h: 72 }, // 14
-                { w: 254, h: 64 }, // 15
-                { w: 276, h: 72 }, // 16
-                { w: 208, h: 72 }, // 17
-                { w: 204, h: 78 }, // 18
-                { w: 204, h: 72 }, // 19
-                { w: 244, h: 72 }, // 20
-                { w: 272, h: 72 }, // 21
-                { w: 270, h: 72 }, // 22
-                { w: 235, h: 72 }, // 23
-                { w: 276, h: 72 }, // 24
-                { w: 222, h: 72 }, // 25
-                { w: 220, h: 72 }, // 26
-                { w: 350, h: 64 }, // 27
-                { w: 360, h: 64 }, // 28
-                { w: 284, h: 72 }, // 29
-                { w: 218, h: 72 }  // 30
+            // Exact SVG coordinate dimensions exported from artwork
+            const quoteSVGDimensions = [
+                {"i": 1, "w": 339.1, "h": 122.8},
+                {"i": 2, "w": 365.2, "h": 84.8},
+                {"i": 3, "w": 320.1, "h": 116.5},
+                {"i": 4, "w": 232.7, "h": 42.7},
+                {"i": 5, "w": 337.0, "h": 84.9},
+                {"i": 6, "w": 144.6, "h": 44.2},
+                {"i": 7, "w": 255.9, "h": 82.3},
+                {"i": 8, "w": 467.1, "h": 127.0},
+                {"i": 9, "w": 439.0, "h": 79.0},
+                {"i": 10, "w": 340.5, "h": 123.5},
+                {"i": 11, "w": 497.1, "h": 82.5},
+                {"i": 12, "w": 538.3, "h": 168.0},
+                {"i": 13, "w": 526.5, "h": 124.6},
+                {"i": 14, "w": 454.2, "h": 93.2},
+                {"i": 15, "w": 481.3, "h": 86.6},
+                {"i": 16, "w": 421.2, "h": 87.3},
+                {"i": 17, "w": 397.4, "h": 118.4},
+                {"i": 18, "w": 347.1, "h": 120.2},
+                {"i": 19, "w": 395.9, "h": 120.4},
+                {"i": 20, "w": 478.1, "h": 116.0},
+                {"i": 21, "w": 364.6, "h": 77.1},
+                {"i": 22, "w": 372.0, "h": 79.4},
+                {"i": 23, "w": 482.1, "h": 121.9},
+                {"i": 24, "w": 378.2, "h": 78.3},
+                {"i": 25, "w": 452.6, "h": 123.1},
+                {"i": 26, "w": 280.4, "h": 76.9},
+                {"i": 27, "w": 334.0, "h": 39.3},
+                {"i": 28, "w": 420.5, "h": 37.6},
+                {"i": 29, "w": 411.3, "h": 82.2},
+                {"i": 30, "w": 427.0, "h": 118.8}
             ];
 
             // Generate list of 30 quote-photo pairs (1.0 to 30.0)
             const TOTAL_ITEMS = 30;
             const items = [];
             for (let i = 1; i <= TOTAL_ITEMS; i++) {
-                const shape = quoteShapes[i - 1] || { w: 240, h: 72 };
+                const dim = quoteSVGDimensions[i - 1];
                 items.push({
                     number: i,
                     photo: `Quote Photos/MaM26 Stockport Quote Photo ${i}.0.webp`,
                     quote: `Quotes/MaM26 Stockport Quote ${i}.0.svg`,
-                    badgeW: shape.w,
-                    badgeH: shape.h
+                    w: dim.w,
+                    h: dim.h
                 });
             }
 
@@ -619,6 +658,7 @@
             const quoteA = document.getElementById('quote-layer-a');
             const quoteB = document.getElementById('quote-layer-b');
             const quoteBadge = document.getElementById('quote-badge');
+            const quoteContentArea = document.getElementById('quote-content-area');
             const counterCurrent = document.getElementById('counter-current');
             const counterTotal = document.getElementById('counter-total');
             const progressBar = document.getElementById('progress-bar');
@@ -639,20 +679,49 @@
             let elapsed = 0;
             let timerInterval = null;
 
-            // Apply badge size and color dynamically
-            function applyBadgeStyle(index) {
+            // Constant scale factor maintains identical letter font size across all quotes!
+            function getScaleFactor() {
+                const screenW = window.innerWidth;
+                if (screenW <= 600) return 0.48;
+                if (screenW <= 950) return 0.52;
+                return 0.58;
+            }
+
+            // Apply badge size and color dynamically to hug each quote
+            function applyBadgeStyle(index, targetQuoteEl) {
                 const colorObj = BRAND_COLORS[index % BRAND_COLORS.length];
                 const item = items[index];
-                
+                const scale = getScaleFactor();
+                const isMobile = window.innerWidth <= 600;
+
+                // Color updates
                 quoteBadge.style.borderColor = colorObj.border;
                 quoteBadge.style.boxShadow = `0 12px 30px ${colorObj.shadow}`;
                 progressBar.style.background = colorObj.border;
 
-                const isMobile = window.innerWidth <= 600;
-                const scale = isMobile ? 0.88 : 1;
-                
-                quoteBadge.style.width = Math.round(item.badgeW * scale) + 'px';
-                quoteBadge.style.height = Math.round(item.badgeH * scale) + 'px';
+                // 1:1 consistent rendered dimensions of quote image
+                const renderedW = Math.round(item.w * scale);
+                const renderedH = Math.round(item.h * scale);
+
+                if (targetQuoteEl) {
+                    targetQuoteEl.style.width = renderedW + 'px';
+                    targetQuoteEl.style.height = renderedH + 'px';
+                }
+
+                // Minimum content width matches the prompt "What was your favourite bit?"
+                const minPromptWidth = isMobile ? 180 : 205;
+                const contentAreaW = Math.max(minPromptWidth, renderedW);
+                const contentAreaH = renderedH;
+
+                quoteContentArea.style.width = contentAreaW + 'px';
+                quoteContentArea.style.height = contentAreaH + 'px';
+
+                // Badge size = content area + generous padding
+                const padX = isMobile ? 32 : 48;
+                const padY = isMobile ? 48 : 58;
+
+                quoteBadge.style.width = (contentAreaW + padX) + 'px';
+                quoteBadge.style.height = (contentAreaH + padY) + 'px';
             }
 
             // Initial load
@@ -660,7 +729,7 @@
             quoteA.src = items[0].quote;
             photoA.classList.add('active');
             quoteA.classList.add('active');
-            applyBadgeStyle(0);
+            applyBadgeStyle(0, quoteA);
 
             // Preload next images in background for instant responsiveness
             function preloadItems(fromIdx) {
@@ -709,7 +778,7 @@
                 activeQuote.classList.remove('active');
 
                 // Morph badge shape and color to fit new quote
-                applyBadgeStyle(currentIndex);
+                applyBadgeStyle(currentIndex, nextQuote);
 
                 // 3. Staggered entrance: Quote appears over the logo first, then Photo fades in
                 setTimeout(() => {
@@ -797,7 +866,8 @@
 
             // Re-adjust badge scale on screen resize
             window.addEventListener('resize', () => {
-                applyBadgeStyle(currentIndex);
+                const activeQuote = currentLayer === 'A' ? quoteA : quoteB;
+                applyBadgeStyle(currentIndex, activeQuote);
             });
 
             // Progress bar and automatic chilled rotation loop
