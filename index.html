@@ -39,7 +39,7 @@
         .site-header {
             width: 100%;
             background: #ffffff;
-            padding: 1.25rem 1.5rem;
+            padding: 1.1rem 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -59,7 +59,7 @@
         }
 
         .header-main-img {
-            max-height: 75px;
+            max-height: 72px;
             width: auto;
             max-width: 90%;
             object-fit: contain;
@@ -70,7 +70,7 @@
         .hero-section {
             position: relative;
             background: linear-gradient(135deg, #fff2d7 0%, #e3f8fc 50%, #ffe9f0 100%);
-            padding: 4rem 2rem 5rem 2rem;
+            padding: 3.5rem 2rem 4.5rem 2rem;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -108,26 +108,36 @@
         .hero-container {
             position: relative;
             z-index: 1;
-            max-width: 1250px;
+            max-width: 1200px;
             width: 100%;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3.5rem;
             align-items: center;
         }
 
-        /* Hero Left: Main Logo */
+        /* Hero Left: Main Logo + Overlapping Quote */
         .hero-logo-col {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1rem;
+            padding: 0.5rem;
         }
 
-        .hero-logo-col img {
+        .logo-quote-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            max-width: 520px;
+            max-width: 410px; /* 20% smaller than previous 520px */
+            margin: 0 auto;
+        }
+
+        .hero-main-logo {
+            width: 100%;
             height: auto;
             display: block;
             filter: drop-shadow(0 15px 35px rgba(51, 42, 124, 0.12));
@@ -139,11 +149,67 @@
                 transform: translateY(0) scale(1);
             }
             100% {
-                transform: translateY(-8px) scale(1.015);
+                transform: translateY(-6px) scale(1.012);
             }
         }
 
-        /* Hero Right: Animated Showcase */
+        /* Quote Stage: Overlaps the bottom 10% of the main logo */
+        .quote-stage {
+            position: absolute;
+            bottom: -2%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 390px;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .quote-badge {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid var(--mam-yellow);
+            border-radius: 18px;
+            padding: 0.65rem 1.25rem;
+            box-shadow: 0 12px 30px rgba(51, 42, 124, 0.16);
+            width: 95%;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            pointer-events: auto;
+        }
+
+        .quote-layer {
+            position: absolute;
+            max-width: 90%;
+            max-height: 65px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateY(14px) scale(0.95);
+            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+            display: block;
+        }
+
+        .quote-layer.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .quote-layer.exiting {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.97);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+
+        /* Hero Right: Photo Showcase */
         .hero-showcase-col {
             display: flex;
             justify-content: center;
@@ -157,9 +223,9 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.95);
             border-radius: 24px;
-            padding: 1.5rem 1.5rem 1.25rem 1.5rem;
+            padding: 1.25rem 1.25rem 1rem 1.25rem;
             box-shadow: 0 25px 60px rgba(51, 42, 124, 0.14);
-            max-width: 460px;
+            max-width: 440px;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -208,49 +274,13 @@
             transition: opacity 0.65s ease, transform 0.65s ease;
         }
 
-        /* Quote Stage */
-        .quote-stage {
-            width: 100%;
-            min-height: 85px;
-            margin-top: 1.25rem;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.25rem 0.5rem;
-        }
-
-        .quote-layer {
-            position: absolute;
-            max-width: 92%;
-            max-height: 80px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            opacity: 0;
-            transform: translateY(16px) scale(0.95);
-            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
-            display: block;
-        }
-
-        .quote-layer.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .quote-layer.exiting {
-            opacity: 0;
-            transform: translateY(-10px) scale(0.97);
-            transition: opacity 0.45s ease, transform 0.45s ease;
-        }
-
         /* Showcase Controls & Progress */
         .showcase-footer {
             margin-top: 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 0.75rem;
+            padding-top: 0.65rem;
             border-top: 1px solid rgba(51, 42, 124, 0.08);
         }
 
@@ -382,59 +412,85 @@
         /* Responsive Breakpoints */
         @media (max-width: 950px) {
             .hero-section {
-                padding: 3rem 1.5rem 4rem 1.5rem;
+                padding: 2.75rem 1.5rem 3.5rem 1.5rem;
             }
 
             .hero-container {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 3rem;
             }
 
-            .hero-logo-col img {
-                max-width: 380px;
+            .logo-quote-wrapper {
+                max-width: 320px; /* 20% smaller */
+            }
+
+            .quote-stage {
+                max-width: 310px;
+                bottom: -4%;
+            }
+
+            .quote-badge {
+                min-height: 70px;
+                padding: 0.5rem 1rem;
+            }
+
+            .quote-layer {
+                max-height: 55px;
             }
 
             .showcase-card {
-                max-width: 400px;
+                max-width: 390px;
             }
         }
 
         @media (max-width: 600px) {
             .site-header {
-                padding: 1rem;
+                padding: 0.85rem 1rem;
             }
 
             .header-main-img {
-                max-height: 52px;
+                max-height: 48px;
             }
 
             .hero-section {
-                padding: 2.5rem 1rem 3.5rem 1rem;
+                padding: 1.75rem 1rem 2.75rem 1rem;
             }
 
-            .hero-logo-col img {
-                max-width: 320px;
+            .hero-container {
+                gap: 2.5rem;
             }
 
-            .showcase-card {
-                padding: 1.15rem 1.15rem 1rem 1.15rem;
-                border-radius: 20px;
+            .logo-quote-wrapper {
+                max-width: 255px; /* 20% smaller so photo is prominently above the fold */
             }
 
             .quote-stage {
-                min-height: 70px;
+                max-width: 250px;
+                bottom: -5%;
+            }
+
+            .quote-badge {
+                min-height: 60px;
+                padding: 0.4rem 0.85rem;
+                border-radius: 14px;
             }
 
             .quote-layer {
-                max-height: 65px;
+                max-height: 48px;
+            }
+
+            .showcase-card {
+                padding: 1rem 1rem 0.85rem 1rem;
+                border-radius: 18px;
+                max-width: 340px;
             }
 
             .vibes-section {
-                padding: 2.5rem 1rem;
+                padding: 2.25rem 1rem;
             }
 
             .sponsors-section {
-                padding: 3.5rem 1rem 4rem 1rem;
+                padding: 3rem 1rem 3.5rem 1rem;
             }
         }
     </style>
@@ -453,12 +509,22 @@
         <section class="hero-section">
             <div class="hero-container">
                 
-                <!-- Left: Main logo.svg -->
+                <!-- Left: Main logo.svg with Overlapping Quote (covering bottom 10%) -->
                 <div class="hero-logo-col">
-                    <img src="Logos and GFX/Main logo.svg" alt="Move a Mile Stockport" class="hero-main-logo">
+                    <div class="logo-quote-wrapper">
+                        <img src="Logos and GFX/Main logo.svg" alt="Move a Mile Stockport" class="hero-main-logo">
+                        
+                        <!-- Dynamic quote badge sitting over the bottom 10% of the main logo -->
+                        <div class="quote-stage" id="quote-stage">
+                            <div class="quote-badge">
+                                <img id="quote-layer-a" class="quote-layer active" src="" alt="Move a Mile Event Quote">
+                                <img id="quote-layer-b" class="quote-layer" src="" alt="Move a Mile Event Quote">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Right: Animated Photos and Quotes -->
+                <!-- Right: Photo Showcase (sitting comfortably and cleanly on desktop) -->
                 <div class="hero-showcase-col">
                     <div class="showcase-card" id="showcase-card">
                         
@@ -468,20 +534,14 @@
                             <img id="photo-layer-b" class="photo-layer" src="" alt="Move a Mile Event Photo">
                         </div>
 
-                        <!-- Quote Stage (sitting directly underneath photo) -->
-                        <div class="quote-stage" id="quote-stage">
-                            <img id="quote-layer-a" class="quote-layer active" src="" alt="Move a Mile Event Quote">
-                            <img id="quote-layer-b" class="quote-layer" src="" alt="Move a Mile Event Quote">
-                        </div>
-
                         <!-- Footer Controls & Progress Bar -->
                         <div class="showcase-footer">
                             <div class="controls-group">
-                                <button class="showcase-btn" id="btn-prev" aria-label="Previous quote">&#10094;</button>
+                                <button class="showcase-btn" id="btn-prev" aria-label="Previous photo and quote">&#10094;</button>
                                 <div class="showcase-counter">
                                     <span id="counter-current">1</span> / <span id="counter-total">30</span>
                                 </div>
-                                <button class="showcase-btn" id="btn-next" aria-label="Next quote">&#10095;</button>
+                                <button class="showcase-btn" id="btn-next" aria-label="Next photo and quote">&#10095;</button>
                             </div>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar-fill" id="progress-bar"></div>
@@ -600,7 +660,7 @@
                 activeQuote.classList.add('exiting');
                 activeQuote.classList.remove('active');
 
-                // 3. Staggered entrance: Quote appears first with subtle rise, then Photo fades in
+                // 3. Staggered entrance: Quote appears over the logo first, then Photo fades in
                 setTimeout(() => {
                     nextQuote.classList.remove('exiting');
                     nextQuote.classList.add('active');
