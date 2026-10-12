@@ -59,7 +59,7 @@
         }
 
         .header-main-img {
-            max-height: 72px;
+            max-height: 70px;
             width: auto;
             max-width: 90%;
             object-fit: contain;
@@ -77,7 +77,7 @@
             align-items: center;
         }
 
-        /* Background ambient orbs */
+        /* Ambient background blurs */
         .hero-section::before,
         .hero-section::after {
             content: '';
@@ -108,7 +108,7 @@
         .hero-container {
             position: relative;
             z-index: 1;
-            max-width: 1200px;
+            max-width: 1180px;
             width: 100%;
             margin: 0 auto;
             display: grid;
@@ -117,7 +117,7 @@
             align-items: center;
         }
 
-        /* Hero Left: Main Logo + Overlapping Quote */
+        /* Hero Left: Main Logo + Adaptive Overlapping Quote */
         .hero-logo-col {
             display: flex;
             justify-content: center;
@@ -132,7 +132,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 410px; /* 20% smaller than previous 520px */
+            max-width: 370px; /* 10% smaller than 410px */
             margin: 0 auto;
         }
 
@@ -153,14 +153,13 @@
             }
         }
 
-        /* Quote Stage: Overlaps the bottom 10% of the main logo */
+        /* Quote Stage: Lowered so it covers less of the logo rim */
         .quote-stage {
             position: absolute;
-            bottom: -2%;
+            bottom: -22px; /* Covers just the bottom rim of the logo */
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            max-width: 390px;
             z-index: 10;
             display: flex;
             justify-content: center;
@@ -168,33 +167,38 @@
             pointer-events: none;
         }
 
+        /* Dynamic Quote Badge: Reshapes to fit quote with generous padding and color changing outline */
         .quote-badge {
             background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 2px solid var(--mam-yellow);
-            border-radius: 18px;
-            padding: 0.65rem 1.25rem;
-            box-shadow: 0 12px 30px rgba(51, 42, 124, 0.16);
-            width: 95%;
-            min-height: 80px;
+            border: 2.5px solid var(--mam-yellow);
+            border-radius: 20px;
+            padding: 0.9rem 1.6rem;
+            box-shadow: 0 12px 30px rgba(252, 183, 20, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             pointer-events: auto;
+            box-sizing: border-box;
+            transition: width 0.45s cubic-bezier(0.2, 0.9, 0.3, 1),
+                        height 0.45s cubic-bezier(0.2, 0.9, 0.3, 1),
+                        border-color 0.45s ease,
+                        box-shadow 0.45s ease;
+            max-width: 95vw;
         }
 
         .quote-layer {
             position: absolute;
-            max-width: 90%;
-            max-height: 65px;
+            max-width: calc(100% - 2.4rem);
+            max-height: calc(100% - 1.2rem);
             width: auto;
             height: auto;
             object-fit: contain;
             opacity: 0;
-            transform: translateY(14px) scale(0.95);
-            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+            transform: translateY(12px) scale(0.95);
+            transition: opacity 0.55s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.65s cubic-bezier(0.2, 0.9, 0.3, 1);
             display: block;
         }
 
@@ -205,8 +209,8 @@
 
         .quote-layer.exiting {
             opacity: 0;
-            transform: translateY(-10px) scale(0.97);
-            transition: opacity 0.45s ease, transform 0.45s ease;
+            transform: translateY(-8px) scale(0.97);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         /* Hero Right: Photo Showcase */
@@ -344,9 +348,9 @@
         .progress-bar-fill {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, var(--mam-pink-dark), var(--mam-yellow));
+            background: var(--mam-yellow);
             border-radius: 99px;
-            transition: width 0.1s linear;
+            transition: width 0.1s linear, background-color 0.4s ease;
         }
 
         /* Stockport Vibes Section */
@@ -417,25 +421,15 @@
 
             .hero-container {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 3.25rem;
             }
 
             .logo-quote-wrapper {
-                max-width: 320px; /* 20% smaller */
+                max-width: 290px; /* 10% smaller */
             }
 
             .quote-stage {
-                max-width: 310px;
-                bottom: -4%;
-            }
-
-            .quote-badge {
-                min-height: 70px;
-                padding: 0.5rem 1rem;
-            }
-
-            .quote-layer {
-                max-height: 55px;
+                bottom: -20px;
             }
 
             .showcase-card {
@@ -453,36 +447,25 @@
             }
 
             .hero-section {
-                padding: 1.75rem 1rem 2.75rem 1rem;
+                padding: 1.5rem 1rem 2.5rem 1rem;
             }
 
             .hero-container {
-                gap: 2.5rem;
+                gap: 2.75rem;
             }
 
             .logo-quote-wrapper {
-                max-width: 255px; /* 20% smaller so photo is prominently above the fold */
+                max-width: 230px; /* 10% smaller so photo is easily above fold on mobile */
             }
 
             .quote-stage {
-                max-width: 250px;
-                bottom: -5%;
-            }
-
-            .quote-badge {
-                min-height: 60px;
-                padding: 0.4rem 0.85rem;
-                border-radius: 14px;
-            }
-
-            .quote-layer {
-                max-height: 48px;
+                bottom: -16px;
             }
 
             .showcase-card {
                 padding: 1rem 1rem 0.85rem 1rem;
                 border-radius: 18px;
-                max-width: 340px;
+                max-width: 330px;
             }
 
             .vibes-section {
@@ -509,14 +492,14 @@
         <section class="hero-section">
             <div class="hero-container">
                 
-                <!-- Left: Main logo.svg with Overlapping Quote (covering bottom 10%) -->
+                <!-- Left: Main logo.svg with Overlapping Reshaping Quote Badge -->
                 <div class="hero-logo-col">
                     <div class="logo-quote-wrapper">
                         <img src="Logos and GFX/Main logo.svg" alt="Move a Mile Stockport" class="hero-main-logo">
                         
-                        <!-- Dynamic quote badge sitting over the bottom 10% of the main logo -->
+                        <!-- Dynamic quote stage: sits just on the bottom rim of the main logo -->
                         <div class="quote-stage" id="quote-stage">
-                            <div class="quote-badge">
+                            <div class="quote-badge" id="quote-badge">
                                 <img id="quote-layer-a" class="quote-layer active" src="" alt="Move a Mile Event Quote">
                                 <img id="quote-layer-b" class="quote-layer" src="" alt="Move a Mile Event Quote">
                             </div>
@@ -572,14 +555,61 @@
     <!-- Animation & Showcase Script -->
     <script>
         (function() {
+            // Brand colors for cycling quote badge outlines
+            const BRAND_COLORS = [
+                { border: '#FCB714', shadow: 'rgba(252, 183, 20, 0.28)' },  // Yellow
+                { border: '#CC356A', shadow: 'rgba(204, 53, 106, 0.28)' },  // Pink Dark
+                { border: '#00A3C5', shadow: 'rgba(0, 163, 197, 0.28)' },   // Blue
+                { border: '#332A7C', shadow: 'rgba(51, 42, 124, 0.28)' },   // Purple
+                { border: '#F27188', shadow: 'rgba(242, 113, 136, 0.28)' }, // Pink Light
+                { border: '#afa4d0', shadow: 'rgba(175, 164, 208, 0.35)' }  // Lavender
+            ];
+
+            // Quote shape data: aspect ratios and calculated badge dimensions (with generous padding)
+            const quoteShapes = [
+                { w: 196, h: 78 }, // 1
+                { w: 250, h: 72 }, // 2
+                { w: 195, h: 78 }, // 3
+                { w: 305, h: 72 }, // 4
+                { w: 236, h: 72 }, // 5
+                { w: 204, h: 72 }, // 6
+                { w: 215, h: 78 }, // 7
+                { w: 222, h: 72 }, // 8
+                { w: 254, h: 64 }, // 9
+                { w: 195, h: 78 }, // 10
+                { w: 270, h: 64 }, // 11
+                { w: 200, h: 72 }, // 12
+                { w: 248, h: 72 }, // 13
+                { w: 278, h: 72 }, // 14
+                { w: 254, h: 64 }, // 15
+                { w: 276, h: 72 }, // 16
+                { w: 208, h: 72 }, // 17
+                { w: 204, h: 78 }, // 18
+                { w: 204, h: 72 }, // 19
+                { w: 244, h: 72 }, // 20
+                { w: 272, h: 72 }, // 21
+                { w: 270, h: 72 }, // 22
+                { w: 235, h: 72 }, // 23
+                { w: 276, h: 72 }, // 24
+                { w: 222, h: 72 }, // 25
+                { w: 220, h: 72 }, // 26
+                { w: 350, h: 64 }, // 27
+                { w: 360, h: 64 }, // 28
+                { w: 284, h: 72 }, // 29
+                { w: 218, h: 72 }  // 30
+            ];
+
             // Generate list of 30 quote-photo pairs (1.0 to 30.0)
             const TOTAL_ITEMS = 30;
             const items = [];
             for (let i = 1; i <= TOTAL_ITEMS; i++) {
+                const shape = quoteShapes[i - 1] || { w: 240, h: 72 };
                 items.push({
                     number: i,
                     photo: `Quote Photos/MaM26 Stockport Quote Photo ${i}.0.webp`,
-                    quote: `Quotes/MaM26 Stockport Quote ${i}.0.svg`
+                    quote: `Quotes/MaM26 Stockport Quote ${i}.0.svg`,
+                    badgeW: shape.w,
+                    badgeH: shape.h
                 });
             }
 
@@ -588,6 +618,7 @@
             const photoB = document.getElementById('photo-layer-b');
             const quoteA = document.getElementById('quote-layer-a');
             const quoteB = document.getElementById('quote-layer-b');
+            const quoteBadge = document.getElementById('quote-badge');
             const counterCurrent = document.getElementById('counter-current');
             const counterTotal = document.getElementById('counter-total');
             const progressBar = document.getElementById('progress-bar');
@@ -608,11 +639,28 @@
             let elapsed = 0;
             let timerInterval = null;
 
+            // Apply badge size and color dynamically
+            function applyBadgeStyle(index) {
+                const colorObj = BRAND_COLORS[index % BRAND_COLORS.length];
+                const item = items[index];
+                
+                quoteBadge.style.borderColor = colorObj.border;
+                quoteBadge.style.boxShadow = `0 12px 30px ${colorObj.shadow}`;
+                progressBar.style.background = colorObj.border;
+
+                const isMobile = window.innerWidth <= 600;
+                const scale = isMobile ? 0.88 : 1;
+                
+                quoteBadge.style.width = Math.round(item.badgeW * scale) + 'px';
+                quoteBadge.style.height = Math.round(item.badgeH * scale) + 'px';
+            }
+
             // Initial load
             photoA.src = items[0].photo;
             quoteA.src = items[0].quote;
             photoA.classList.add('active');
             quoteA.classList.add('active');
+            applyBadgeStyle(0);
 
             // Preload next images in background for instant responsiveness
             function preloadItems(fromIdx) {
@@ -653,12 +701,15 @@
                 nextQuote.classList.remove('active', 'exiting');
 
                 // 2. Chilled dynamic choreography:
-                // First exit outgoing elements smoothly
+                // Exit outgoing elements smoothly
                 activePhoto.classList.add('exiting');
                 activePhoto.classList.remove('active');
 
                 activeQuote.classList.add('exiting');
                 activeQuote.classList.remove('active');
+
+                // Morph badge shape and color to fit new quote
+                applyBadgeStyle(currentIndex);
 
                 // 3. Staggered entrance: Quote appears over the logo first, then Photo fades in
                 setTimeout(() => {
@@ -742,6 +793,11 @@
                     prevItem();
                 }
                 isSwiping = false;
+            });
+
+            // Re-adjust badge scale on screen resize
+            window.addEventListener('resize', () => {
+                applyBadgeStyle(currentIndex);
             });
 
             // Progress bar and automatic chilled rotation loop
