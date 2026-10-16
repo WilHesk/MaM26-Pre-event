@@ -801,59 +801,6 @@
             box-shadow: 0 4px 12px rgba(252, 183, 20, 0.35);
         }
 
-        /* Voice Note Auto-Transcriber Bar */
-        .voice-note-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 0.55rem;
-            padding: 0.65rem 0.9rem;
-            background: linear-gradient(90deg, #f3f0fa 0%, #eef9fc 100%);
-            border-radius: 14px;
-            border: 1px dashed rgba(51, 42, 124, 0.25);
-        }
-
-        .voice-btn {
-            display: inline-flex;
-            align-items: center;
-            background: var(--mam-purple);
-            color: #ffffff;
-            border: none;
-            padding: 0.5rem 1.15rem;
-            border-radius: 99px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(51, 42, 124, 0.18);
-        }
-
-        .voice-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(51, 42, 124, 0.25);
-        }
-
-        .voice-btn.recording {
-            background: var(--mam-pink-dark);
-            animation: pulseRecord 1.4s infinite;
-        }
-
-        @keyframes pulseRecord {
-            0% { box-shadow: 0 0 0 0 rgba(204, 53, 106, 0.55); }
-            70% { box-shadow: 0 0 0 12px rgba(204, 53, 106, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(204, 53, 106, 0); }
-        }
-
-        .voice-status {
-            font-size: 0.8rem;
-            color: #554b70;
-            flex: 1;
-            min-width: 180px;
-        }
-
         /* Team-Only Fields */
         .team-only-fields {
             display: none;
@@ -1259,57 +1206,34 @@
                             </label>
                             <div class="capacity-pills">
                                 <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Artist / Creative Workshop">
-                                    <span>Artist / Workshop</span>
+                                    <input type="checkbox" name="capacity_item" value="Activity or Service Provider">
+                                    <span>Activity or Service Provider</span>
                                 </label>
                                 <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Music / DJ / Performer">
-                                    <span>Music / DJ / Performer</span>
+                                    <input type="checkbox" name="capacity_item" value="Local Business or Organisation">
+                                    <span>Local Business or Organisation</span>
                                 </label>
                                 <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Skate / Movement / Sport">
-                                    <span>Skate / Movement</span>
+                                    <input type="checkbox" name="capacity_item" value="Volunteer">
+                                    <span>Volunteer</span>
                                 </label>
                                 <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Local Business / Venue">
-                                    <span>Local Business / Venue</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Food & Drink">
-                                    <span>Food &amp; Drink</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Sponsor / Funder">
-                                    <span>Sponsor / Funder</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Volunteer / Steward">
-                                    <span>Volunteer / Help on the Day</span>
+                                    <input type="checkbox" name="capacity_item" value="Sponsor/Funder">
+                                    <span>Sponsor/Funder</span>
                                 </label>
                                 <label class="capacity-pill">
                                     <input type="checkbox" name="capacity_item" value="Other">
-                                    <span>Something Else</span>
+                                    <span>Other</span>
                                 </label>
                             </div>
                         </div>
 
-                        <!-- Notes & Voice-to-Text Transcription (No Icons) -->
+                        <!-- Notes & Conversation Summary (No Icons) -->
                         <div class="form-group" id="notes-group">
                             <label class="form-label" for="conversation_notes">
                                 <span id="label-notes-heading">Tell us a bit about how you'd like to be involved</span>
-                                <span class="optional">Type or use voice note</span>
+                                <span class="optional">Optional</span>
                             </label>
-
-                            <!-- Voice-to-Text Recorder Bar -->
-                            <div class="voice-note-bar" id="voice-note-bar">
-                                <button type="button" class="voice-btn" id="voice-record-btn">
-                                    <span id="voice-btn-text">Dictate Voice Note</span>
-                                </button>
-                                <div class="voice-status" id="voice-status">
-                                    Tap to speak — your voice note will be transcribed automatically below.
-                                </div>
-                            </div>
-
                             <textarea class="form-textarea" id="conversation_notes" name="notes_and_summary" maxlength="2500" placeholder="Ideas, services offered, or summary of your chat..."></textarea>
                         </div>
 
@@ -1681,7 +1605,7 @@
         })();
 
         // =========================================================================
-        // CRM Form, Mode Switcher, Location Picker & Voice-to-Text Auto-Transcriber
+        // CRM Form, Mode Switcher & Location Picker
         // =========================================================================
         (function() {
             const crmCard = document.getElementById('crm-card');
@@ -1707,7 +1631,6 @@
             const labelNotesHeading = document.getElementById('label-notes-heading');
             const submitBtn = document.getElementById('crm-submit-btn');
             const notesTextarea = document.getElementById('conversation_notes');
-            const emailInput = document.getElementById('contact_email');
             const locationInput = document.getElementById('contact_location');
             const locationChips = document.querySelectorAll('.location-chip');
 
@@ -1751,11 +1674,11 @@
                     labelUpdatesTitle.textContent = 'Wants Event Updates';
                     labelUpdatesDesc.textContent = 'They want to hear when the next Move a Mile is happening.';
                     labelInvolvedTitle.textContent = 'Keen to Get Involved';
-                    labelInvolvedDesc.textContent = 'They offered skills, a venue, sponsorship, performance, or help.';
+                    labelInvolvedDesc.textContent = 'They offered activities/services, local business support, volunteering, or sponsorship.';
                     labelContactName.textContent = 'Their Name *';
                     labelCapacityText.textContent = 'What capacity can they help in?';
-                    labelNotesHeading.textContent = 'Conversation Summary / Voice Note';
-                    notesTextarea.placeholder = 'Tap "Dictate Voice Note" above to speak a quick summary of who you met and what you chatted about, or type here...';
+                    labelNotesHeading.textContent = 'Conversation Summary / Notes';
+                    notesTextarea.placeholder = 'Quick summary of who you met and what you chatted about...';
                     gdprConsentText.textContent = 'I confirm this person explicitly gave permission for The Coping CIC & GRIT Studios CIC to store their email and details to contact them about Move a Mile.';
                     submitBtn.textContent = 'Log Contact to CRM';
                 } else {
@@ -1769,7 +1692,7 @@
                     labelUpdatesTitle.textContent = 'Keep Me Posted';
                     labelUpdatesDesc.textContent = 'Just let me know when and where the next Move a Mile event is happening.';
                     labelInvolvedTitle.textContent = 'Get Involved / Help Out';
-                    labelInvolvedDesc.textContent = "I'd love to contribute, perform, run a workshop, sponsor, or volunteer.";
+                    labelInvolvedDesc.textContent = "I'd love to provide an activity/service, get involved as a local business/organisation, volunteer, or sponsor.";
                     labelContactName.textContent = 'Your Name *';
                     labelCapacityText.textContent = 'How would you like to be involved?';
                     labelNotesHeading.textContent = "Tell us a bit about how you'd like to be involved";
@@ -1791,98 +1714,9 @@
                 document.getElementById('get-involved').scrollIntoView({ behavior: 'smooth' });
             }
 
-            // --- Built-in Browser Voice-to-Text Transcription (Web Speech API) ---
-            const voiceBtn = document.getElementById('voice-record-btn');
-            const voiceBtnText = document.getElementById('voice-btn-text');
-            const voiceStatus = document.getElementById('voice-status');
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-            let recognition = null;
-            let isRecording = false;
-            let baseTextBeforeRecording = '';
-
-            if (SpeechRecognition) {
-                recognition = new SpeechRecognition();
-                recognition.lang = 'en-GB';
-                recognition.continuous = true;
-                recognition.interimResults = true;
-
-                recognition.onstart = () => {
-                    isRecording = true;
-                    baseTextBeforeRecording = notesTextarea.value ? notesTextarea.value.trim() + ' ' : '';
-                    voiceBtn.classList.add('recording');
-                    voiceBtnText.textContent = 'Stop Recording';
-                    voiceStatus.textContent = 'Listening... speak naturally now.';
-                };
-
-                recognition.onresult = (event) => {
-                    let interimTranscript = '';
-                    let finalTranscript = '';
-
-                    for (let i = 0; i < event.results.length; i++) {
-                        const transcriptPiece = event.results[i][0].transcript;
-                        if (event.results[i].isFinal) {
-                            finalTranscript += transcriptPiece + ' ';
-                        } else {
-                            interimTranscript += transcriptPiece;
-                        }
-                    }
-
-                    const combinedText = (baseTextBeforeRecording + finalTranscript + interimTranscript).trim();
-                    notesTextarea.value = combinedText;
-
-                    // Smart helper: if email field is empty and user spoke an email address, auto-fill it
-                    if (!emailInput.value) {
-                        const normalizedSpoken = combinedText
-                            .replace(/\s+at\s+/gi, '@')
-                            .replace(/\s+dot\s+/gi, '.');
-                        const emailMatch = normalizedSpoken.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-                        if (emailMatch) {
-                            emailInput.value = emailMatch[0].toLowerCase();
-                        }
-                    }
-                };
-
-                recognition.onerror = (event) => {
-                    isRecording = false;
-                    voiceBtn.classList.remove('recording');
-                    voiceBtnText.textContent = 'Dictate Voice Note';
-                    voiceStatus.textContent = 'Voice note paused (' + event.error + '). Tap to try again.';
-                };
-
-                recognition.onend = () => {
-                    isRecording = false;
-                    voiceBtn.classList.remove('recording');
-                    voiceBtnText.textContent = 'Dictate Voice Note';
-                    voiceStatus.textContent = 'Voice note transcribed! You can edit the text below or tap to add more.';
-                };
-
-                voiceBtn.addEventListener('click', () => {
-                    if (isRecording) {
-                        recognition.stop();
-                    } else {
-                        try {
-                            recognition.start();
-                        } catch (e) {
-                            recognition.stop();
-                        }
-                    }
-                });
-            } else {
-                // Fallback if browser doesn't support live Web Speech API
-                voiceStatus.textContent = 'Tip: Tap the text box below and use your phone keyboard microphone to dictate a voice note.';
-                voiceBtn.addEventListener('click', () => {
-                    notesTextarea.focus();
-                });
-            }
-
             // --- Form Submission to Netlify Built-in Database ---
             crmForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-
-                if (isRecording && recognition) {
-                    recognition.stop();
-                }
 
                 // Record ISO 8601 timestamp for UK GDPR consent audit trail
                 consentTimestampInput.value = new Date().toISOString();
