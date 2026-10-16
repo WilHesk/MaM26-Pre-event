@@ -1167,64 +1167,67 @@
                             </div>
                         </div>
 
-                        <!-- Location / City Field + Organisation -->
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="contact_location" id="label-contact-location">
-                                    <span>Location / City *</span>
-                                    <span class="optional">Where are you based?</span>
-                                </label>
-                                <input type="text" class="form-input" id="contact_location" name="location" autocomplete="address-level2" maxlength="120" placeholder="e.g. Stockport, Salford, or another city" required>
-                                <div class="location-quick-picks" aria-label="Quick select city">
-                                    <button type="button" class="location-chip" data-city="Stockport">Stockport</button>
-                                    <button type="button" class="location-chip" data-city="Salford">Salford</button>
-                                    <button type="button" class="location-chip" data-city="Manchester">Manchester</button>
+                        <!-- Extra Fields Only Shown for "Get Involved / Help Out" -->
+                        <div id="involved-only-fields">
+                            <!-- Location / City Field + Organisation -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="contact_location" id="label-contact-location">
+                                        <span>Location / City *</span>
+                                        <span class="optional">Where are you based?</span>
+                                    </label>
+                                    <input type="text" class="form-input" id="contact_location" name="location" autocomplete="address-level2" maxlength="120" placeholder="e.g. Stockport, Salford, or another city" required>
+                                    <div class="location-quick-picks" aria-label="Quick select city">
+                                        <button type="button" class="location-chip" data-city="Stockport">Stockport</button>
+                                        <button type="button" class="location-chip" data-city="Salford">Salford</button>
+                                        <button type="button" class="location-chip" data-city="Manchester">Manchester</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="contact_org">
+                                        <span>Organisation / Project</span>
+                                        <span class="optional">Optional</span>
+                                    </label>
+                                    <input type="text" class="form-input" id="contact_org" name="organisation" autocomplete="organization" maxlength="140" placeholder="Business, collective, band, etc.">
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="form-label" for="contact_org">
-                                    <span>Organisation / Project</span>
+                                <label class="form-label" for="contact_phone">
+                                    <span>Phone or Social Handle</span>
                                     <span class="optional">Optional</span>
                                 </label>
-                                <input type="text" class="form-input" id="contact_org" name="organisation" autocomplete="organization" maxlength="140" placeholder="Business, collective, band, etc.">
+                                <input type="text" class="form-input" id="contact_phone" name="phone_or_social" maxlength="120" placeholder="Phone number or @handle">
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="form-label" for="contact_phone">
-                                <span>Phone or Social Handle</span>
-                                <span class="optional">Optional</span>
-                            </label>
-                            <input type="text" class="form-input" id="contact_phone" name="phone_or_social" maxlength="120" placeholder="Phone number or @handle">
-                        </div>
-
-                        <!-- Capacity / Role Selection (No Icons) -->
-                        <div class="capacity-section" id="capacity-section">
-                            <label class="form-label" id="label-capacity-heading">
-                                <span id="label-capacity-text">How would you like to be involved?</span>
-                                <span class="optional">Select all that apply</span>
-                            </label>
-                            <div class="capacity-pills">
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Activity or Service Provider">
-                                    <span>Activity or Service Provider</span>
+                            <!-- Capacity / Role Selection (No Icons) -->
+                            <div class="capacity-section" id="capacity-section">
+                                <label class="form-label" id="label-capacity-heading">
+                                    <span id="label-capacity-text">How would you like to be involved?</span>
+                                    <span class="optional">Select all that apply</span>
                                 </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Local Business or Organisation">
-                                    <span>Local Business or Organisation</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Volunteer">
-                                    <span>Volunteer</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Sponsor/Funder">
-                                    <span>Sponsor/Funder</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Other">
-                                    <span>Other</span>
-                                </label>
+                                <div class="capacity-pills">
+                                    <label class="capacity-pill">
+                                        <input type="checkbox" name="capacity_item" value="Activity or Service Provider">
+                                        <span>Activity or Service Provider</span>
+                                    </label>
+                                    <label class="capacity-pill">
+                                        <input type="checkbox" name="capacity_item" value="Local Business or Organisation">
+                                        <span>Local Business or Organisation</span>
+                                    </label>
+                                    <label class="capacity-pill">
+                                        <input type="checkbox" name="capacity_item" value="Volunteer">
+                                        <span>Volunteer</span>
+                                    </label>
+                                    <label class="capacity-pill">
+                                        <input type="checkbox" name="capacity_item" value="Sponsor/Funder">
+                                        <span>Sponsor/Funder</span>
+                                    </label>
+                                    <label class="capacity-pill">
+                                        <input type="checkbox" name="capacity_item" value="Other">
+                                        <span>Other</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
@@ -1618,7 +1621,9 @@
             const consentTimestampInput = document.getElementById('consent_timestamp_input');
             const interestUpdates = document.getElementById('interest-updates');
             const interestInvolved = document.getElementById('interest-involved');
+            const involvedOnlyFields = document.getElementById('involved-only-fields');
             const capacitySection = document.getElementById('capacity-section');
+            const notesGroup = document.getElementById('notes-group');
             const gdprConsentText = document.getElementById('gdpr-consent-text');
 
             // Dynamic Labels (using safe textContent only)
@@ -1654,10 +1659,17 @@
 
             function updateFormVisibility() {
                 const wantsInvolved = interestInvolved.checked;
-                if (wantsInvolved || isTeamMode) {
+                if (wantsInvolved) {
+                    involvedOnlyFields.style.display = 'block';
                     capacitySection.style.display = 'block';
+                    notesGroup.style.display = 'block';
+                    locationInput.required = true;
                 } else {
+                    // Keep Me Posted: only ask for Name & Email (plus optional team notes if in Team Mode)
+                    involvedOnlyFields.style.display = 'none';
                     capacitySection.style.display = 'none';
+                    notesGroup.style.display = isTeamMode ? 'block' : 'none';
+                    locationInput.required = false;
                 }
             }
 
@@ -1707,6 +1719,7 @@
             modeTeamBtn.addEventListener('click', () => setMode(true));
             interestUpdates.addEventListener('change', updateFormVisibility);
             interestInvolved.addEventListener('change', updateFormVisibility);
+            updateFormVisibility();
 
             // Auto-switch to Team Mode if URL has #team
             if (window.location.hash === '#team') {
