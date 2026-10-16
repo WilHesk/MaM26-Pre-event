@@ -1128,8 +1128,7 @@
                     </div>
 
                     <!-- Netlify Built-in CRM Form (Free Tier, Stored Permanently, CSV Exportable) -->
-                    <form name="mam-crm-contacts" id="mam-crm-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="mam-crm-contacts">
+                    <form name="mam-crm-contacts" id="mam-crm-form" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
                         <input type="hidden" name="entry_mode" id="entry_mode_input" value="Self Sign-Up">
                         <input type="hidden" name="capacities_selected" id="capacities_selected_input" value="">
                         <input type="hidden" name="consent_timestamp" id="consent_timestamp_input" value="">
@@ -1740,6 +1739,7 @@
                 capacitiesInput.value = checkedCapacities.length > 0 ? checkedCapacities.join(', ') : 'None specified';
 
                 const formData = new FormData(crmForm);
+                formData.set('form-name', 'mam-crm-contacts');
                 submitBtn.disabled = true;
                 submitBtn.textContent = 'Saving...';
 
