@@ -451,16 +451,77 @@
             transition: width 0.1s linear, background-color 0.4s ease;
         }
 
-        /* ==========================================================================
-           Get Involved & Stay in the Loop (CRM Capture Section)
-           ========================================================================== */
-        .connect-section {
-            position: relative;
-            background: linear-gradient(180deg, #ffffff 0%, #f6f3fb 100%);
-            padding: 4.5rem 1.5rem 5rem 1.5rem;
+        /* Stockport Vibes Section */
+        .vibes-section {
+            background-color: #afa4d0;
+            padding: 3.5rem 2rem;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
+        }
+
+        .vibes-container {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vibes-img {
+            width: 100%;
+            max-width: 1100px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
+        }
+
+        /* Sponsors Section */
+        .sponsors-section {
+            background-color: #ffffff;
+            padding: 4.5rem 2rem 4.5rem 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sponsors-container {
+            max-width: 1250px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sponsors-img {
+            width: 100%;
+            max-width: 1050px;
+            height: auto;
+            display: block;
+            opacity: 0.95;
+            transition: opacity 0.3s ease;
+        }
+
+        .sponsors-img:hover {
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           Get Involved & Stay in the Loop (CRM Capture Section - Below Sponsors)
+           ========================================================================== */
+        .connect-section {
+            position: relative;
+            background: linear-gradient(180deg, #f6f3fb 0%, #ede8f7 100%);
+            padding: 4.5rem 1.5rem 5.5rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(51, 42, 124, 0.08);
         }
 
         .connect-container {
@@ -528,13 +589,10 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.88rem;
             font-weight: 600;
-            padding: 0.55rem 1.25rem;
+            padding: 0.55rem 1.35rem;
             border-radius: 99px;
             cursor: pointer;
             transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
         }
 
         .mode-btn.active {
@@ -594,9 +652,6 @@
             font-weight: 700;
             font-size: 1rem;
             color: var(--mam-purple);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .interest-desc {
@@ -664,6 +719,34 @@
             min-height: 110px;
             resize: vertical;
             line-height: 1.5;
+        }
+
+        /* Quick City / Location Suggestions */
+        .location-quick-picks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.25rem;
+        }
+
+        .location-chip {
+            background: #f3f0fa;
+            border: 1px solid #d7d0e8;
+            color: var(--mam-purple);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+
+        .location-chip:hover,
+        .location-chip.active {
+            background: var(--mam-purple);
+            color: #ffffff;
+            border-color: var(--mam-purple);
         }
 
         /* Capacity / Role Pills */
@@ -735,11 +818,10 @@
         .voice-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.55rem;
             background: var(--mam-purple);
             color: #ffffff;
             border: none;
-            padding: 0.5rem 1.05rem;
+            padding: 0.5rem 1.15rem;
             border-radius: 99px;
             font-family: 'Poppins', sans-serif;
             font-size: 0.85rem;
@@ -786,20 +868,30 @@
             display: block;
         }
 
+        /* GDPR Consent Box */
+        .gdpr-consent-box {
+            margin-bottom: 1.4rem;
+            padding: 0.95rem 1.15rem;
+            background: #faf9fd;
+            border: 1.5px solid #e5e0f2;
+            border-radius: 14px;
+        }
+
         .permission-check {
             display: flex;
             align-items: flex-start;
             gap: 0.65rem;
-            font-size: 0.86rem;
+            font-size: 0.84rem;
             color: var(--text-dark);
             cursor: pointer;
-            margin-top: 0.75rem;
+            line-height: 1.45;
         }
 
         .permission-check input {
-            margin-top: 0.25rem;
+            margin-top: 0.22rem;
             width: 18px;
             height: 18px;
+            flex-shrink: 0;
             accent-color: var(--mam-purple);
             cursor: pointer;
         }
@@ -843,19 +935,6 @@
             display: block;
         }
 
-        .crm-success-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: #e6f9ed;
-            color: #15803d;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem auto;
-        }
-
         .crm-success h3 {
             font-family: 'Archivo Black', sans-serif;
             color: var(--mam-purple);
@@ -884,66 +963,6 @@
         .reset-form-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(252, 183, 20, 0.35);
-        }
-
-        /* Stockport Vibes Section */
-        .vibes-section {
-            background-color: #afa4d0;
-            padding: 3.5rem 2rem;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .vibes-container {
-            max-width: 1300px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .vibes-img {
-            width: 100%;
-            max-width: 1100px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
-        }
-
-        /* Sponsors Section */
-        .sponsors-section {
-            background-color: #ffffff;
-            padding: 4.5rem 2rem 5rem 2rem;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .sponsors-container {
-            max-width: 1250px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .sponsors-img {
-            width: 100%;
-            max-width: 1050px;
-            height: auto;
-            display: block;
-            opacity: 0.95;
-            transition: opacity 0.3s ease;
-        }
-
-        .sponsors-img:hover {
-            opacity: 1;
         }
 
         /* Responsive Breakpoints (Stacked Hero) */
@@ -1028,8 +1047,16 @@
                 max-width: 335px;
             }
 
+            .vibes-section {
+                padding: 2.25rem 1rem;
+            }
+
+            .sponsors-section {
+                padding: 3rem 1rem 3rem 1rem;
+            }
+
             .connect-section {
-                padding: 3rem 1rem 3.5rem 1rem;
+                padding: 3rem 1rem 4rem 1rem;
             }
 
             .crm-card {
@@ -1045,14 +1072,6 @@
             .mode-btn {
                 font-size: 0.8rem;
                 padding: 0.5rem 0.9rem;
-            }
-
-            .vibes-section {
-                padding: 2.25rem 1rem;
-            }
-
-            .sponsors-section {
-                padding: 3rem 1rem 3.5rem 1rem;
             }
         }
     </style>
@@ -1126,175 +1145,6 @@
             </div>
         </section>
 
-        <!-- Stay in the Loop & Get Involved CRM Section -->
-        <section class="connect-section" id="get-involved">
-            <div class="connect-container">
-                <div class="connect-header">
-                    <h2 class="connect-title">Be Part of the Next Mile</h2>
-                    <p class="connect-subtitle">Want to hear when the next Move a Mile is happening, or keen to get involved and bring something to the route? Drop your details below.</p>
-                </div>
-
-                <div class="crm-card" id="crm-card">
-                    <!-- Toggle between Public Sign-Up and Team Field Note Mode -->
-                    <div class="mode-toggle-wrap">
-                        <div class="mode-toggle" role="tablist" aria-label="Sign up mode">
-                            <button type="button" class="mode-btn active" id="mode-self-btn" role="tab" aria-selected="true">
-                                &#9995; I'm signing myself up
-                            </button>
-                            <button type="button" class="mode-btn" id="mode-team-btn" role="tab" aria-selected="false">
-                                &#127908; Adding someone I met
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Netlify Built-in CRM Form (Free Tier, Stored Permanently, CSV Exportable) -->
-                    <form name="mam-crm-contacts" id="mam-crm-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="mam-crm-contacts">
-                        <input type="hidden" name="entry_mode" id="entry_mode_input" value="Self Sign-Up">
-                        <input type="hidden" name="capacities_selected" id="capacities_selected_input" value="">
-                        <p style="display:none;">
-                            <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-                        </p>
-
-                        <!-- Interest Category Selection -->
-                        <div class="interest-grid">
-                            <label class="interest-option">
-                                <input type="radio" name="interest_type" value="Hear About Next Event" id="interest-updates">
-                                <div class="interest-box">
-                                    <div class="interest-title" id="label-updates-title">&#128276; Keep Me Posted</div>
-                                    <div class="interest-desc" id="label-updates-desc">Just let me know when &amp; where the next Move a Mile event is happening.</div>
-                                </div>
-                            </label>
-                            <label class="interest-option">
-                                <input type="radio" name="interest_type" value="Get Involved / Help Out" id="interest-involved" checked>
-                                <div class="interest-box">
-                                    <div class="interest-title" id="label-involved-title">&#129309; Get Involved / Help Out</div>
-                                    <div class="interest-desc" id="label-involved-desc">I'd love to contribute, perform, run a workshop, sponsor, or volunteer.</div>
-                                </div>
-                            </label>
-                        </div>
-
-                        <!-- Contact Details -->
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="contact_name" id="label-contact-name">Your Name *</label>
-                                <input type="text" class="form-input" id="contact_name" name="name" placeholder="e.g. Alex Taylor" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="contact_email" id="label-contact-email">Email Address *</label>
-                                <input type="email" class="form-input" id="contact_email" name="email" placeholder="e.g. alex@example.com" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label" for="contact_org">
-                                    <span>Organisation / Project</span>
-                                    <span class="optional">Optional</span>
-                                </label>
-                                <input type="text" class="form-input" id="contact_org" name="organisation" placeholder="Business, collective, band, etc.">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="contact_phone">
-                                    <span>Phone or Instagram</span>
-                                    <span class="optional">Optional</span>
-                                </label>
-                                <input type="text" class="form-input" id="contact_phone" name="phone_or_social" placeholder="Phone number or @handle">
-                            </div>
-                        </div>
-
-                        <!-- Capacity / Role Selection (Shown when 'Get Involved' is selected or in Team mode) -->
-                        <div class="capacity-section" id="capacity-section">
-                            <label class="form-label" id="label-capacity-heading">
-                                <span>How would you like to be involved?</span>
-                                <span class="optional">Select all that apply</span>
-                            </label>
-                            <div class="capacity-pills">
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Artist / Creative Workshop">
-                                    <span>&#127912; Artist / Workshop</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Music / DJ / Performer">
-                                    <span>&#127925; Music / DJ / Performer</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Skate / Movement / Sport">
-                                    <span>&#128761; Skate / Movement</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Local Business / Venue">
-                                    <span>&#127978; Local Business / Venue</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Food & Drink">
-                                    <span>&#9749; Food &amp; Drink</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Sponsor / Funder">
-                                    <span>&#11088; Sponsor / Funder</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Volunteer / Steward">
-                                    <span>&#128155; Volunteer / Help on the Day</span>
-                                </label>
-                                <label class="capacity-pill">
-                                    <input type="checkbox" name="capacity_item" value="Other">
-                                    <span>&#10024; Something Else</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Notes & Voice-to-Text Transcription -->
-                        <div class="form-group" id="notes-group">
-                            <label class="form-label" for="conversation_notes">
-                                <span id="label-notes-heading">Tell us a bit about how you'd like to be involved</span>
-                                <span class="optional">Type or use voice note</span>
-                            </label>
-
-                            <!-- Voice-to-Text Recorder Bar -->
-                            <div class="voice-note-bar" id="voice-note-bar">
-                                <button type="button" class="voice-btn" id="voice-record-btn">
-                                    <span id="voice-btn-icon">&#127908;</span>
-                                    <span id="voice-btn-text">Dictate Voice Note</span>
-                                </button>
-                                <div class="voice-status" id="voice-status">
-                                    Tap to speak — your voice note will be transcribed automatically below.
-                                </div>
-                            </div>
-
-                            <textarea class="form-textarea" id="conversation_notes" name="notes_and_summary" placeholder="Ideas, services offered, or summary of your chat..."></textarea>
-                        </div>
-
-                        <!-- Team-Only Metadata (Who logged it + Permission checkbox) -->
-                        <div class="team-only-fields" id="team-only-fields">
-                            <div class="form-group" style="margin-bottom: 0.5rem;">
-                                <label class="form-label" for="added_by">
-                                    <span>Logged by (Your Name)</span>
-                                    <span class="optional">So we remember who met them</span>
-                                </label>
-                                <input type="text" class="form-input" id="added_by" name="logged_by" placeholder="e.g. Wil / Sam / GRIT team">
-                            </div>
-                            <label class="permission-check">
-                                <input type="checkbox" name="permission_confirmed" id="permission_confirmed" value="Yes - Permission Granted">
-                                <span>I confirm this person gave permission for us to save their email &amp; details to contact them about Move a Mile.</span>
-                            </label>
-                        </div>
-
-                        <button type="submit" class="submit-btn" id="crm-submit-btn">Save My Details</button>
-                    </form>
-
-                    <!-- Confirmation Screen after Submit -->
-                    <div class="crm-success" id="crm-success">
-                        <div class="crm-success-icon">&#10003;</div>
-                        <h3 id="success-title">You're on the list!</h3>
-                        <p id="success-desc">Thanks for connecting with Move a Mile. Your details have been safely filed for the next event.</p>
-                        <button type="button" class="reset-form-btn" id="reset-form-btn">Add Another Person</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Stockport Vibes SVG on #afa4d0 background -->
         <section class="vibes-section">
             <div class="vibes-container">
@@ -1306,6 +1156,192 @@
         <section class="sponsors-section">
             <div class="sponsors-container">
                 <img src="Logos and GFX/Sponsors.webp" alt="Supported by our sponsors" class="sponsors-img">
+            </div>
+        </section>
+
+        <!-- Stay in the Loop & Get Involved CRM Section (Below Sponsors) -->
+        <section class="connect-section" id="get-involved">
+            <div class="connect-container">
+                <div class="connect-header">
+                    <h2 class="connect-title">Be Part of the Next Mile</h2>
+                    <p class="connect-subtitle">Want to hear when the next Move a Mile is happening, or keen to get involved and bring something to the route? Drop your details below.</p>
+                </div>
+
+                <div class="crm-card" id="crm-card">
+                    <!-- Toggle between Public Sign-Up and Team Field Note Mode (No Icons) -->
+                    <div class="mode-toggle-wrap">
+                        <div class="mode-toggle" role="tablist" aria-label="Sign up mode">
+                            <button type="button" class="mode-btn active" id="mode-self-btn" role="tab" aria-selected="true">
+                                I'm signing myself up
+                            </button>
+                            <button type="button" class="mode-btn" id="mode-team-btn" role="tab" aria-selected="false">
+                                Adding someone I met
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Netlify Built-in CRM Form (Free Tier, Stored Permanently, CSV Exportable) -->
+                    <form name="mam-crm-contacts" id="mam-crm-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="mam-crm-contacts">
+                        <input type="hidden" name="entry_mode" id="entry_mode_input" value="Self Sign-Up">
+                        <input type="hidden" name="capacities_selected" id="capacities_selected_input" value="">
+                        <input type="hidden" name="consent_timestamp" id="consent_timestamp_input" value="">
+                        <p style="display:none;">
+                            <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                        </p>
+
+                        <!-- Interest Category Selection (No Icons) -->
+                        <div class="interest-grid">
+                            <label class="interest-option">
+                                <input type="radio" name="interest_type" value="Hear About Next Event" id="interest-updates">
+                                <div class="interest-box">
+                                    <div class="interest-title" id="label-updates-title">Keep Me Posted</div>
+                                    <div class="interest-desc" id="label-updates-desc">Just let me know when and where the next Move a Mile event is happening.</div>
+                                </div>
+                            </label>
+                            <label class="interest-option">
+                                <input type="radio" name="interest_type" value="Get Involved / Help Out" id="interest-involved" checked>
+                                <div class="interest-box">
+                                    <div class="interest-title" id="label-involved-title">Get Involved / Help Out</div>
+                                    <div class="interest-desc" id="label-involved-desc">I'd love to contribute, perform, run a workshop, sponsor, or volunteer.</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Contact Details -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="contact_name" id="label-contact-name">Your Name *</label>
+                                <input type="text" class="form-input" id="contact_name" name="name" autocomplete="name" maxlength="120" placeholder="e.g. Alex Taylor" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="contact_email" id="label-contact-email">Email Address *</label>
+                                <input type="email" class="form-input" id="contact_email" name="email" autocomplete="email" maxlength="160" placeholder="e.g. alex@example.com" required>
+                            </div>
+                        </div>
+
+                        <!-- Location / City Field + Organisation -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="contact_location" id="label-contact-location">
+                                    <span>Location / City *</span>
+                                    <span class="optional">Where are you based?</span>
+                                </label>
+                                <input type="text" class="form-input" id="contact_location" name="location" autocomplete="address-level2" maxlength="120" placeholder="e.g. Stockport, Salford, or another city" required>
+                                <div class="location-quick-picks" aria-label="Quick select city">
+                                    <button type="button" class="location-chip" data-city="Stockport">Stockport</button>
+                                    <button type="button" class="location-chip" data-city="Salford">Salford</button>
+                                    <button type="button" class="location-chip" data-city="Manchester">Manchester</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="contact_org">
+                                    <span>Organisation / Project</span>
+                                    <span class="optional">Optional</span>
+                                </label>
+                                <input type="text" class="form-input" id="contact_org" name="organisation" autocomplete="organization" maxlength="140" placeholder="Business, collective, band, etc.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="contact_phone">
+                                <span>Phone or Social Handle</span>
+                                <span class="optional">Optional</span>
+                            </label>
+                            <input type="text" class="form-input" id="contact_phone" name="phone_or_social" maxlength="120" placeholder="Phone number or @handle">
+                        </div>
+
+                        <!-- Capacity / Role Selection (No Icons) -->
+                        <div class="capacity-section" id="capacity-section">
+                            <label class="form-label" id="label-capacity-heading">
+                                <span id="label-capacity-text">How would you like to be involved?</span>
+                                <span class="optional">Select all that apply</span>
+                            </label>
+                            <div class="capacity-pills">
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Artist / Creative Workshop">
+                                    <span>Artist / Workshop</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Music / DJ / Performer">
+                                    <span>Music / DJ / Performer</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Skate / Movement / Sport">
+                                    <span>Skate / Movement</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Local Business / Venue">
+                                    <span>Local Business / Venue</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Food & Drink">
+                                    <span>Food &amp; Drink</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Sponsor / Funder">
+                                    <span>Sponsor / Funder</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Volunteer / Steward">
+                                    <span>Volunteer / Help on the Day</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Other">
+                                    <span>Something Else</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Notes & Voice-to-Text Transcription (No Icons) -->
+                        <div class="form-group" id="notes-group">
+                            <label class="form-label" for="conversation_notes">
+                                <span id="label-notes-heading">Tell us a bit about how you'd like to be involved</span>
+                                <span class="optional">Type or use voice note</span>
+                            </label>
+
+                            <!-- Voice-to-Text Recorder Bar -->
+                            <div class="voice-note-bar" id="voice-note-bar">
+                                <button type="button" class="voice-btn" id="voice-record-btn">
+                                    <span id="voice-btn-text">Dictate Voice Note</span>
+                                </button>
+                                <div class="voice-status" id="voice-status">
+                                    Tap to speak — your voice note will be transcribed automatically below.
+                                </div>
+                            </div>
+
+                            <textarea class="form-textarea" id="conversation_notes" name="notes_and_summary" maxlength="2500" placeholder="Ideas, services offered, or summary of your chat..."></textarea>
+                        </div>
+
+                        <!-- Team-Only Metadata (Who logged it) -->
+                        <div class="team-only-fields" id="team-only-fields">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="added_by">
+                                    <span>Logged by (Your Name)</span>
+                                    <span class="optional">So we remember who met them</span>
+                                </label>
+                                <input type="text" class="form-input" id="added_by" name="logged_by" maxlength="100" placeholder="e.g. Wil / Sam / GRIT team">
+                            </div>
+                        </div>
+
+                        <!-- Explicit UK GDPR Consent Checkbox (Required in both modes) -->
+                        <div class="gdpr-consent-box">
+                            <label class="permission-check">
+                                <input type="checkbox" name="gdpr_consent" id="gdpr_consent" value="Explicit Consent Granted" required>
+                                <span id="gdpr-consent-text">I consent to The Coping CIC &amp; GRIT Studios CIC securely storing my details to contact me about Move a Mile events. My data will never be shared or sold to third parties, and I can request its deletion at any time.</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="crm-submit-btn">Save My Details</button>
+                    </form>
+
+                    <!-- Confirmation Screen after Submit (No Icons) -->
+                    <div class="crm-success" id="crm-success">
+                        <h3 id="success-title">Details Saved</h3>
+                        <p id="success-desc">Thanks for connecting with Move a Mile. Your details have been safely filed for future events.</p>
+                        <button type="button" class="reset-form-btn" id="reset-form-btn">Add Another Person</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -1645,7 +1681,7 @@
         })();
 
         // =========================================================================
-        // CRM Form, Mode Switcher & Voice-to-Text Auto-Transcriber
+        // CRM Form, Mode Switcher, Location Picker & Voice-to-Text Auto-Transcriber
         // =========================================================================
         (function() {
             const crmCard = document.getElementById('crm-card');
@@ -1655,24 +1691,43 @@
             const modeTeamBtn = document.getElementById('mode-team-btn');
             const entryModeInput = document.getElementById('entry_mode_input');
             const capacitiesInput = document.getElementById('capacities_selected_input');
+            const consentTimestampInput = document.getElementById('consent_timestamp_input');
             const interestUpdates = document.getElementById('interest-updates');
             const interestInvolved = document.getElementById('interest-involved');
             const capacitySection = document.getElementById('capacity-section');
-            const permissionCheckbox = document.getElementById('permission_confirmed');
+            const gdprConsentText = document.getElementById('gdpr-consent-text');
 
-            // Dynamic Labels
+            // Dynamic Labels (using safe textContent only)
             const labelUpdatesTitle = document.getElementById('label-updates-title');
             const labelUpdatesDesc = document.getElementById('label-updates-desc');
             const labelInvolvedTitle = document.getElementById('label-involved-title');
             const labelInvolvedDesc = document.getElementById('label-involved-desc');
             const labelContactName = document.getElementById('label-contact-name');
-            const labelCapacityHeading = document.getElementById('label-capacity-heading');
+            const labelCapacityText = document.getElementById('label-capacity-text');
             const labelNotesHeading = document.getElementById('label-notes-heading');
             const submitBtn = document.getElementById('crm-submit-btn');
             const notesTextarea = document.getElementById('conversation_notes');
             const emailInput = document.getElementById('contact_email');
+            const locationInput = document.getElementById('contact_location');
+            const locationChips = document.querySelectorAll('.location-chip');
 
             let isTeamMode = false;
+
+            // Quick-select city chips (Stockport, Salford, Manchester, or type any city)
+            locationChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const selectedCity = chip.getAttribute('data-city');
+                    locationInput.value = selectedCity;
+                    locationChips.forEach(c => c.classList.toggle('active', c === chip));
+                });
+            });
+
+            locationInput.addEventListener('input', () => {
+                const val = locationInput.value.trim().toLowerCase();
+                locationChips.forEach(c => {
+                    c.classList.toggle('active', c.getAttribute('data-city').toLowerCase() === val);
+                });
+            });
 
             function updateFormVisibility() {
                 const wantsInvolved = interestInvolved.checked;
@@ -1693,16 +1748,16 @@
                     modeSelfBtn.setAttribute('aria-selected', 'false');
                     entryModeInput.value = 'Team Field Note (Met in Person)';
 
-                    labelUpdatesTitle.innerHTML = '&#128276; Wants Event Updates';
+                    labelUpdatesTitle.textContent = 'Wants Event Updates';
                     labelUpdatesDesc.textContent = 'They want to hear when the next Move a Mile is happening.';
-                    labelInvolvedTitle.innerHTML = '&#129309; Keen to Get Involved';
+                    labelInvolvedTitle.textContent = 'Keen to Get Involved';
                     labelInvolvedDesc.textContent = 'They offered skills, a venue, sponsorship, performance, or help.';
                     labelContactName.textContent = 'Their Name *';
-                    labelCapacityHeading.innerHTML = '<span>What capacity can they help in?</span><span class="optional">Select all that apply</span>';
+                    labelCapacityText.textContent = 'What capacity can they help in?';
                     labelNotesHeading.textContent = 'Conversation Summary / Voice Note';
                     notesTextarea.placeholder = 'Tap "Dictate Voice Note" above to speak a quick summary of who you met and what you chatted about, or type here...';
+                    gdprConsentText.textContent = 'I confirm this person explicitly gave permission for The Coping CIC & GRIT Studios CIC to store their email and details to contact them about Move a Mile.';
                     submitBtn.textContent = 'Log Contact to CRM';
-                    permissionCheckbox.required = true;
                 } else {
                     crmCard.classList.remove('team-mode');
                     modeSelfBtn.classList.add('active');
@@ -1711,16 +1766,16 @@
                     modeTeamBtn.setAttribute('aria-selected', 'false');
                     entryModeInput.value = 'Self Sign-Up';
 
-                    labelUpdatesTitle.innerHTML = '&#128276; Keep Me Posted';
-                    labelUpdatesDesc.textContent = 'Just let me know when & where the next Move a Mile event is happening.';
-                    labelInvolvedTitle.innerHTML = '&#129309; Get Involved / Help Out';
+                    labelUpdatesTitle.textContent = 'Keep Me Posted';
+                    labelUpdatesDesc.textContent = 'Just let me know when and where the next Move a Mile event is happening.';
+                    labelInvolvedTitle.textContent = 'Get Involved / Help Out';
                     labelInvolvedDesc.textContent = "I'd love to contribute, perform, run a workshop, sponsor, or volunteer.";
                     labelContactName.textContent = 'Your Name *';
-                    labelCapacityHeading.innerHTML = '<span>How would you like to be involved?</span><span class="optional">Select all that apply</span>';
+                    labelCapacityText.textContent = 'How would you like to be involved?';
                     labelNotesHeading.textContent = "Tell us a bit about how you'd like to be involved";
                     notesTextarea.placeholder = 'Ideas, what you do, or how you would love to take part...';
+                    gdprConsentText.textContent = 'I consent to The Coping CIC & GRIT Studios CIC securely storing my details to contact me about Move a Mile events. My data will never be shared or sold to third parties, and I can request its deletion at any time.';
                     submitBtn.textContent = 'Save My Details';
-                    permissionCheckbox.required = false;
                 }
                 updateFormVisibility();
             }
@@ -1776,7 +1831,7 @@
                     const combinedText = (baseTextBeforeRecording + finalTranscript + interimTranscript).trim();
                     notesTextarea.value = combinedText;
 
-                    // Smart helper: if email field is empty and user spoke an email address, auto-fill it!
+                    // Smart helper: if email field is empty and user spoke an email address, auto-fill it
                     if (!emailInput.value) {
                         const normalizedSpoken = combinedText
                             .replace(/\s+at\s+/gi, '@')
@@ -1814,8 +1869,8 @@
                     }
                 });
             } else {
-                // Fallback if browser doesn't support live Web Speech API (users can still use native keyboard mic)
-                voiceStatus.textContent = 'Tip: Tap the text box below and use your phone keyboard microphone icon to dictate a voice note!';
+                // Fallback if browser doesn't support live Web Speech API
+                voiceStatus.textContent = 'Tip: Tap the text box below and use your phone keyboard microphone to dictate a voice note.';
                 voiceBtn.addEventListener('click', () => {
                     notesTextarea.focus();
                 });
@@ -1828,6 +1883,9 @@
                 if (isRecording && recognition) {
                     recognition.stop();
                 }
+
+                // Record ISO 8601 timestamp for UK GDPR consent audit trail
+                consentTimestampInput.value = new Date().toISOString();
 
                 // Collect all checked capacity pills into a clean comma-separated string
                 const checkedCapacities = Array.from(crmForm.querySelectorAll('input[name="capacity_item"]:checked'))
@@ -1848,7 +1906,6 @@
                     crmSuccess.classList.add('visible');
                 })
                 .catch((error) => {
-                    // Even when testing locally off-server, show confirmation preview
                     crmForm.style.display = 'none';
                     crmSuccess.classList.add('visible');
                 })
@@ -1861,6 +1918,7 @@
             // Reset button to quickly log another person
             document.getElementById('reset-form-btn').addEventListener('click', () => {
                 crmForm.reset();
+                locationChips.forEach(c => c.classList.remove('active'));
                 crmSuccess.classList.remove('visible');
                 crmForm.style.display = 'block';
                 setMode(isTeamMode);
