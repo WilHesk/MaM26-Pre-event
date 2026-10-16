@@ -70,7 +70,7 @@
         .hero-section {
             position: relative;
             background: linear-gradient(135deg, #fff2d7 0%, #e3f8fc 50%, #ffe9f0 100%);
-            padding: 3.5rem 2rem 5.5rem 2rem;
+            padding: 3rem 2rem 4rem 2rem;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -114,16 +114,17 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3.5rem;
-            align-items: center;
+            align-items: stretch;
         }
 
         /* Hero Left: Main Logo + Adaptive Overlapping Quote */
         .hero-logo-col {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 0.5rem;
-            margin-top: -3.75rem; /* Moved logo up to create ample space */
+            padding: 0.25rem 0.5rem;
+            min-height: 100%;
         }
 
         .logo-quote-wrapper {
@@ -131,15 +132,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             width: 100%;
-            max-width: 370px; /* 10% smaller */
+            height: 100%;
             margin: 0 auto;
         }
 
         .hero-main-logo {
             width: 100%;
-            height: auto;
+            max-width: 375px;
+            flex: 1 1 auto;
+            min-height: 360px;
+            object-fit: fill;
             display: block;
             filter: drop-shadow(0 15px 35px rgba(51, 42, 124, 0.12));
             animation: gentleBreathe 8s ease-in-out infinite alternate;
@@ -150,33 +154,32 @@
                 transform: translateY(0) scale(1);
             }
             100% {
-                transform: translateY(-6px) scale(1.012);
+                transform: translateY(-5px) scale(1.01);
             }
         }
 
-        /* Quote Stage: Anchored from top so maximum sized quotes cover only 5% of the logo */
+        /* Quote Stage: In flow, overlapping bottom 5% of the logo */
         .quote-stage {
-            position: absolute;
-            top: calc(100% - 17px); /* Top of badge is fixed at 17px overlap (5% of logo height) */
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            margin-top: -18px; /* Overlaps only ~5% of the logo height */
             z-index: 10;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            pointer-events: none;
             width: 100%;
+            min-height: 185px; /* Reserves space for tallest quote so layout stays rock solid */
+            pointer-events: none;
         }
 
-        /* Dynamic Quote Badge: Reshapes to fit quote with generous padding and color changing outline */
+        /* Dynamic Quote Badge: Bigger with generous internal padding and bold brand outline */
         .quote-badge {
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 2.5px solid var(--mam-yellow);
-            border-radius: 20px;
-            padding: 0.85rem 1.6rem 0.95rem 1.6rem;
-            box-shadow: 0 12px 30px rgba(252, 183, 20, 0.25);
+            border: 3.5px solid var(--mam-yellow);
+            border-radius: 24px;
+            padding: 1.35rem 2.25rem 1.5rem 2.25rem;
+            box-shadow: 0 16px 40px rgba(252, 183, 20, 0.28);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -193,14 +196,14 @@
         /* Prompt Text inside Quote Badge */
         .quote-prompt {
             font-family: 'Poppins', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: var(--mam-purple);
             text-align: center;
-            margin-bottom: 0.55rem;
+            margin-bottom: 0.85rem;
             letter-spacing: 0.3px;
             white-space: nowrap;
-            opacity: 0.9;
+            opacity: 0.92;
             user-select: none;
         }
 
@@ -437,27 +440,41 @@
             opacity: 1;
         }
 
-        /* Responsive Breakpoints */
+        /* Responsive Breakpoints (Stacked Hero) */
         @media (max-width: 950px) {
             .hero-section {
-                padding: 2.75rem 1.5rem 4rem 1.5rem;
+                padding: 2rem 1.5rem 3rem 1.5rem;
             }
 
             .hero-container {
                 grid-template-columns: 1fr;
-                gap: 3.25rem;
+                gap: 1.5rem;
+                align-items: center;
             }
 
             .hero-logo-col {
-                margin-top: -2.25rem;
+                min-height: auto;
             }
 
             .logo-quote-wrapper {
-                max-width: 290px;
+                height: auto;
+                justify-content: center;
+            }
+
+            .hero-main-logo {
+                max-width: 225px; /* Smaller when hero stacks */
+                min-height: 0;
+                height: auto;
+                object-fit: contain;
             }
 
             .quote-stage {
-                top: calc(100% - 14px);
+                margin-top: -11px; /* 5% overlap of 225px logo */
+                min-height: 155px;
+            }
+
+            .quote-badge {
+                padding: 1.15rem 1.85rem 1.25rem 1.85rem;
             }
 
             .showcase-card {
@@ -475,34 +492,37 @@
             }
 
             .hero-section {
-                padding: 1.5rem 1rem 3.5rem 1rem;
+                padding: 1.25rem 1rem 2.5rem 1rem;
             }
 
             .hero-container {
-                gap: 2.75rem;
+                gap: 1.25rem;
             }
 
-            .hero-logo-col {
-                margin-top: -1.25rem;
-            }
-
-            .logo-quote-wrapper {
-                max-width: 230px;
+            .hero-main-logo {
+                max-width: 175px; /* Compact on mobile so quote box and photo shine above fold */
             }
 
             .quote-stage {
-                top: calc(100% - 11px);
+                margin-top: -8px; /* 5% overlap of 175px logo */
+                min-height: 135px;
+            }
+
+            .quote-badge {
+                padding: 1rem 1.4rem 1.15rem 1.4rem;
+                border-radius: 20px;
+                border-width: 3px;
             }
 
             .quote-prompt {
-                font-size: 0.78rem;
-                margin-bottom: 0.45rem;
+                font-size: 0.85rem;
+                margin-bottom: 0.65rem;
             }
 
             .showcase-card {
                 padding: 1rem 1rem 0.85rem 1rem;
                 border-radius: 18px;
-                max-width: 330px;
+                max-width: 335px;
             }
 
             .vibes-section {
@@ -597,12 +617,12 @@
         (function() {
             // Brand colors for cycling quote badge outlines
             const BRAND_COLORS = [
-                { border: '#FCB714', shadow: 'rgba(252, 183, 20, 0.28)' },  // Yellow
-                { border: '#CC356A', shadow: 'rgba(204, 53, 106, 0.28)' },  // Pink Dark
-                { border: '#00A3C5', shadow: 'rgba(0, 163, 197, 0.28)' },   // Blue
-                { border: '#332A7C', shadow: 'rgba(51, 42, 124, 0.28)' },   // Purple
-                { border: '#F27188', shadow: 'rgba(242, 113, 136, 0.28)' }, // Pink Light
-                { border: '#afa4d0', shadow: 'rgba(175, 164, 208, 0.35)' }  // Lavender
+                { border: '#FCB714', shadow: 'rgba(252, 183, 20, 0.32)' },  // Yellow
+                { border: '#CC356A', shadow: 'rgba(204, 53, 106, 0.32)' },  // Pink Dark
+                { border: '#00A3C5', shadow: 'rgba(0, 163, 197, 0.32)' },   // Blue
+                { border: '#332A7C', shadow: 'rgba(51, 42, 124, 0.32)' },   // Purple
+                { border: '#F27188', shadow: 'rgba(242, 113, 136, 0.32)' }, // Pink Light
+                { border: '#afa4d0', shadow: 'rgba(175, 164, 208, 0.38)' }  // Lavender
             ];
 
             // Exact SVG coordinate dimensions exported from artwork
@@ -680,27 +700,41 @@
             let elapsed = 0;
             let timerInterval = null;
 
-            // Constant scale factor maintains identical letter font size across all quotes!
-            function getScaleFactor() {
+            // Base scale factor maintains consistent letter size across all quotes, scaled up so quotes stand out
+            function getBaseScaleFactor() {
                 const screenW = window.innerWidth;
-                if (screenW <= 600) return 0.48;
-                if (screenW <= 950) return 0.52;
-                return 0.58;
+                if (screenW <= 600) return 0.54;
+                if (screenW <= 950) return 0.62;
+                return 0.68;
             }
 
-            // Apply badge size and color dynamically to hug each quote
+            // Apply badge size and color dynamically with generous padding around the quote
             function applyBadgeStyle(index, targetQuoteEl) {
                 const colorObj = BRAND_COLORS[index % BRAND_COLORS.length];
                 const item = items[index];
-                const scale = getScaleFactor();
-                const isMobile = window.innerWidth <= 600;
+                const screenW = window.innerWidth;
+                const isMobile = screenW <= 600;
+                const isTablet = screenW > 600 && screenW <= 950;
+
+                // Generous internal padding around the quote inside the box
+                const padX = isMobile ? 56 : (isTablet ? 76 : 92);
+                const padY = isMobile ? 74 : (isTablet ? 86 : 96);
+
+                // Ensure the bigger box still fits comfortably on narrow mobile screens
+                const maxAllowedBadgeW = screenW - 28;
+                const maxAllowedQuoteW = maxAllowedBadgeW - padX;
+
+                let scale = getBaseScaleFactor();
+                if (item.w * scale > maxAllowedQuoteW) {
+                    scale = maxAllowedQuoteW / item.w;
+                }
 
                 // Color updates
                 quoteBadge.style.borderColor = colorObj.border;
-                quoteBadge.style.boxShadow = `0 12px 30px ${colorObj.shadow}`;
+                quoteBadge.style.boxShadow = `0 16px 40px ${colorObj.shadow}`;
                 progressBar.style.background = colorObj.border;
 
-                // 1:1 consistent rendered dimensions of quote image
+                // Consistent rendered dimensions of quote image
                 const renderedW = Math.round(item.w * scale);
                 const renderedH = Math.round(item.h * scale);
 
@@ -710,17 +744,14 @@
                 }
 
                 // Minimum content width matches the prompt "What was your favourite bit?"
-                const minPromptWidth = isMobile ? 180 : 205;
+                const minPromptWidth = isMobile ? 200 : 230;
                 const contentAreaW = Math.max(minPromptWidth, renderedW);
                 const contentAreaH = renderedH;
 
                 quoteContentArea.style.width = contentAreaW + 'px';
                 quoteContentArea.style.height = contentAreaH + 'px';
 
-                // Badge size = content area + generous padding
-                const padX = isMobile ? 32 : 48;
-                const padY = isMobile ? 48 : 58;
-
+                // Bigger badge size = content area + generous padding
                 quoteBadge.style.width = (contentAreaW + padX) + 'px';
                 quoteBadge.style.height = (contentAreaH + padY) + 'px';
             }
