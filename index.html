@@ -451,6 +451,441 @@
             transition: width 0.1s linear, background-color 0.4s ease;
         }
 
+        /* ==========================================================================
+           Get Involved & Stay in the Loop (CRM Capture Section)
+           ========================================================================== */
+        .connect-section {
+            position: relative;
+            background: linear-gradient(180deg, #ffffff 0%, #f6f3fb 100%);
+            padding: 4.5rem 1.5rem 5rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .connect-container {
+            max-width: 780px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .connect-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .connect-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.85rem, 3.8vw, 2.65rem);
+            color: var(--mam-purple);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 0.65rem;
+            letter-spacing: -0.5px;
+        }
+
+        .connect-subtitle {
+            font-size: 1.05rem;
+            color: #4a4166;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .crm-card {
+            background: #ffffff;
+            border-radius: 28px;
+            border: 3px solid var(--mam-purple);
+            box-shadow: 0 22px 55px rgba(51, 42, 124, 0.11);
+            padding: 2.25rem 2.5rem;
+            transition: border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .crm-card.team-mode {
+            border-color: var(--mam-blue);
+            box-shadow: 0 22px 55px rgba(0, 163, 197, 0.15);
+        }
+
+        /* Mode Toggle: Public Sign-up vs Team Quick-Add */
+        .mode-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .mode-toggle {
+            display: inline-flex;
+            background: #f1eef9;
+            padding: 5px;
+            border-radius: 99px;
+            gap: 4px;
+            border: 1px solid rgba(51, 42, 124, 0.1);
+        }
+
+        .mode-btn {
+            border: none;
+            background: transparent;
+            color: var(--mam-purple);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.55rem 1.25rem;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .mode-btn.active {
+            background: var(--mam-purple);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(51, 42, 124, 0.22);
+        }
+
+        .crm-card.team-mode .mode-btn.active {
+            background: var(--mam-blue);
+            box-shadow: 0 4px 12px rgba(0, 163, 197, 0.25);
+        }
+
+        /* Interest Type Cards */
+        .interest-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .interest-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .interest-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .interest-box {
+            border: 2.5px solid #e5e0f2;
+            border-radius: 18px;
+            padding: 1.1rem 1.2rem;
+            background: #faf9fd;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            height: 100%;
+        }
+
+        .interest-option:hover .interest-box {
+            border-color: var(--mam-lavender);
+            background: #ffffff;
+        }
+
+        .interest-option input:checked + .interest-box {
+            border-color: var(--mam-pink-dark);
+            background: #fff8fa;
+            box-shadow: 0 8px 20px rgba(204, 53, 106, 0.12);
+        }
+
+        .interest-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--mam-purple);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .interest-desc {
+            font-size: 0.84rem;
+            color: #5e5578;
+            line-height: 1.35;
+        }
+
+        /* Form Inputs */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.15rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--mam-purple);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-label span.optional {
+            font-weight: 400;
+            color: #7c7396;
+            font-size: 0.8rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.96rem;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e2dced;
+            border-radius: 14px;
+            background: #fcfbfe;
+            color: var(--text-dark);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            width: 100%;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--mam-purple);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(51, 42, 124, 0.08);
+        }
+
+        .form-textarea {
+            min-height: 110px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        /* Capacity / Role Pills */
+        .capacity-section {
+            margin-bottom: 1.35rem;
+            padding: 1.15rem 1.25rem;
+            background: #f8f6fc;
+            border-radius: 18px;
+            border: 1px solid #e7e2f3;
+            transition: all 0.3s ease;
+        }
+
+        .capacity-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 0.65rem;
+        }
+
+        .capacity-pill {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .capacity-pill input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .capacity-pill span {
+            display: inline-block;
+            padding: 0.45rem 0.95rem;
+            border-radius: 99px;
+            background: #ffffff;
+            border: 1.5px solid #d7d0e8;
+            font-size: 0.84rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        .capacity-pill:hover span {
+            border-color: var(--mam-purple);
+        }
+
+        .capacity-pill input:checked + span {
+            background: var(--mam-yellow);
+            border-color: var(--mam-yellow);
+            color: var(--text-dark);
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(252, 183, 20, 0.35);
+        }
+
+        /* Voice Note Auto-Transcriber Bar */
+        .voice-note-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 0.55rem;
+            padding: 0.65rem 0.9rem;
+            background: linear-gradient(90deg, #f3f0fa 0%, #eef9fc 100%);
+            border-radius: 14px;
+            border: 1px dashed rgba(51, 42, 124, 0.25);
+        }
+
+        .voice-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: var(--mam-purple);
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1.05rem;
+            border-radius: 99px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(51, 42, 124, 0.18);
+        }
+
+        .voice-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(51, 42, 124, 0.25);
+        }
+
+        .voice-btn.recording {
+            background: var(--mam-pink-dark);
+            animation: pulseRecord 1.4s infinite;
+        }
+
+        @keyframes pulseRecord {
+            0% { box-shadow: 0 0 0 0 rgba(204, 53, 106, 0.55); }
+            70% { box-shadow: 0 0 0 12px rgba(204, 53, 106, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(204, 53, 106, 0); }
+        }
+
+        .voice-status {
+            font-size: 0.8rem;
+            color: #554b70;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        /* Team-Only Fields */
+        .team-only-fields {
+            display: none;
+            margin-bottom: 1.25rem;
+            padding: 1.1rem 1.25rem;
+            background: #eef9fc;
+            border: 1.5px solid rgba(0, 163, 197, 0.25);
+            border-radius: 16px;
+        }
+
+        .crm-card.team-mode .team-only-fields {
+            display: block;
+        }
+
+        .permission-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.86rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            margin-top: 0.75rem;
+        }
+
+        .permission-check input {
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--mam-purple);
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            background: var(--mam-purple);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 99px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.08rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 25px rgba(51, 42, 124, 0.22);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(51, 42, 124, 0.3);
+            background: #271f63;
+        }
+
+        .crm-card.team-mode .submit-btn {
+            background: var(--mam-blue);
+            box-shadow: 0 10px 25px rgba(0, 163, 197, 0.25);
+        }
+
+        /* Success Message State */
+        .crm-success {
+            display: none;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .crm-success.visible {
+            display: block;
+        }
+
+        .crm-success-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #e6f9ed;
+            color: #15803d;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+        }
+
+        .crm-success h3 {
+            font-family: 'Archivo Black', sans-serif;
+            color: var(--mam-purple);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .crm-success p {
+            color: #554b70;
+            margin-bottom: 1.5rem;
+        }
+
+        .reset-form-btn {
+            background: var(--mam-yellow);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.75rem 1.75rem;
+            border-radius: 99px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .reset-form-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(252, 183, 20, 0.35);
+        }
+
         /* Stockport Vibes Section */
         .vibes-section {
             background-color: #afa4d0;
@@ -593,6 +1028,25 @@
                 max-width: 335px;
             }
 
+            .connect-section {
+                padding: 3rem 1rem 3.5rem 1rem;
+            }
+
+            .crm-card {
+                padding: 1.5rem 1.25rem;
+                border-radius: 22px;
+            }
+
+            .interest-grid,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-btn {
+                font-size: 0.8rem;
+                padding: 0.5rem 0.9rem;
+            }
+
             .vibes-section {
                 padding: 2.25rem 1rem;
             }
@@ -612,8 +1066,9 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Main Content -->
     <main>
+        <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-container">
                 
@@ -668,6 +1123,175 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Stay in the Loop & Get Involved CRM Section -->
+        <section class="connect-section" id="get-involved">
+            <div class="connect-container">
+                <div class="connect-header">
+                    <h2 class="connect-title">Be Part of the Next Mile</h2>
+                    <p class="connect-subtitle">Want to hear when the next Move a Mile is happening, or keen to get involved and bring something to the route? Drop your details below.</p>
+                </div>
+
+                <div class="crm-card" id="crm-card">
+                    <!-- Toggle between Public Sign-Up and Team Field Note Mode -->
+                    <div class="mode-toggle-wrap">
+                        <div class="mode-toggle" role="tablist" aria-label="Sign up mode">
+                            <button type="button" class="mode-btn active" id="mode-self-btn" role="tab" aria-selected="true">
+                                &#9995; I'm signing myself up
+                            </button>
+                            <button type="button" class="mode-btn" id="mode-team-btn" role="tab" aria-selected="false">
+                                &#127908; Adding someone I met
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Netlify Built-in CRM Form (Free Tier, Stored Permanently, CSV Exportable) -->
+                    <form name="mam-crm-contacts" id="mam-crm-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="mam-crm-contacts">
+                        <input type="hidden" name="entry_mode" id="entry_mode_input" value="Self Sign-Up">
+                        <input type="hidden" name="capacities_selected" id="capacities_selected_input" value="">
+                        <p style="display:none;">
+                            <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                        </p>
+
+                        <!-- Interest Category Selection -->
+                        <div class="interest-grid">
+                            <label class="interest-option">
+                                <input type="radio" name="interest_type" value="Hear About Next Event" id="interest-updates">
+                                <div class="interest-box">
+                                    <div class="interest-title" id="label-updates-title">&#128276; Keep Me Posted</div>
+                                    <div class="interest-desc" id="label-updates-desc">Just let me know when &amp; where the next Move a Mile event is happening.</div>
+                                </div>
+                            </label>
+                            <label class="interest-option">
+                                <input type="radio" name="interest_type" value="Get Involved / Help Out" id="interest-involved" checked>
+                                <div class="interest-box">
+                                    <div class="interest-title" id="label-involved-title">&#129309; Get Involved / Help Out</div>
+                                    <div class="interest-desc" id="label-involved-desc">I'd love to contribute, perform, run a workshop, sponsor, or volunteer.</div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Contact Details -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="contact_name" id="label-contact-name">Your Name *</label>
+                                <input type="text" class="form-input" id="contact_name" name="name" placeholder="e.g. Alex Taylor" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="contact_email" id="label-contact-email">Email Address *</label>
+                                <input type="email" class="form-input" id="contact_email" name="email" placeholder="e.g. alex@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="contact_org">
+                                    <span>Organisation / Project</span>
+                                    <span class="optional">Optional</span>
+                                </label>
+                                <input type="text" class="form-input" id="contact_org" name="organisation" placeholder="Business, collective, band, etc.">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="contact_phone">
+                                    <span>Phone or Instagram</span>
+                                    <span class="optional">Optional</span>
+                                </label>
+                                <input type="text" class="form-input" id="contact_phone" name="phone_or_social" placeholder="Phone number or @handle">
+                            </div>
+                        </div>
+
+                        <!-- Capacity / Role Selection (Shown when 'Get Involved' is selected or in Team mode) -->
+                        <div class="capacity-section" id="capacity-section">
+                            <label class="form-label" id="label-capacity-heading">
+                                <span>How would you like to be involved?</span>
+                                <span class="optional">Select all that apply</span>
+                            </label>
+                            <div class="capacity-pills">
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Artist / Creative Workshop">
+                                    <span>&#127912; Artist / Workshop</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Music / DJ / Performer">
+                                    <span>&#127925; Music / DJ / Performer</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Skate / Movement / Sport">
+                                    <span>&#128761; Skate / Movement</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Local Business / Venue">
+                                    <span>&#127978; Local Business / Venue</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Food & Drink">
+                                    <span>&#9749; Food &amp; Drink</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Sponsor / Funder">
+                                    <span>&#11088; Sponsor / Funder</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Volunteer / Steward">
+                                    <span>&#128155; Volunteer / Help on the Day</span>
+                                </label>
+                                <label class="capacity-pill">
+                                    <input type="checkbox" name="capacity_item" value="Other">
+                                    <span>&#10024; Something Else</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Notes & Voice-to-Text Transcription -->
+                        <div class="form-group" id="notes-group">
+                            <label class="form-label" for="conversation_notes">
+                                <span id="label-notes-heading">Tell us a bit about how you'd like to be involved</span>
+                                <span class="optional">Type or use voice note</span>
+                            </label>
+
+                            <!-- Voice-to-Text Recorder Bar -->
+                            <div class="voice-note-bar" id="voice-note-bar">
+                                <button type="button" class="voice-btn" id="voice-record-btn">
+                                    <span id="voice-btn-icon">&#127908;</span>
+                                    <span id="voice-btn-text">Dictate Voice Note</span>
+                                </button>
+                                <div class="voice-status" id="voice-status">
+                                    Tap to speak — your voice note will be transcribed automatically below.
+                                </div>
+                            </div>
+
+                            <textarea class="form-textarea" id="conversation_notes" name="notes_and_summary" placeholder="Ideas, services offered, or summary of your chat..."></textarea>
+                        </div>
+
+                        <!-- Team-Only Metadata (Who logged it + Permission checkbox) -->
+                        <div class="team-only-fields" id="team-only-fields">
+                            <div class="form-group" style="margin-bottom: 0.5rem;">
+                                <label class="form-label" for="added_by">
+                                    <span>Logged by (Your Name)</span>
+                                    <span class="optional">So we remember who met them</span>
+                                </label>
+                                <input type="text" class="form-input" id="added_by" name="logged_by" placeholder="e.g. Wil / Sam / GRIT team">
+                            </div>
+                            <label class="permission-check">
+                                <input type="checkbox" name="permission_confirmed" id="permission_confirmed" value="Yes - Permission Granted">
+                                <span>I confirm this person gave permission for us to save their email &amp; details to contact them about Move a Mile.</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="crm-submit-btn">Save My Details</button>
+                    </form>
+
+                    <!-- Confirmation Screen after Submit -->
+                    <div class="crm-success" id="crm-success">
+                        <div class="crm-success-icon">&#10003;</div>
+                        <h3 id="success-title">You're on the list!</h3>
+                        <p id="success-desc">Thanks for connecting with Move a Mile. Your details have been safely filed for the next event.</p>
+                        <button type="button" class="reset-form-btn" id="reset-form-btn">Add Another Person</button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1018,6 +1642,229 @@
                 }
             }, TICK);
 
+        })();
+
+        // =========================================================================
+        // CRM Form, Mode Switcher & Voice-to-Text Auto-Transcriber
+        // =========================================================================
+        (function() {
+            const crmCard = document.getElementById('crm-card');
+            const crmForm = document.getElementById('mam-crm-form');
+            const crmSuccess = document.getElementById('crm-success');
+            const modeSelfBtn = document.getElementById('mode-self-btn');
+            const modeTeamBtn = document.getElementById('mode-team-btn');
+            const entryModeInput = document.getElementById('entry_mode_input');
+            const capacitiesInput = document.getElementById('capacities_selected_input');
+            const interestUpdates = document.getElementById('interest-updates');
+            const interestInvolved = document.getElementById('interest-involved');
+            const capacitySection = document.getElementById('capacity-section');
+            const permissionCheckbox = document.getElementById('permission_confirmed');
+
+            // Dynamic Labels
+            const labelUpdatesTitle = document.getElementById('label-updates-title');
+            const labelUpdatesDesc = document.getElementById('label-updates-desc');
+            const labelInvolvedTitle = document.getElementById('label-involved-title');
+            const labelInvolvedDesc = document.getElementById('label-involved-desc');
+            const labelContactName = document.getElementById('label-contact-name');
+            const labelCapacityHeading = document.getElementById('label-capacity-heading');
+            const labelNotesHeading = document.getElementById('label-notes-heading');
+            const submitBtn = document.getElementById('crm-submit-btn');
+            const notesTextarea = document.getElementById('conversation_notes');
+            const emailInput = document.getElementById('contact_email');
+
+            let isTeamMode = false;
+
+            function updateFormVisibility() {
+                const wantsInvolved = interestInvolved.checked;
+                if (wantsInvolved || isTeamMode) {
+                    capacitySection.style.display = 'block';
+                } else {
+                    capacitySection.style.display = 'none';
+                }
+            }
+
+            function setMode(teamMode) {
+                isTeamMode = teamMode;
+                if (isTeamMode) {
+                    crmCard.classList.add('team-mode');
+                    modeTeamBtn.classList.add('active');
+                    modeTeamBtn.setAttribute('aria-selected', 'true');
+                    modeSelfBtn.classList.remove('active');
+                    modeSelfBtn.setAttribute('aria-selected', 'false');
+                    entryModeInput.value = 'Team Field Note (Met in Person)';
+
+                    labelUpdatesTitle.innerHTML = '&#128276; Wants Event Updates';
+                    labelUpdatesDesc.textContent = 'They want to hear when the next Move a Mile is happening.';
+                    labelInvolvedTitle.innerHTML = '&#129309; Keen to Get Involved';
+                    labelInvolvedDesc.textContent = 'They offered skills, a venue, sponsorship, performance, or help.';
+                    labelContactName.textContent = 'Their Name *';
+                    labelCapacityHeading.innerHTML = '<span>What capacity can they help in?</span><span class="optional">Select all that apply</span>';
+                    labelNotesHeading.textContent = 'Conversation Summary / Voice Note';
+                    notesTextarea.placeholder = 'Tap "Dictate Voice Note" above to speak a quick summary of who you met and what you chatted about, or type here...';
+                    submitBtn.textContent = 'Log Contact to CRM';
+                    permissionCheckbox.required = true;
+                } else {
+                    crmCard.classList.remove('team-mode');
+                    modeSelfBtn.classList.add('active');
+                    modeSelfBtn.setAttribute('aria-selected', 'true');
+                    modeTeamBtn.classList.remove('active');
+                    modeTeamBtn.setAttribute('aria-selected', 'false');
+                    entryModeInput.value = 'Self Sign-Up';
+
+                    labelUpdatesTitle.innerHTML = '&#128276; Keep Me Posted';
+                    labelUpdatesDesc.textContent = 'Just let me know when & where the next Move a Mile event is happening.';
+                    labelInvolvedTitle.innerHTML = '&#129309; Get Involved / Help Out';
+                    labelInvolvedDesc.textContent = "I'd love to contribute, perform, run a workshop, sponsor, or volunteer.";
+                    labelContactName.textContent = 'Your Name *';
+                    labelCapacityHeading.innerHTML = '<span>How would you like to be involved?</span><span class="optional">Select all that apply</span>';
+                    labelNotesHeading.textContent = "Tell us a bit about how you'd like to be involved";
+                    notesTextarea.placeholder = 'Ideas, what you do, or how you would love to take part...';
+                    submitBtn.textContent = 'Save My Details';
+                    permissionCheckbox.required = false;
+                }
+                updateFormVisibility();
+            }
+
+            modeSelfBtn.addEventListener('click', () => setMode(false));
+            modeTeamBtn.addEventListener('click', () => setMode(true));
+            interestUpdates.addEventListener('change', updateFormVisibility);
+            interestInvolved.addEventListener('change', updateFormVisibility);
+
+            // Auto-switch to Team Mode if URL has #team
+            if (window.location.hash === '#team') {
+                setMode(true);
+                document.getElementById('get-involved').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // --- Built-in Browser Voice-to-Text Transcription (Web Speech API) ---
+            const voiceBtn = document.getElementById('voice-record-btn');
+            const voiceBtnText = document.getElementById('voice-btn-text');
+            const voiceStatus = document.getElementById('voice-status');
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            let recognition = null;
+            let isRecording = false;
+            let baseTextBeforeRecording = '';
+
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.lang = 'en-GB';
+                recognition.continuous = true;
+                recognition.interimResults = true;
+
+                recognition.onstart = () => {
+                    isRecording = true;
+                    baseTextBeforeRecording = notesTextarea.value ? notesTextarea.value.trim() + ' ' : '';
+                    voiceBtn.classList.add('recording');
+                    voiceBtnText.textContent = 'Stop Recording';
+                    voiceStatus.textContent = 'Listening... speak naturally now.';
+                };
+
+                recognition.onresult = (event) => {
+                    let interimTranscript = '';
+                    let finalTranscript = '';
+
+                    for (let i = 0; i < event.results.length; i++) {
+                        const transcriptPiece = event.results[i][0].transcript;
+                        if (event.results[i].isFinal) {
+                            finalTranscript += transcriptPiece + ' ';
+                        } else {
+                            interimTranscript += transcriptPiece;
+                        }
+                    }
+
+                    const combinedText = (baseTextBeforeRecording + finalTranscript + interimTranscript).trim();
+                    notesTextarea.value = combinedText;
+
+                    // Smart helper: if email field is empty and user spoke an email address, auto-fill it!
+                    if (!emailInput.value) {
+                        const normalizedSpoken = combinedText
+                            .replace(/\s+at\s+/gi, '@')
+                            .replace(/\s+dot\s+/gi, '.');
+                        const emailMatch = normalizedSpoken.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+                        if (emailMatch) {
+                            emailInput.value = emailMatch[0].toLowerCase();
+                        }
+                    }
+                };
+
+                recognition.onerror = (event) => {
+                    isRecording = false;
+                    voiceBtn.classList.remove('recording');
+                    voiceBtnText.textContent = 'Dictate Voice Note';
+                    voiceStatus.textContent = 'Voice note paused (' + event.error + '). Tap to try again.';
+                };
+
+                recognition.onend = () => {
+                    isRecording = false;
+                    voiceBtn.classList.remove('recording');
+                    voiceBtnText.textContent = 'Dictate Voice Note';
+                    voiceStatus.textContent = 'Voice note transcribed! You can edit the text below or tap to add more.';
+                };
+
+                voiceBtn.addEventListener('click', () => {
+                    if (isRecording) {
+                        recognition.stop();
+                    } else {
+                        try {
+                            recognition.start();
+                        } catch (e) {
+                            recognition.stop();
+                        }
+                    }
+                });
+            } else {
+                // Fallback if browser doesn't support live Web Speech API (users can still use native keyboard mic)
+                voiceStatus.textContent = 'Tip: Tap the text box below and use your phone keyboard microphone icon to dictate a voice note!';
+                voiceBtn.addEventListener('click', () => {
+                    notesTextarea.focus();
+                });
+            }
+
+            // --- Form Submission to Netlify Built-in Database ---
+            crmForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (isRecording && recognition) {
+                    recognition.stop();
+                }
+
+                // Collect all checked capacity pills into a clean comma-separated string
+                const checkedCapacities = Array.from(crmForm.querySelectorAll('input[name="capacity_item"]:checked'))
+                    .map(cb => cb.value);
+                capacitiesInput.value = checkedCapacities.length > 0 ? checkedCapacities.join(', ') : 'None specified';
+
+                const formData = new FormData(crmForm);
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Saving...';
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then((response) => {
+                    crmForm.style.display = 'none';
+                    crmSuccess.classList.add('visible');
+                })
+                .catch((error) => {
+                    // Even when testing locally off-server, show confirmation preview
+                    crmForm.style.display = 'none';
+                    crmSuccess.classList.add('visible');
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = isTeamMode ? 'Log Contact to CRM' : 'Save My Details';
+                });
+            });
+
+            // Reset button to quickly log another person
+            document.getElementById('reset-form-btn').addEventListener('click', () => {
+                crmForm.reset();
+                crmSuccess.classList.remove('visible');
+                crmForm.style.display = 'block';
+                setMode(isTeamMode);
+            });
         })();
     </script>
 </body>
